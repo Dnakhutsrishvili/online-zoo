@@ -1,5 +1,17 @@
 :root {
   --main-color: #f58021;
+  --black: #000;
+  --white: #fff;
+  --blue: #20113d;
+  --hero-text: #00a092;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul {
+  list-style: none;
 }
 
 .navbar {
@@ -8,7 +20,8 @@
   align-items: center;
   padding: 1rem;
   background-color: var(--main-color);
-  color: #fff;
+  color: var(--white);
+  position: relative;
 }
 
 .logo img {
@@ -16,7 +29,7 @@
 }
 
 .nav-links li a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-size: 1.2rem;
 }
@@ -28,39 +41,70 @@
   display: none;
 }
 
-/* Burger icon */
 .burger {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .burger span {
-  width: 25px;
-  height: 3px;
-  background: white;
+  width: 30px;
+  height: 2.5px;
+  background: var(--black);
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+.hero {
+  background-image: url("../../assets/landing/panda-landing-mobile.png");
+  display: block;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 100%;
+}
+.hero h2 {
+  font-size: 72px;
+  color: var(--hero-text);
+  margin-bottom: 1rem;
 }
 
-/* Mobile styles */
 @media (max-width: 768px) {
   .burger {
     display: flex;
   }
 
   .nav-links {
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0;
     right: 0;
-    background: #333;
+    height: 100vh;
+    background: var(--blue);
     flex-direction: column;
-    width: 200px;
+    width: 300px;
     padding: 20px;
     display: none;
+    z-index: 1;
   }
 
-  /* Checkbox hack */
   .menu-toggle:checked ~ .nav-links {
     display: flex;
+    padding-top: 30%;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .menu-toggle:checked + .burger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    background-color: var(--white);
+  }
+
+  .menu-toggle:checked + .burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle:checked + .burger span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    background-color: var(--white);
   }
 }
