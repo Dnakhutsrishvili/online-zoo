@@ -112,7 +112,7 @@
           alt="Pay and feed step 1"
         />
         <img
-          id="feed-icon"
+          class="feed-icon"
           src="../../assets/icons/donation.png"
           alt="Pay and feed step 2"
         />
@@ -134,7 +134,7 @@
           alt="Pay and feed step 3"
         />
         <img
-          id="feed-icon"
+          class="feed-icon"
           src="../../assets/icons/pay-icon.png"
           alt="Pay and feed step 4"
         />
@@ -154,7 +154,7 @@
           alt="Pay and feed step     5"
         />
         <img
-          id="feed-icon"
+          class="feed-icon"
           src="../../assets/icons/vegies.png"
           alt="Pay and feed step 6"
         />
@@ -183,10 +183,10 @@
           from past clients.
         </p>
         <div class="testimonial-section">
-          <input type="radio" name="slider" id="slide1" checked />
-          <input type="radio" name="slider" id="slide2" />
-          <input type="radio" name="slider" id="slide3" />
-          <input type="radio" name="slider" id="slide4" />
+          <input type="radio" name="testimonial-slider" id="slide1" checked />
+          <input type="radio" name="testimonial-slider" id="slide2" />
+          <input type="radio" name="testimonial-slider" id="slide3" />
+          <input type="radio" name="testimonial-slider" id="slide4" />
 
           <div class="slider">
             <div class="slides">
@@ -265,6 +265,7 @@
             border: 1px solid var(--white);
             margin-top: 2rem;
             z-index: 999;
+            position: relative;
           "
           class="montserrat-semi-bold"
           >LEAVE FEEDBACK
@@ -279,6 +280,124 @@
           alt="Feedback banner"
         />
       </section>
+      <section class="care">
+        <h2 class="montserrat-regular">care for the animals you love</h2>
+        <p class="montserrat-regular">
+          You can help to look after the animals you love with your gift today
+        </p>
+        <div class="animal-section">
+          <input type="radio" name="animal-slider" id="animal1" checked />
+          <input type="radio" name="animal-slider" id="animal2" />
+          <input type="radio" name="animal-slider" id="animal3" />
+          <input type="radio" name="animal-slider" id="animal4" />
+
+          <div class="slider">
+            <div class="slides">
+              <div class="slide">
+                <img
+                  src="../../assets/landing/panda-slide-mobile.png"
+                  alt="animal 1"
+                />
+                <p class="montserrat-regular">
+                  Your $30 could give Lucas a slice of panda cake, made with our
+                  secret recipe.
+                </p>
+                <a
+                  href="#"
+                  style="background-color: var(--blue)"
+                  class="montserrat-semi-bold"
+                  >Feed
+                  <img
+                    id="arrow-icon"
+                    src="../../assets/icons/arrow.png"
+                    alt="Go to destination"
+                /></a>
+              </div>
+
+              <div class="slide">
+                <img
+                  src="../../assets/landing/panda-slide-mobile.png"
+                  alt="animal 1"
+                />
+                <p class="montserrat-regular">
+                  Your $30 could give Lucas a slice of panda cake, made with our
+                  secret recipe.
+                </p>
+                <a
+                  href="#"
+                  style="background-color: var(--blue)"
+                  class="montserrat-semi-bold"
+                  >Feed
+                  <img
+                    id="arrow-icon"
+                    src="../../assets/icons/arrow.png"
+                    alt="Go to destination"
+                /></a>
+              </div>
+
+              <div class="slide">
+                <img
+                  src="../../assets/landing/panda-slide-mobile.png"
+                  alt="animal 1"
+                />
+                <p class="montserrat-regular">
+                  Your $30 could give Lucas a slice of panda cake, made with our
+                  secret recipe.
+                </p>
+                <a
+                  href="#"
+                  style="background-color: var(--blue)"
+                  class="montserrat-semi-bold"
+                  >Feed
+                  <img
+                    id="arrow-icon"
+                    src="../../assets/icons/arrow.png"
+                    alt="Go to destination"
+                /></a>
+              </div>
+              <div class="slide">
+                <img
+                  src="../../assets/landing/panda-slide-mobile.png"
+                  alt="animal 1"
+                />
+                <p class="montserrat-regular">
+                  Your $30 could give Lucas a slice of panda cake, made with our
+                  secret recipe.
+                </p>
+                <a
+                  href="#"
+                  style="background-color: var(--blue)"
+                  class="montserrat-semi-bold"
+                  >Feed
+                  <img
+                    id="arrow-icon"
+                    src="../../assets/icons/arrow.png"
+                    alt="Go to destination"
+                /></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="buttons-animals">
+            <label for="animal1"></label>
+            <label for="animal2"></label>
+            <label for="animal3"></label>
+            <label for="animal4"></label>
+          </div>
+        </div>
+        <a href="#" class="montserrat-semi-bold"
+          >Choose Your Favorite
+          <img
+            id="arrow-dark-icon"
+            src="../../assets/icons/arrow-dark.png"
+            alt="Go to destination"
+        /></a>
+      </section>
+      <img
+        class="lemur"
+        src="../../assets/landing/virtual-call.png"
+        alt="virtual banner"
+      />
     </main>
 
     <script src="landing.js"></script>
