@@ -1,9 +1,11 @@
 :root {
   --main-color: #f58021;
   --black: #000;
+  --black-transparant: rgba(0, 0, 0, 0.5);
   --white: #fff;
   --blue: #20113d;
-  --hero-text: #00a092;
+  --pale-green: rgba(0, 160, 146, 0.5);
+  --pale-green-hower: #05786E;
 }
 a:link,
 a:visited,
@@ -11,6 +13,13 @@ a:hover,
 a:active {
   text-decoration: none;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 
 * {
   margin: 0;
@@ -97,7 +106,7 @@ ul {
 }
 .hero h2 {
   font-size: 2.3rem;
-  color: var(--hero-text);
+  color: var(--pale-green);
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
 }
@@ -134,7 +143,7 @@ ul {
 }
 .welcome h2 {
   font-size: 1.5rem;
-  color: var(--hero-text);
+  color: var(--pale-green);
   margin-bottom: 1rem;
   letter-spacing: 0.04em;
   text-align: left;
@@ -265,7 +274,7 @@ ul {
   height: 24px;
 }
 .donation-form button:hover {
-  background-color: var(--hero-text);
+  background-color: var(--pale-green);
 }
 .donation-form input:focus {
   border-color: var(--main-color);
@@ -276,7 +285,7 @@ ul {
 }
 .contact h2 {
   font-size: 1.5rem;
-  color: var(--hero-text);
+  color: var(--pale-green);
   margin-bottom: 1.5rem;
   margin-top: 1rem;
   letter-spacing: 0.03em;
@@ -503,7 +512,7 @@ input[type="radio"] {
 }
 .care h2 {
   font-size: 1.62rem;
-  color: var(--hero-text);
+  color: var(--pale-green);
   margin-bottom: 1.5rem;
   margin-top: 1rem;
   letter-spacing: 0.03em;
@@ -617,6 +626,142 @@ footer {
   gap: 2rem;
   margin-top: 2rem;
 }
+
+dialog {
+  border: none;
+  border-radius: 2px;
+  margin: auto;  
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+dialog:not([open]) {
+  display: none;
+}
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  background-color: var(--main-color);
+  color: var(--white);
+  padding: 1rem;
+}
+.dialog-header h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.donation-info {
+  font-size: 1rem;
+  color: var(--black);
+}
+dialog p{
+  font-size: 1rem;
+  color: var(--black);
+  margin-top: 1.5rem;
+  letter-spacing: 0.06em;
+}
+.donation-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+.donation-options button {
+  padding: 0.5rem;
+  background-color: var(--pale-green);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 120px;
+}
+.donation-options input {
+  padding: 0.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  width: 120px;
+  height: 40px;
+}
+#special {
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  background-color: var(--pale-green);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 190px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+}
+#pet-select {
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  width: 96%;
+  height: 40px;
+}
+#pet-select option {
+  color: var(--black);
+}
+.checkbox{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.checkbox label {
+  color: var(--black);
+  font-size: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+#next-btn {
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  background-color: var(--pale-green-hower);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  height: 40px;
+  width: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#next-btn img {
+  width: 20px;
+  height: 18px;
+  margin-left: 15px;
+  margin-top: 0;
+}
+
+#pet-select option:focus {
+  background-color: var(--pale-green);
+}
+.donation-options button:hover {
+  background-color: var(--pale-green-hower);
+}
+.donation-options button:focus {
+  background-color: var(--pale-green-hower);
+}
+
 @media (max-width: 640px) {
   .burger {
     display: flex;
