@@ -7,12 +7,14 @@
   --pale-green: rgba(0, 160, 146, 0.5);
   --pale-green-hower: #05786E;
 }
+
 a:link,
 a:visited,
 a:hover,
 a:active {
   text-decoration: none;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -26,24 +28,28 @@ input::-webkit-inner-spin-button {
   padding: 0;
   box-sizing: border-box;
 }
+
 .montserrat-heavy {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
 }
+
 .montserrat-semi-bold {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
 }
+
 .montserrat-regular {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
+
 ul {
   list-style: none;
 }
@@ -67,6 +73,7 @@ ul {
   text-decoration: none;
   font-size: 1.2rem;
 }
+
 .nav-links li a:hover {
   text-decoration: underline;
 }
@@ -90,6 +97,7 @@ ul {
   transition: all 0.3s ease;
   transform-origin: center;
 }
+
 .hero {
   background-image: url("../../assets/landing/panda-landing-mobile.png");
   display: block;
@@ -98,24 +106,28 @@ ul {
   background-size: 100% 38%;
   padding-bottom: 15.5rem;
 }
+
 .hero .here-text {
   padding-top: 1.5rem;
   padding-left: 0.5rem;
   text-align: left;
   width: 95%;
 }
+
 .hero h2 {
   font-size: 2.3rem;
   color: var(--pale-green);
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
 }
+
 .hero .here-text p {
   color: var(--black);
   font-size: 1rem;
   margin-bottom: 1.5rem;
   letter-spacing: 0.06em;
 }
+
 .hero .here-text a {
   display: flex;
   justify-content: center;
@@ -127,6 +139,7 @@ ul {
   background-color: var(--main-color);
   text-decoration: none;
 }
+
 .hero .here-text a img {
   width: 20px;
   margin-left: 10px;
@@ -136,11 +149,13 @@ ul {
   padding-top: 4rem;
   text-align: center;
 }
+
 .welcome img {
   width: 100%;
   height: 212px;
   margin-bottom: 2rem;
 }
+
 .welcome h2 {
   font-size: 1.5rem;
   color: var(--pale-green);
@@ -149,6 +164,7 @@ ul {
   text-align: left;
   padding-left: 0.5rem;
 }
+
 .welcome p {
   color: var(--black);
   font-size: 1rem;
@@ -157,35 +173,41 @@ ul {
   text-align: left;
   padding-left: 0.5rem;
 }
+
 .donation {
   padding: 2rem 0.5rem;
   background-color: var(--blue);
   text-align: center;
 }
+
 .donation h2 {
   font-size: 1.6rem;
   color: var(--white);
   margin-bottom: 1rem;
   letter-spacing: 0.04em;
 }
+
 .donation p {
   color: var(--white);
   font-size: 1rem;
   margin-bottom: 1.5rem;
   letter-spacing: 0.06em;
 }
+
 .donation h3 {
   font-size: 1.2rem;
   color: var(--white);
   margin-bottom: 1rem;
   letter-spacing: 0.04em;
 }
+
 .donation-form {
   display: flex;
   flex-direction: row;
   gap: 1rem;
   align-items: center;
 }
+
 .donation-form input {
   padding: 0.5rem;
   width: 92%;
@@ -198,6 +220,7 @@ ul {
   outline: none;
   padding-left: 1.5rem;
 }
+
 .animal-card {
   background-color: var(--blue);
   border-radius: 20px;
@@ -205,6 +228,7 @@ ul {
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .animal-card h3 {
   position: absolute;
   font-size: 1.6rem;
@@ -215,6 +239,7 @@ ul {
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
+
 .animal-card img {
   width: 100%;
   height: 333px;
@@ -222,11 +247,13 @@ ul {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
 .animal-card h4 {
   font-size: 1.2rem;
   color: var(--white);
   margin-bottom: 0.5rem;
 }
+
 .animal-card p {
   color: var(--white);
   font-size: 1.1rem;
@@ -234,6 +261,7 @@ ul {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+
 .animal-card a {
   display: flex;
   padding: 0.5rem 1rem;
@@ -244,16 +272,19 @@ ul {
   margin-bottom: 1rem;
   border-radius: 10px;
 }
+
 .animal-card a img {
   height: 20px;
   width: 27px;
   margin-left: 10px;
   fill: var(--main-color);
 }
+
 .donation-form input::placeholder {
   color: var(--white);
   opacity: 1;
 }
+
 .donation-form button {
   position: absolute;
   right: 10%;
@@ -269,20 +300,25 @@ ul {
   align-items: center;
   justify-content: center;
 }
+
 .donation-form button img {
   margin-left: 10px;
   height: 24px;
 }
+
 .donation-form button:hover {
   background-color: var(--pale-green);
 }
+
 .donation-form input:focus {
   border-color: var(--main-color);
 }
+
 .contact {
   padding: 2rem 0.5rem;
   text-align: center;
 }
+
 .contact h2 {
   font-size: 1.5rem;
   color: var(--pale-green);
@@ -290,11 +326,13 @@ ul {
   margin-top: 1rem;
   letter-spacing: 0.03em;
 }
+
 .pay-and-feed {
   padding-top: 2rem;
   text-align: center;
   background-color: var(--blue);
 }
+
 .pay-and-feed h2 {
   font-size: 1.6rem;
   color: var(--white);
@@ -302,6 +340,7 @@ ul {
   margin-top: 1rem;
   letter-spacing: 0.03em;
 }
+
 .number-line {
   display: flex;
   align-items: center;
@@ -309,26 +348,31 @@ ul {
   gap: 1rem;
   padding-left: 0.5rem;
 }
+
 .pay-and-feed .number-line h3 {
   font-size: 1.6rem;
   color: var(--white);
   letter-spacing: 0.04em;
 }
+
 .pay-and-feed .feed-icon {
   width: 80px;
   height: 100%;
 }
+
 .pay-and-feed .number-line hr {
   flex: 1;
   border: none;
   height: 1px;
   background-color: var(--white);
 }
+
 .pay-and-feed img {
   width: 100%;
   height: 200px;
   margin-top: 1rem;
 }
+
 .pay-and-feed p {
   color: var(--white);
   font-size: 1rem;
@@ -337,6 +381,7 @@ ul {
   text-align: center;
   padding: 0.5rem;
 }
+
 .pay-and-feed a {
   display: flex;
   justify-content: center;
@@ -350,6 +395,7 @@ ul {
   margin-left: 4%;
   margin-right: 4%;
 }
+
 #arrow-icon {
   width: 20px;
   height: 18px;
@@ -361,14 +407,17 @@ ul {
   text-align: center;
   padding: 0.2rem;
 }
+
 .animal-section {
   text-align: center;
   padding: 0.2rem;
 }
+
 .animal-section .slider .slides .slide {
   background-color: var(--blue);
   padding: 0;
 }
+
 .animal-section .slider .slides .slide img {
   height: 365px;
   width: 100%;
@@ -376,10 +425,12 @@ ul {
   border-top-right-radius: 10px;
   margin: 0;
 }
+
 .animal-section .slider .slides .slide p {
   color: var(--white);
   margin: 0.5rem;
 }
+
 .animal-section .slider .slides .slide a {
   text-decoration: none;
   margin: 1.5rem;
@@ -389,9 +440,11 @@ ul {
   align-items: center;
   text-transform: uppercase;
 }
+
 .buttons-animals {
   margin-top: 1rem;
 }
+
 .buttons-animals label {
   display: inline-block;
   width: 8px;
@@ -401,6 +454,7 @@ ul {
   border-radius: 50%;
   cursor: pointer;
 }
+
 input[type="radio"] {
   display: none;
 }
@@ -423,55 +477,62 @@ input[type="radio"] {
   background: var(--white);
   border-radius: 10px;
 }
+
 .slide img {
   display: block;
   width: 45px;
   height: 45px;
   margin-bottom: 1rem;
 }
+
 .slide h4 {
   font-size: 1.6rem;
   color: var(--black);
   margin-bottom: 0.5rem;
 }
+
 .slide h5 {
   font-size: 1.1rem;
   color: var(--black);
   margin-bottom: 1rem;
   letter-spacing: 0.04em;
 }
+
 .slide p {
   font-size: 1.1rem;
   color: var(--black);
   letter-spacing: 0.06em;
 }
 
-#slide1:checked ~ .slider .slides {
+#slide1:checked~.slider .slides {
   transform: translateX(0%);
 }
 
-#slide2:checked ~ .slider .slides {
+#slide2:checked~.slider .slides {
   transform: translateX(-25%);
 }
 
-#slide3:checked ~ .slider .slides {
+#slide3:checked~.slider .slides {
   transform: translateX(-50%);
 }
-#slide4:checked ~ .slider .slides {
+
+#slide4:checked~.slider .slides {
   transform: translateX(-75%);
 }
-#animal1:checked ~ .slider .slides {
+
+#animal1:checked~.slider .slides {
   transform: translateX(0%);
 }
 
-#animal2:checked ~ .slider .slides {
+#animal2:checked~.slider .slides {
   transform: translateX(-25%);
 }
 
-#animal3:checked ~ .slider .slides {
+#animal3:checked~.slider .slides {
   transform: translateX(-50%);
 }
-#animal4:checked ~ .slider .slides {
+
+#animal4:checked~.slider .slides {
   transform: translateX(-75%);
 }
 
@@ -489,16 +550,17 @@ input[type="radio"] {
   cursor: pointer;
 }
 
-#slide1:checked ~ .buttons label[for="slide1"],
-#slide2:checked ~ .buttons label[for="slide2"],
-#slide3:checked ~ .buttons label[for="slide3"],
-#slide4:checked ~ .buttons label[for="slide4"] {
+#slide1:checked~.buttons label[for="slide1"],
+#slide2:checked~.buttons label[for="slide2"],
+#slide3:checked~.buttons label[for="slide3"],
+#slide4:checked~.buttons label[for="slide4"] {
   background-color: var(--white);
 }
-#animal1:checked ~ .buttons-animals label[for="animal1"],
-#animal2:checked ~ .buttons-animals label[for="animal2"],
-#animal3:checked ~ .buttons-animals label[for="animal3"],
-#animal4:checked ~ .buttons-animals label[for="animal4"] {
+
+#animal1:checked~.buttons-animals label[for="animal1"],
+#animal2:checked~.buttons-animals label[for="animal2"],
+#animal3:checked~.buttons-animals label[for="animal3"],
+#animal4:checked~.buttons-animals label[for="animal4"] {
   background-color: var(--blue);
 }
 
@@ -506,10 +568,12 @@ input[type="radio"] {
   position: relative;
   height: 100%;
 }
+
 .care {
   padding: 2rem 0.5rem;
   text-align: center;
 }
+
 .care h2 {
   font-size: 1.62rem;
   color: var(--pale-green);
@@ -517,6 +581,7 @@ input[type="radio"] {
   margin-top: 1rem;
   letter-spacing: 0.03em;
 }
+
 .care p {
   color: var(--black);
   font-size: 1.12rem;
@@ -525,6 +590,7 @@ input[type="radio"] {
   text-align: center;
   padding: 0.5rem;
 }
+
 .care a {
   display: flex;
   justify-content: center;
@@ -540,12 +606,14 @@ input[type="radio"] {
   border: 1px solid var(--blue);
   margin-top: 2rem;
 }
+
 .care a img {
   width: 20px;
   height: 18px;
   margin-left: 15px;
   margin-top: 0;
 }
+
 .lemur {
   width: 100%;
   height: 189px;
@@ -560,6 +628,7 @@ footer {
   margin-top: 5rem;
   font-family: "Montserrat", sans-serif;
 }
+
 .footer-logo {
   display: flex;
   justify-content: center;
@@ -568,11 +637,13 @@ footer {
   gap: 1rem;
   margin-top: 2rem;
 }
+
 .footer-logo img {
   width: auto;
   height: 50px;
   margin-bottom: 0.5rem;
 }
+
 .footer-links {
   display: flex;
   justify-content: center;
@@ -581,10 +652,12 @@ footer {
   text-decoration: none;
   padding-top: 2rem;
 }
+
 .footer-links a {
   color: var(--white);
   font-size: 0.9rem;
 }
+
 .footer-donate {
   display: flex;
   justify-content: center;
@@ -597,12 +670,14 @@ footer {
   margin-left: 4%;
   margin-right: 4%;
 }
+
 #arrow-icon {
   width: 20px;
   height: 18px;
   margin-left: 15px;
   margin-top: 0;
 }
+
 .social-media {
   display: flex;
   justify-content: space-evenly;
@@ -611,10 +686,12 @@ footer {
   margin-top: 2.5rem;
   margin-bottom: 2rem;
 }
+
 .social-media img {
   width: 100%;
   height: 40px;
 }
+
 .copyright {
   display: flex;
   justify-content: center;
@@ -630,7 +707,7 @@ footer {
 dialog {
   border: none;
   border-radius: 2px;
-  margin: auto;  
+  margin: auto;
   text-align: center;
   padding-bottom: 1rem;
 }
@@ -642,6 +719,7 @@ dialog::backdrop {
 dialog:not([open]) {
   display: none;
 }
+
 .dialog-header {
   display: flex;
   justify-content: space-between;
@@ -652,27 +730,32 @@ dialog:not([open]) {
   color: var(--white);
   padding: 1rem;
 }
+
 .dialog-header h2 {
   font-size: 1.5rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+
 .donation-info {
   font-size: 1rem;
   color: var(--black);
 }
-dialog p{
+
+dialog p {
   font-size: 1rem;
   color: var(--black);
   margin-top: 1.5rem;
   letter-spacing: 0.06em;
 }
+
 .donation-options {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
   padding: 0.5rem;
 }
+
 .donation-options button {
   padding: 0.5rem;
   background-color: var(--pale-green);
@@ -683,6 +766,7 @@ dialog p{
   height: 40px;
   width: 120px;
 }
+
 .donation-options input {
   padding: 0.5rem;
   background-color: var(--white);
@@ -690,6 +774,7 @@ dialog p{
   width: 120px;
   height: 40px;
 }
+
 #special {
   margin-top: 1.5rem;
   padding: 0.5rem;
@@ -704,6 +789,7 @@ dialog p{
   letter-spacing: 1px;
 
 }
+
 #pet-select {
   margin-top: 1.5rem;
   padding: 0.5rem;
@@ -712,10 +798,12 @@ dialog p{
   width: 96%;
   height: 40px;
 }
+
 #pet-select option {
   color: var(--black);
 }
-.checkbox{
+
+.checkbox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -723,13 +811,15 @@ dialog p{
   gap: 0.5rem;
   margin-top: 1.5rem;
 }
+
 .checkbox label {
   color: var(--black);
   font-size: 1rem;
   padding-left: 2rem;
   padding-right: 2rem;
 }
-#next-btn {
+
+.next-btn {
   margin-top: 1.5rem;
   padding: 0.5rem;
   background-color: var(--pale-green-hower);
@@ -744,20 +834,95 @@ dialog p{
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 1rem;
 }
-#next-btn img {
+
+.next-btn img {
   width: 20px;
   height: 18px;
   margin-left: 15px;
   margin-top: 0;
 }
 
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.payment-details label {
+  color: var(--black);
+  font-size: 0.8rem;
+}
+
+.payment-details input {
+  padding: 0.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--black);
+  width: 100%;
+  height: 40px;
+}
+
+.payment-details input::placeholder {
+  color: var(--black);
+  opacity: 0.5;
+}
+
+.payment-details p {
+  color: var(--black);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+.prev-btn {
+  color: var(--pale-green-hower);
+  text-decoration: none;
+  cursor: pointer;
+  text-decoration-color: var(--pale-green-hower);
+}
+
+.step {
+  display: none;
+}
+
+.complate-donation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.complate-donation a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+  font-size: 18px;
+  height: 45px;
+  text-align: center;
+  background-color: var(--main-color);
+  text-decoration: none;
+}
+
+.step.active {
+  display: block;
+}
+
 #pet-select option:focus {
   background-color: var(--pale-green);
 }
+
 .donation-options button:hover {
   background-color: var(--pale-green-hower);
 }
+
 .donation-options button:focus {
   background-color: var(--pale-green-hower);
 }
@@ -780,23 +945,23 @@ dialog p{
     z-index: 1;
   }
 
-  .menu-toggle:checked ~ .nav-links {
+  .menu-toggle:checked~.nav-links {
     display: flex;
     padding-top: 30%;
     text-align: center;
     gap: 3rem;
   }
 
-  .menu-toggle:checked + .burger span:nth-child(1) {
+  .menu-toggle:checked+.burger span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
     background-color: var(--white);
   }
 
-  .menu-toggle:checked + .burger span:nth-child(2) {
+  .menu-toggle:checked+.burger span:nth-child(2) {
     opacity: 0;
   }
 
-  .menu-toggle:checked + .burger span:nth-child(3) {
+  .menu-toggle:checked+.burger span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
     background-color: var(--white);
   }

@@ -17,6 +17,8 @@
       <header class="dialog-header">
         <h2 class="montserrat-semi-bold">make your donation</h2>
       </header>
+        <div class="step step-1 active">
+
       <p class="montserrat-heavy donation-info">Donation Information</p>
       <hr/>
       <p class="montserrat-regular"><span>*</span> choose your donation amount:</p>
@@ -48,11 +50,64 @@
 <input type="checkbox" id="recurring-donation" name="recurring-donation" />
 </div>
 
-<button id="next-btn">Next <img src="../../assets/icons/image.png" alt="Next" /></button>
+<button class="next-btn">Next <img src="../../assets/icons/image.png" alt="Next" /></button>
+
+          <div class="buttons-step">
+            <label for="step1"></label>
+            <label for="step2"></label>
+            <label for="step3"></label>
+          </div>
+        </div>
+          <div class="step step-2">
+            <p class="montserrat-heavy donation-info">Payment Information</p>
+            <hr/>
+            <form class="info-form">
+              <div class="payment-details">
+                <label for="name" class="montserrat-regular">*Your Name</label>
+                <input type="text" placeholder="First and last name" required />
+                <label for="email" class="montserrat-regular">*Your Email</label>
+                <input type="email" placeholder="Enter your email" required />
+                <p class="montserrat-regular">You will receive emails from the Online Zoo, including updates and news on the latest discoveries and translations. You can unsubscribe at any time.</p>
+
+              </div>
+            </form>
+           <button class="next-btn">Next <img src="../../assets/icons/image.png" alt="Next"/></button>
+           <a class="prev-btn">
+             Back
+           </a>
+                </div>
+                <div class="step step-3">
+            <p class="montserrat-heavy donation-info">Payment Information:</p>
+            <hr/>
+            <form class="payment-form">
+              <div class="payment-details">
+                <label for="card-number" class="montserrat-regular">*Card Number</label>
+                <input type="text" placeholder="1234 5678 9012 3456" required />
+                <label for="cvv" class="montserrat-regular">*CVV</label>
+                <input type="text" placeholder="123" required />
+                 <label for="expiry-date" class="montserrat-regular">*Expiry Date</label>
+                <input type="text" placeholder="MM/YY" required />
+              </div>
+              </form>
+                <a class="prev-btn">
+             Back
+          </a>
+              <div class="complate-donation">
+
+        
+           <a href="#" class="montserrat-semi-bold"
+          >COMPLETE DONATION
+          <img
+            id="arrow-icon"
+            src="../../assets/icons/image.png"
+            alt="Go to destination"
+        /></a>
+ </div>
+  </div>
     </dialog> 
     <header class="navbar">
       <div class="logo">
-        <img src="../../assets/logo.png" alt="Logo" />
+        <img src="../../assets/icons/main-logo.png" alt="Logo" />
       </div>
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
 
@@ -111,7 +166,7 @@
         <h3 class="montserrat-semi-bold">Quick Donate</h3>
         <form class="donation-form">
           <input type="number" placeholder="$ DONATION AMOUNT" />
-          <button type="submit" class="montserrat-semi-bold">
+          <button type="submit" class="montserrat-semi-bold donate">
             <img src="../../assets/icons/image.png" alt="Donate" />
           </button>
         </form>
@@ -204,7 +259,7 @@
           real personal impact. Never doubt that your donation can make a
           difference even if it is small.
         </p>
-        <a href="#" class="montserrat-semi-bold"
+        <a href="#" class="donate" class="montserrat-semi-bold"
           >DONATE NOW
           <img
             id="arrow-icon"
@@ -458,7 +513,7 @@
             z-index: 999;
             position: relative;
           "
-          class="montserrat-semi-bold footer-donate"
+          class="montserrat-semi-bold footer-donate donate"
           >Donate For Volunteers
           <img
             id="arrow-icon"
