@@ -1,0 +1,38 @@
+main {
+    margin: 0;
+    padding: 0;
+}
+
+main img {
+    width: 100%;
+    height: 217px;
+}
+
+main h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    color: #00A092;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+main p {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+textarea {
+    width: 96%;
+    height: 150px;
+    display: block;
+    font-size: 1em;
+}
+
+#btn {
+    margin-top: 20px;
+    width: 90%;
+}
