@@ -698,10 +698,13 @@ footer {
   align-items: center;
   font-size: 0.8rem;
   color: var(--white);
-  margin-bottom: 1rem;
   flex-direction: column;
   gap: 2rem;
   margin-top: 2rem;
+}
+
+.copyright li {
+  padding-bottom: 1rem;
 }
 
 dialog {
@@ -927,42 +930,96 @@ dialog p {
   background-color: var(--pale-green-hower);
 }
 
-@media (max-width: 640px) {
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.nav-links {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  height: 100vh;
+  width: 300px;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 100;
+}
+
+.menu-toggle:checked~.nav-links {
+  right: 0;
+  padding-top: 30%;
+  text-align: center;
+  gap: 3rem;
+}
+
+.menu-toggle:checked+.burger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  background-color: var(--white);
+}
+
+.menu-toggle:checked+.burger span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle:checked+.burger span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+  background-color: var(--white);
+}
+
+@media (min-width: 640px) {
   .burger {
-    display: flex;
+    display: none;
   }
 
   .nav-links {
-    position: fixed;
-    top: 0;
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0;
     right: 0;
-    height: 100vh;
-    background: var(--blue);
-    flex-direction: column;
+  }
+
+  .nav-links li a {
+    color: var(--black);
+    font-size: 1.2rem;
+  }
+
+  .hero {
+    background-position: top;
+    background-size: 100%;
+    padding-bottom: 10rem;
+  }
+
+  .hero h2 {
+    color: #05786E;
+    font-size: 3.2rem;
+  }
+
+  .hero a {
+    width: 240px;
+  }
+
+  .hero p {
     width: 300px;
-    padding: 20px;
-    display: none;
-    z-index: 1;
   }
 
-  .menu-toggle:checked~.nav-links {
-    display: flex;
-    padding-top: 30%;
-    text-align: center;
-    gap: 3rem;
+  .welcome {
+    padding-top: 0;
   }
 
-  .menu-toggle:checked+.burger span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-    background-color: var(--white);
+  .copyright {
+    flex-direction: row;
   }
 
-  .menu-toggle:checked+.burger span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle:checked+.burger span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-    background-color: var(--white);
-  }
 }
