@@ -36,3 +36,14 @@ textarea {
     margin-top: 20px;
     width: 90%;
 }
+
+@media (min-width: 940px) {
+    main img {
+        height: 600px;
+    }
+
+    .contact-pc {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
