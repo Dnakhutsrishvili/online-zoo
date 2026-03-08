@@ -1,1 +1,8 @@
-node_modules/\n.DS_Store\n
+node_modules
+dist
+.env
+.env.*
+*.log
+.DS_Store
+.vscode
+.idea

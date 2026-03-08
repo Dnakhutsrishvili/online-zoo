@@ -1,0 +1,31 @@
+{
+  "name": "online-zoo",
+  "version": "1.0.0",
+  "description": "link to view project -https://vocal-snickerdoodle-23aa1d.netlify.app/",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dnakhutsrishvili/online-zoo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Dnakhutsrishvili/online-zoo/issues"
+  },
+  "homepage": "https://github.com/Dnakhutsrishvili/online-zoo#readme",
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^10.0.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  }
+}
