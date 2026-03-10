@@ -14,18 +14,6 @@
     <title>Online Zoo</title>
   </head>
   <body>
-<div id="page-loader">
-  <div class="loader-ring">
-    <svg viewBox="0 0 80 80">
-      <circle cx="40" cy="40" r="34" />
-    </svg>
-    <div class="loader-paw">🐾</div>
-  </div>
-  <div class="loader-bar-track">
-    <div class="loader-bar-fill" id="loader-bar"></div>
-  </div>
-  <span class="loader-label">Loading animals…</span>
-</div>
     <dialog id="donation-dialog" >
       <header class="dialog-header">
         <h2 class="montserrat-semi-bold">make your donation</h2>
@@ -106,8 +94,6 @@
              Back
           </a>
               <div class="complate-donation">
-
-        
            <a href="#" class="montserrat-semi-bold"
           >COMPLETE DONATION
           <img
@@ -228,14 +214,11 @@
           /></a>
         </div>
         <div class="animals-wrapper">
-     <button id="left">Left</button>
-     <button id="right">Right</button>
-
-        <div class="pc-view" id="pc-view">
+          <button id="left">Left</button>
+          <button id="right">Right</button>
+          <div class="pc-view" id="pc-view"></div>
         </div>
-
-      </div>
-                <a
+        <a
           href="./pages/animal/animal-page.html"
           class="montserrat-semi-bold pc-btn"
           >choose your favorite
@@ -303,7 +286,7 @@
         <div class="pc-flex">
         <img
           src="../../assets/landing/banana-chimp-mobile.png"
-          alt="Pay and feed step     5"
+          alt="Pay and feed step 5"
         />
         <div>
         <img
@@ -322,7 +305,7 @@
         </p>
         </div>
         </div>
-        <a href="#" class="donate" class="montserrat-semi-bold"
+        <a href="#" class="donate montserrat-semi-bold"
           >DONATE NOW
           <img
             id="arrow-icon"
@@ -337,92 +320,12 @@
           guests. Below you can leave your own feedback, or simply view feedback
           from past clients.
         </p>
-        <!-- <div class="testimonial-section">
-          <input type="radio" name="testimonial-slider" id="slide1" checked />
-          <input type="radio" name="testimonial-slider" id="slide2" />
-          <input type="radio" name="testimonial-slider" id="slide3" />
-          <input type="radio" name="testimonial-slider" id="slide4" />
-
-          <div class="slider">
-            <div class="slides">
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Karen Maithlan</h5>
-              </div>
-
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Pow Maithlan</h5>
-              </div>
-
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Ika Maithlan</h5>
-              </div>
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Anna Maithlan</h5>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- <div class="buttons">
-            <label for="slide1"></label>
-            <label for="slide2"></label>
-            <label for="slide3"></label>
-            <label for="slide4"></label>
-          </div>
-        </div> -->
         <div class="testimonial-section">
-  <div class="slider-wrapper">
-    <div class="slider" id="testimonial-slider">
-    </div>
-  </div>
-
-  <div class="buttons" id="slider-buttons">
-  </div>
-</div>
-
+          <div class="slider-wrapper">
+            <div class="slider" id="testimonial-slider"></div>
+          </div>
+          <div class="buttons" id="slider-buttons"></div>
+        </div>
         <a
           href="#"
           style="
@@ -479,7 +382,6 @@
                     alt="Go to destination"
                 /></a>
               </div>
-
               <div class="slide">
                 <img
                   src="../../assets/landing/panda-slide-mobile.png"
@@ -500,7 +402,6 @@
                     alt="Go to destination"
                 /></a>
               </div>
-
               <div class="slide">
                 <img
                   src="../../assets/landing/panda-slide-mobile.png"
@@ -568,62 +469,60 @@
     <footer>
       <div class="footer-content">
         <div class="footer-first">
-
-        <div class="footer-logo">
-          <img src="../../assets/icons/footer-logo.png" alt="Logo" />
-          <img src="../../assets/icons/footer-yem-mobile.png" alt="Logo" />
-          <img src="../../assets/icons/rs-logo-mobile.png" alt="Logo" />
+          <div class="footer-logo">
+            <img src="../../assets/icons/footer-logo.png" alt="Logo" />
+            <img src="../../assets/icons/footer-yem-mobile.png" alt="Logo" />
+            <img src="../../assets/icons/rs-logo-mobile.png" alt="Logo" />
+          </div>
+          <ul class="footer-links">
+            <li><a style="color: #00A092;" href="../landing/landing.html">ABOUT</a></li>
+            <li><a href="../../pages/map/map.html">MAP</a></li>
+            <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
+            <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
+          </ul>
+          <a
+            href="#"
+            style="
+              background-color: var(--blue);
+              border: 1px solid var(--white);
+              margin-top: 2rem;
+              z-index: 999;
+              position: relative;
+            "
+            class="montserrat-semi-bold footer-donate donate"
+            >Donate For Volunteers
+            <img
+              id="arrow-icon"
+              src="../../assets/icons/image.png"
+              alt="Go to destination"
+          /></a>
         </div>
-        <ul class="footer-links">
-        <li><a style="color: #00A092;" href="../landing/landing.html">ABOUT</a></li>
-        <li><a href="../../pages/map/map.html">MAP</a></li>
-        <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
-        <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
-        </ul>
-        <a
-          href="#"
-          style="
-            background-color: var(--blue);
-            border: 1px solid var(--white);
-            margin-top: 2rem;
-            z-index: 999;
-            position: relative;
-          "
-          class="montserrat-semi-bold footer-donate donate"
-          >Donate For Volunteers
-          <img
-            id="arrow-icon"
-            src="../../assets/icons/image.png"
-            alt="Go to destination"
-        /></a>
-        </div>
-         <hr class="coala-pc"/>
-
+        <hr class="coala-pc"/>
         <div class="footer-pc">
-        <ul class="social-media">
-          <li>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><img src="../../assets/icons/facebook.png" alt="Facebook"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/" target="_blank"
-              ><img src="../../assets/icons/instagram.png" alt="instagram"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/" target="_blank"
-              ><img src="../../assets/icons/youtube.png" alt="youtube"
-            /></a>
-          </li>
-        </ul>
-        <hr  class="remove"/>
-        <ul class="copyright">
-          <li><p class="montserrat-regular">© 2026 Dinak</p></li>
-          <li><p class="montserrat-regular">© 2026 Yem Digital</p></li>
-          <li><p class="montserrat-regular">© 2026 RSSchool</p></li>
-        </ul>
-      </div>
+          <ul class="social-media">
+            <li>
+              <a href="https://www.facebook.com/" target="_blank"
+                ><img src="../../assets/icons/facebook.png" alt="Facebook"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" target="_blank"
+                ><img src="../../assets/icons/instagram.png" alt="instagram"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank"
+                ><img src="../../assets/icons/youtube.png" alt="youtube"
+              /></a>
+            </li>
+          </ul>
+          <hr class="remove"/>
+          <ul class="copyright">
+            <li><p class="montserrat-regular">© 2026 Dinak</p></li>
+            <li><p class="montserrat-regular">© 2026 Yem Digital</p></li>
+            <li><p class="montserrat-regular">© 2026 RSSchool</p></li>
+          </ul>
+        </div>
       </div>
     </footer>
 
