@@ -14,6 +14,18 @@
     <title>Online Zoo</title>
   </head>
   <body>
+<div id="page-loader">
+  <div class="loader-ring">
+    <svg viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="34" />
+    </svg>
+    <div class="loader-paw">🐾</div>
+  </div>
+  <div class="loader-bar-track">
+    <div class="loader-bar-fill" id="loader-bar"></div>
+  </div>
+  <span class="loader-label">Loading animals…</span>
+</div>
     <dialog id="donation-dialog" >
       <header class="dialog-header">
         <h2 class="montserrat-semi-bold">make your donation</h2>
@@ -216,48 +228,12 @@
           /></a>
         </div>
         <div class="animals-wrapper">
+     <button id="left">Left</button>
+     <button id="right">Right</button>
 
         <div class="pc-view" id="pc-view">
-    <!-- <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
         </div>
-            <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
-        </div>
-            <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
-        </div> -->
-        </div>
+
       </div>
                 <a
           href="./pages/animal/animal-page.html"
@@ -361,7 +337,7 @@
           guests. Below you can leave your own feedback, or simply view feedback
           from past clients.
         </p>
-        <div class="testimonial-section">
+        <!-- <div class="testimonial-section">
           <input type="radio" name="testimonial-slider" id="slide1" checked />
           <input type="radio" name="testimonial-slider" id="slide2" />
           <input type="radio" name="testimonial-slider" id="slide3" />
@@ -428,15 +404,25 @@
                 <h5 class="montserrat-heavy">Anna Maithlan</h5>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="buttons">
+          <!-- <div class="buttons">
             <label for="slide1"></label>
             <label for="slide2"></label>
             <label for="slide3"></label>
             <label for="slide4"></label>
           </div>
-        </div>
+        </div> -->
+        <div class="testimonial-section">
+  <div class="slider-wrapper">
+    <div class="slider" id="testimonial-slider">
+    </div>
+  </div>
+
+  <div class="buttons" id="slider-buttons">
+  </div>
+</div>
+
         <a
           href="#"
           style="
