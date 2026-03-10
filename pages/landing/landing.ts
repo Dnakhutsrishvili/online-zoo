@@ -45,12 +45,29 @@ const leftBtn   = document.getElementById("left");
 const rightBtn  = document.getElementById("right");
 
 if (container && leftBtn && rightBtn) {
-  rightBtn.addEventListener("click", () =>
-    container.scrollBy({ left: 150, behavior: "smooth" })
-  );
-  leftBtn.addEventListener("click", () =>
-    container.scrollBy({ left: -150, behavior: "smooth" })
-  );
+  rightBtn.addEventListener("click", () => {
+    const isEnd =
+      container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
+
+    if (isEnd) {
+      container.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      container.scrollBy({ left: 250, behavior: "smooth" });
+    }
+  });
+
+  leftBtn.addEventListener("click", () => {
+    const isStart = container.scrollLeft <= 0;
+
+    if (isStart) {
+      container.scrollTo({
+        left: container.scrollWidth,
+        behavior: "smooth",
+      });
+    } else {
+      container.scrollBy({ left: -250, behavior: "smooth" });
+    }
+  });
 }
 
 type StoredUser = { name: string; email: string } | null;
@@ -307,7 +324,9 @@ async function renderPets(): Promise<void> {
       const card = document.createElement("div");
       card.className = "animal-card";
       card.innerHTML = `
+      <div class='badge'>
         <h3 class="montserrat-regular">${animal.name}</h3>
+        </div>
         <img src="${animal.image}" alt="${animal.name}" />
         <h4 class="montserrat-regular">${animal.commonName}</h4>
         <p class="montserrat-regular">${animal.description}</p>
