@@ -1,0 +1,155 @@
+const API_URL_REGISTER = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/register";
+
+const form        = document.getElementById("register-form")  as HTMLFormElement;
+const loginInput  = document.getElementById("login")          as HTMLInputElement;
+const nameInput   = document.getElementById("name")           as HTMLInputElement;
+const passwordInput = document.getElementById("password")     as HTMLInputElement;
+const confirmInput  = document.getElementById("confirm")      as HTMLInputElement;
+const registerBtn   = document.getElementById("register-btn") as HTMLButtonElement;
+const serverError   = document.getElementById("server-error") as HTMLElement;
+
+function validateLogin(value: string): string {
+  if (!value) return "Login is required.";
+  if (!/^[a-zA-Z]/.test(value)) return "Login must start with a letter.";
+  if (!/^[a-zA-Z]+$/.test(value)) return "Login must contain only English letters.";
+  if (value.length < 3) return "Login must be at least 3 characters.";
+  return "";
+}
+
+function validateName(value: string): string {
+  if (!value) return "Name is required.";
+  if (!/^[a-zA-Z]+$/.test(value)) return "Name must contain only English letters.";
+  if (value.length < 3) return "Name must be at least 3 characters.";
+  return "";
+}
+
+function validatePassword(value: string): string {
+  if (!value) return "Password is required.";
+  if (value.length < 6) return "Password must be at least 6 characters.";
+  if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(value))
+    return "Password must contain at least 1 special character.";
+  return "";
+}
+
+function validateConfirm(value: string): string {
+  if (!value) return "Please confirm your password.";
+  if (value !== passwordInput.value) return "Passwords do not match.";
+  return "";
+}
+
+function setInvalid(groupId: string, errorId: string, message: string): void {
+  const group = document.getElementById(groupId) as HTMLElement;
+  const error = document.getElementById(errorId) as HTMLElement;
+  group.classList.add("invalid");
+  error.textContent = message;
+}
+
+function setValid(groupId: string, errorId: string): void {
+  const group = document.getElementById(groupId) as HTMLElement;
+  const error = document.getElementById(errorId) as HTMLElement;
+  group.classList.remove("invalid");
+  error.textContent = "";
+}
+
+function clearField(groupId: string, errorId: string): void {
+  setValid(groupId, errorId);
+}
+
+function updateButtonState(): void {
+  const allValid =
+    validateLogin(loginInput.value)       === "" &&
+    validateName(nameInput.value)         === "" &&
+    validatePassword(passwordInput.value) === "" &&
+    validateConfirm(confirmInput.value)   === "";
+
+  registerBtn.disabled = !allValid;
+}
+
+loginInput.addEventListener("blur", () => {
+  const msg = validateLogin(loginInput.value);
+  msg ? setInvalid("group-login", "error-login", msg)
+      : setValid("group-login", "error-login");
+  updateButtonState();
+});
+
+nameInput.addEventListener("blur", () => {
+  const msg = validateName(nameInput.value);
+  msg ? setInvalid("group-name", "error-name", msg)
+      : setValid("group-name", "error-name");
+  updateButtonState();
+});
+
+passwordInput.addEventListener("blur", () => {
+  const msg = validatePassword(passwordInput.value);
+  msg ? setInvalid("group-password", "error-password", msg)
+      : setValid("group-password", "error-password");
+
+  if (confirmInput.value) {
+    const confirmMsg = validateConfirm(confirmInput.value);
+    confirmMsg ? setInvalid("group-confirm", "error-confirm", confirmMsg)
+               : setValid("group-confirm", "error-confirm");
+  }
+
+  updateButtonState();
+});
+
+confirmInput.addEventListener("blur", () => {
+  const msg = validateConfirm(confirmInput.value);
+  msg ? setInvalid("group-confirm", "error-confirm", msg)
+      : setValid("group-confirm", "error-confirm");
+  updateButtonState();
+});
+
+loginInput.addEventListener("focus",    () => clearField("group-login",    "error-login"));
+nameInput.addEventListener("focus",     () => clearField("group-name",     "error-name"));
+passwordInput.addEventListener("focus", () => clearField("group-password", "error-password"));
+confirmInput.addEventListener("focus",  () => clearField("group-confirm",  "error-confirm"));
+
+[loginInput, nameInput, passwordInput, confirmInput].forEach((input) => {
+  input.addEventListener("input", updateButtonState);
+});
+
+document.querySelectorAll<HTMLButtonElement>(".toggle-pw").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.dataset.target as string;
+    const input = document.getElementById(targetId) as HTMLInputElement;
+    input.type = input.type === "password" ? "text" : "password";
+  });
+});
+
+form.addEventListener("submit", async (e: SubmitEvent) => {
+  e.preventDefault();
+  serverError.textContent = "";
+
+  registerBtn.disabled = true;
+  registerBtn.textContent = "Registering…";
+
+  try {
+    const response = await fetch(API_URL_REGISTER, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        login:    loginInput.value.trim(),
+        name:     nameInput.value.trim(),
+        password: passwordInput.value,
+      }),
+    });
+
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}));
+      const message = data?.message || data?.error || "Registration failed. Please try again.";
+      serverError.textContent = message;
+      registerBtn.disabled = false;
+      registerBtn.innerHTML = `REGISTER <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+      return;
+    }
+
+    window.location.href = "../../index.html";
+
+  } catch (err) {
+    serverError.textContent = "Something went wrong. Please try again.";
+    registerBtn.disabled = false;
+    registerBtn.innerHTML = `REGISTER <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+    console.error("Registration error:", err);
+  }
+});
