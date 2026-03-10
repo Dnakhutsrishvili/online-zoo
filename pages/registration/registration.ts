@@ -1,12 +1,13 @@
-const API_URL_REGISTER = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/register";
+const API_URL_REGISTER = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/register";
 
-const form        = document.getElementById("register-form")  as HTMLFormElement;
-const loginInput  = document.getElementById("login")          as HTMLInputElement;
-const nameInput   = document.getElementById("name")           as HTMLInputElement;
-const passwordInput = document.getElementById("password")     as HTMLInputElement;
-const confirmInput  = document.getElementById("confirm")      as HTMLInputElement;
-const registerBtn   = document.getElementById("register-btn") as HTMLButtonElement;
-const serverError   = document.getElementById("server-error") as HTMLElement;
+const form          = document.getElementById("register-form") as HTMLFormElement;
+const loginInput    = document.getElementById("login")         as HTMLInputElement;
+const nameInput     = document.getElementById("name")          as HTMLInputElement;
+const emailInput    = document.getElementById("email")         as HTMLInputElement;
+const passwordInput = document.getElementById("password")      as HTMLInputElement;
+const confirmInput  = document.getElementById("confirm")       as HTMLInputElement;
+const registerBtn   = document.getElementById("register-btn")  as HTMLButtonElement;
+const serverError   = document.getElementById("server-error")  as HTMLElement;
 
 function validateLogin(value: string): string {
   if (!value) return "Login is required.";
@@ -20,6 +21,12 @@ function validateName(value: string): string {
   if (!value) return "Name is required.";
   if (!/^[a-zA-Z]+$/.test(value)) return "Name must contain only English letters.";
   if (value.length < 3) return "Name must be at least 3 characters.";
+  return "";
+}
+
+function validateEmail(value: string): string {
+  if (!value) return "Email is required.";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Please enter a valid email address.";
   return "";
 }
 
@@ -38,27 +45,22 @@ function validateConfirm(value: string): string {
 }
 
 function setInvalid(groupId: string, errorId: string, message: string): void {
-  const group = document.getElementById(groupId) as HTMLElement;
-  const error = document.getElementById(errorId) as HTMLElement;
-  group.classList.add("invalid");
-  error.textContent = message;
+  document.getElementById(groupId)?.classList.add("invalid");
+  const el = document.getElementById(errorId);
+  if (el) el.textContent = message;
 }
 
 function setValid(groupId: string, errorId: string): void {
-  const group = document.getElementById(groupId) as HTMLElement;
-  const error = document.getElementById(errorId) as HTMLElement;
-  group.classList.remove("invalid");
-  error.textContent = "";
-}
-
-function clearField(groupId: string, errorId: string): void {
-  setValid(groupId, errorId);
+  document.getElementById(groupId)?.classList.remove("invalid");
+  const el = document.getElementById(errorId);
+  if (el) el.textContent = "";
 }
 
 function updateButtonState(): void {
   const allValid =
-    validateLogin(loginInput.value)       === "" &&
-    validateName(nameInput.value)         === "" &&
+    validateLogin(loginInput.value)    === "" &&
+    validateName(nameInput.value)      === "" &&
+    validateEmail(emailInput.value)    === "" &&
     validatePassword(passwordInput.value) === "" &&
     validateConfirm(confirmInput.value)   === "";
 
@@ -76,6 +78,13 @@ nameInput.addEventListener("blur", () => {
   const msg = validateName(nameInput.value);
   msg ? setInvalid("group-name", "error-name", msg)
       : setValid("group-name", "error-name");
+  updateButtonState();
+});
+
+emailInput.addEventListener("blur", () => {
+  const msg = validateEmail(emailInput.value);
+  msg ? setInvalid("group-email", "error-email", msg)
+      : setValid("group-email", "error-email");
   updateButtonState();
 });
 
@@ -100,22 +109,23 @@ confirmInput.addEventListener("blur", () => {
   updateButtonState();
 });
 
-loginInput.addEventListener("focus",    () => clearField("group-login",    "error-login"));
-nameInput.addEventListener("focus",     () => clearField("group-name",     "error-name"));
-passwordInput.addEventListener("focus", () => clearField("group-password", "error-password"));
-confirmInput.addEventListener("focus",  () => clearField("group-confirm",  "error-confirm"));
+loginInput.addEventListener("focus",    () => setValid("group-login",    "error-login"));
+nameInput.addEventListener("focus",     () => setValid("group-name",     "error-name"));
+emailInput.addEventListener("focus",    () => setValid("group-email",    "error-email"));
+passwordInput.addEventListener("focus", () => setValid("group-password", "error-password"));
+confirmInput.addEventListener("focus",  () => setValid("group-confirm",  "error-confirm"));
 
-[loginInput, nameInput, passwordInput, confirmInput].forEach((input) => {
+[loginInput, nameInput, emailInput, passwordInput, confirmInput].forEach((input) => {
   input.addEventListener("input", updateButtonState);
 });
 
 document.querySelectorAll<HTMLButtonElement>(".toggle-pw").forEach((btn) => {
   btn.addEventListener("click", () => {
-    const targetId = btn.dataset.target as string;
-    const input = document.getElementById(targetId) as HTMLInputElement;
-    input.type = input.type === "password" ? "text" : "password";
+    const input = document.getElementById(btn.dataset.target as string) as HTMLInputElement;
+    if (input) input.type = input.type === "password" ? "text" : "password";
   });
 });
+
 
 form.addEventListener("submit", async (e: SubmitEvent) => {
   e.preventDefault();
@@ -131,6 +141,7 @@ form.addEventListener("submit", async (e: SubmitEvent) => {
       body: JSON.stringify({
         login:    loginInput.value.trim(),
         name:     nameInput.value.trim(),
+        email:    emailInput.value.trim(),
         password: passwordInput.value,
       }),
     });

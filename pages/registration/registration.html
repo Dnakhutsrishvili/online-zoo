@@ -1,60 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./registration.css" />
     <link rel="stylesheet" href="../landing/landing.css" />
-    <link rel="stylesheet" href="registration.css" />
-    <link rel="icon" type="image/x-icon" href="../../assets/icons/main-logo.png">
+    <link rel="icon" type="image/x-icon" href="../../assets/icons/main-logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <title>Online Zoo</title>
- 
-</head>
-<body>
-       <h1 class="montserrat-semi-bold" style="display: none;">Online Zoo</h1>
+    <title>Register — Online Zoo</title>
+  </head>
+  <body>
+
     <header class="navbar">
       <div class="logo">
         <img src="../../assets/icons/main-logo.png" alt="Logo" />
       </div>
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
       <label for="menu-toggle" class="burger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </label>
-       <ul class="nav-links montserrat-semi-bold">
+      <ul class="nav-links montserrat-semi-bold">
         <li><a href="../../index.html">ABOUT</a></li>
-        <li><a style="color: #00A092;" href="../../pages/map/map.html">MAP</a></li>
-        <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
-        <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
-        <li><a href="#">DESIGN</a></li>
+        <li><a href="../map/map.html">MAP</a></li>
+        <li><a href="../animal/animal-page.html">ZOOS</a></li>
+        <li><a href="../contact/contact.html">CONTACT US</a></li>
       </ul>
-       <ul class="social-media-header">
-          <li>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><img src="../../assets/icons/facebook.png" alt="Facebook"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/" target="_blank"
-              ><img src="../../assets/icons/instagram.png" alt="instagram"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/" target="_blank"
-              ><img src="../../assets/icons/youtube.png" alt="youtube"
-            /></a>
-          </li>
-        </ul>
     </header>
-    <main>
-     <main class="register-main">
+
+    <main class="register-main">
       <div class="register-card">
 
         <div class="card-accent"></div>
@@ -64,6 +42,7 @@
           <p class="montserrat-regular subtitle">Join the Online Zoo community</p>
 
           <form id="register-form" novalidate>
+
             <div class="field-group" id="group-login">
               <label class="montserrat-semi-bold" for="login">Login</label>
               <div class="input-wrap">
@@ -78,6 +57,7 @@
               </div>
               <span class="field-error montserrat-regular" id="error-login"></span>
             </div>
+
             <div class="field-group" id="group-name">
               <label class="montserrat-semi-bold" for="name">Name</label>
               <div class="input-wrap">
@@ -91,6 +71,21 @@
                 <span class="error-icon" aria-hidden="true">!</span>
               </div>
               <span class="field-error montserrat-regular" id="error-name"></span>
+            </div>
+
+            <div class="field-group" id="group-email">
+              <label class="montserrat-semi-bold" for="email">Email</label>
+              <div class="input-wrap">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="e.g. john@example.com"
+                  autocomplete="email"
+                />
+                <span class="error-icon" aria-hidden="true">!</span>
+              </div>
+              <span class="field-error montserrat-regular" id="error-email"></span>
             </div>
 
             <div class="field-group" id="group-password">
@@ -153,69 +148,7 @@
 
       </div>
     </main>
-    </main>
-    
-     <footer>
-      <div class="footer-content">
-        <div class="footer-first">
 
-        <div class="footer-logo">
-          <img src="../../assets/icons/footer-logo.png" alt="Logo" />
-          <img src="../../assets/icons/footer-yem-mobile.png" alt="Logo" />
-          <img src="../../assets/icons/rs-logo-mobile.png" alt="Logo" />
-        </div>
-        <ul class="footer-links">
-        <li><a style="color: #00A092;" href="../landing/landing.html">ABOUT</a></li>
-        <li><a href="../../pages/map/map.html">MAP</a></li>
-        <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
-        <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
-        </ul>
-        <a
-          href="#"
-          style="
-            background-color: var(--blue);
-            border: 1px solid var(--white);
-            margin-top: 2rem;
-            z-index: 999;
-            position: relative;
-          "
-          class="montserrat-semi-bold footer-donate donate"
-          >Donate For Volunteers
-          <img
-            id="arrow-icon"
-            src="../../assets/icons/image.png"
-            alt="Go to destination"
-        /></a>
-        </div>
-         <hr class="coala-pc"/>
-
-        <div class="footer-pc">
-        <ul class="social-media">
-          <li>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><img src="../../assets/icons/facebook.png" alt="Facebook"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/" target="_blank"
-              ><img src="../../assets/icons/instagram.png" alt="instagram"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/" target="_blank"
-              ><img src="../../assets/icons/youtube.png" alt="youtube"
-            /></a>
-          </li>
-        </ul>
-        <hr  class="remove"/>
-        <ul class="copyright">
-          <li><p class="montserrat-regular">© 2026 Dinak</p></li>
-          <li><p class="montserrat-regular">© 2026 Yem Digital</p></li>
-          <li><p class="montserrat-regular">© 2026 RSSchool</p></li>
-        </ul>
-      </div>
-      </div>
-    </footer>
     <script src="./registration.ts"></script>
-</body>
+  </body>
 </html>
