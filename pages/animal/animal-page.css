@@ -1,3 +1,4 @@
+/* ── Your original styles (unchanged) ───────────────────────── */
 section {
     text-align: center;
 }
@@ -16,8 +17,6 @@ section a img {
     height: 200px;
     object-fit: cover;
 }
-
-
 
 section h3 {
     font-size: 1.2rem;
@@ -108,5 +107,194 @@ section h3 {
         height: 500px;
         object-fit: cover;
     }
+}
 
+/* ── Page layout wrapper ─────────────────────────────────────── */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 140px);
+}
+
+.zoo-main-content {
+    flex: 1;
+    position: relative;
+}
+
+/* ── Side menu ───────────────────────────────────────────────── */
+.zoo-sidebar {
+    background-color: var(--blue);
+    padding: 1rem;
+}
+
+.sidebar-list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.sidebar-item {
+    cursor: pointer;
+    padding: 0.45rem 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.sidebar-item.active {
+    background-color: var(--main-color);
+    color: #fff;
+    border-color: var(--main-color);
+}
+
+/* Sidebar loader */
+.sidebar-loader {
+    display: flex;
+    justify-content: center;
+    padding: 0.75rem;
+}
+
+.sidebar-loader.hidden {
+    display: none;
+}
+
+.sidebar-spinner {
+    width: 22px;
+    height: 22px;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    border-top-color: var(--main-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+.sidebar-error {
+    color: rgba(255, 255, 255, 0.55);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.82rem;
+    padding: 0.5rem;
+    display: none;
+}
+
+.sidebar-error.visible {
+    display: block;
+}
+
+/* ── Content overlay loader ──────────────────────────────────── */
+.content-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.88);
+    z-index: 20;
+    min-height: 200px;
+}
+
+.content-overlay.hidden {
+    display: none;
+}
+
+.content-overlay span {
+    font-size: 0.8rem;
+    color: #999;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.overlay-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e0daea;
+    border-top-color: var(--main-color);
+    border-radius: 50%;
+    animation: spin 0.85s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Content sections — hidden until populated ───────────────── */
+#pet-section,
+#pet-facts {
+    display: none;
+}
+
+#pet-section.visible,
+#pet-facts.visible {
+    display: block;
+}
+
+#pet-facts.visible {
+    display: flex;
+}
+
+/* ── Error state ─────────────────────────────────────────────── */
+.content-error {
+    display: none;
+    text-align: center;
+    padding: 4rem 1rem;
+    color: #888;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+}
+
+.content-error.visible {
+    display: block;
+}
+
+/* ── Desktop layout ──────────────────────────────────────────── */
+@media (min-width: 940px) {
+    .page-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .zoo-sidebar {
+        width: 200px;
+        flex-shrink: 0;
+        min-height: calc(100vh - 140px);
+        position: sticky;
+        top: 0;
+        padding: 1.5rem 1rem;
+    }
+
+    .sidebar-list {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 0.3rem;
+    }
+
+    .sidebar-item {
+        width: 100%;
+        text-align: left;
+    }
+
+    .zoo-main-content {
+        flex: 1;
+        min-height: calc(100vh - 140px);
+    }
+
+    .baby-image {
+        height: 300px;
+    }
 }

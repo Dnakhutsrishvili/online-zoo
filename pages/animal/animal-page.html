@@ -15,176 +15,153 @@
 </head>
 <body>
     <h1 class="montserrat-semi-bold" style="display: none;">Online Zoo</h1>
+
     <header class="navbar">
       <div class="logo">
         <img src="../../assets/icons/main-logo.png" alt="Logo" />
       </div>
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
-
       <label for="menu-toggle" class="burger">
         <span></span>
         <span></span>
         <span></span>
       </label>
-       <ul class="nav-links montserrat-semi-bold">
+      <ul class="nav-links montserrat-semi-bold">
         <li><a href="../../index.html">ABOUT</a></li>
         <li><a href="../../pages/map/map.html">MAP</a></li>
         <li><a style="color: #00A092;" href="../../pages/animal/animal-page.html">ZOOS</a></li>
         <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
         <li><a href="#">DESIGN</a></li>
       </ul>
-       <ul class="social-media-header">
-          <li>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><img src="../../assets/icons/facebook.png" alt="Facebook"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/" target="_blank"
-              ><img src="../../assets/icons/instagram.png" alt="instagram"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/" target="_blank"
-              ><img src="../../assets/icons/youtube.png" alt="youtube"
-            /></a>
-          </li>
-        </ul>
+      <ul class="social-media-header">
+        <li><a href="https://www.facebook.com/" target="_blank"><img src="../../assets/icons/facebook.png" alt="Facebook"/></a></li>
+        <li><a href="https://www.instagram.com/" target="_blank"><img src="../../assets/icons/instagram.png" alt="instagram"/></a></li>
+        <li><a href="https://www.youtube.com/" target="_blank"><img src="../../assets/icons/youtube.png" alt="youtube"/></a></li>
+      </ul>
     </header>
-    <main>
-      
-    <section>
-        <h2 class="montserrat-semi-bold">live panda cams</h2>
-        <a href="#" class="montserrat-regular">
-            <img src="../../assets/animal/panda-mobile.png" alt="Panda"/>
-        </a>
-        <h3 class="montserrat-semi-bold">More live views</h3>
-        <div class="mini-camera">
-            <a href="#" class="montserrat-regular">
-                <img class="video" src="../../assets/animal/camera1-mobile.png" alt="Panda"/>
-            </a>
-            <a href="#" class="montserrat-regular">
-                <img src="../../assets/animal/camera2-mobile.png" alt="Panda"/>
-            </a>
+
+    <div class="page-wrapper">
+
+      <!-- Side menu — built by TS -->
+      <aside class="zoo-sidebar" id="zoo-sidebar">
+        <div class="sidebar-loader" id="sidebar-loader">
+          <div class="sidebar-spinner"></div>
         </div>
-         <a href="#" class="donate montserrat-regular"
-          >DONATE NOW
-          <img
-            id="arrow-icon"
-            src="../../assets/icons/image.png"
-            alt="Go to destination"
-        /></a>
-    <div class="donation">
-        <h2 class="montserrat-regular">make the Bamboo Donation!</h2>
-        <p class="montserrat-regular">
-         Our process for bamboo donations first starts with a site evaluation. It is important that our team sees where the bamboo is growing, then determining if the bamboo is a species that our animals are currently eating. Thank you for your interest in donating bamboo for our pandas.
-        </p>
-        <h3 class="montserrat-semi-bold">Quick Donate</h3>
-        <form class="donation-form">
-          <input type="number" placeholder="$ DONATION AMOUNT" />
-          <button type="submit" class="montserrat-semi-bold donate">
-            <img src="../../assets/icons/image.png" alt="Donate" />
-          </button>
-        </form>
-      </div>
-      <div class="banner">
-        <h3 class="montserrat-semi-bold">did you know?</h3>
-        <p class="montserrat-regular">
-Pandas are often seen eating in a relaxed sitting posture, with their hind legs stretched out before them. They may appear sedentary, but they are skilled tree-climbers and efficient swimmers.        </p>
-      </div>
-      <img class="baby-image" src="../../assets/animal/baby-mobile.png" alt="Panda"/>
+        <ul class="sidebar-list" id="sidebar-list"></ul>
+        <p class="sidebar-error" id="sidebar-error"></p>
+      </aside>
 
-    </section>
-<section class="facts">
-    <h4 class="montserrat-semi-bold">Common name:</h4>
-    <p class="montserrat-regular">Giant Panda</p>
-    <h4 class="montserrat-semi-bold">Scientific name:</h4>
-    <p class="montserrat-regular">Ailuropoda melanoleuca</p>
-    <h4 class="montserrat-semi-bold">Type:</h4>
-    <p class="montserrat-regular">Herbioviaren</p>
-    <h4 class="montserrat-semi-bold">Diet:</h4> 
-    <p class="montserrat-regular">Bamboo, fruits, vegetables</p>
-    <h4 class="montserrat-semi-bold">Habitat:</h4> 
-    <p class="montserrat-regular">Forests</p>
-    <h4 class="montserrat-semi-bold">Range:</h4> 
-    <p class="montserrat-regular">Eastern Asia</p>
-    
- <a
-    href="#"
-    style="background-color: white; color: #F58021;"
-                  class="montserrat-semi-bold view"
-                  >VIEW MAP
-                  <img
-                    id="arrow-icon"
-                    src="../../assets/icons/arrow.png"
-                    alt="Go to destination"
-                /></a>
-                <p class="montserrat-regular">
-                  Giant pandas are very unusual animals that eat almost exclusively bamboo, which is very low in nutrients. Because of this, they have many unique adaptations for their low-energy lifestyle. Giant pandas are solitary. They have a highly developed sense of smell that males use to avoid each other and to find females for mating in the spring. After a five-month pregnancy, females give birth to a cub or two, though they cannot care for both twins. The blind infants weigh only 5 ounces at birth and cannot crawl until they reach three months of age. They are born white, and develop their much loved coloring later. Habitat loss is the primary threat to this species. Its popularity around the world has helped the giant panda become the focus of successful conservation programs.
-                </p>
-</section>
-    </main>
+      <!-- Main content area -->
+      <main id="zoo-main" class="zoo-main-content">
 
-     <footer>
+        <!-- Overlay loader shown while fetching pet detail -->
+        <div class="content-overlay" id="content-overlay">
+          <div class="overlay-spinner"></div>
+          <span class="montserrat-regular">Loading...</span>
+        </div>
+
+        <!-- Dynamically filled by TS — mirrors your existing HTML structure -->
+        <section id="pet-section">
+          <h2 class="montserrat-semi-bold" id="pet-title"></h2>
+          <a href="#" class="montserrat-regular">
+            <img id="pet-hero" src="" alt="Animal" />
+          </a>
+          <h3 class="montserrat-semi-bold">More live views</h3>
+          <div class="mini-camera">
+            <a href="#" class="montserrat-regular">
+              <img id="pet-cam1" src="" alt="Camera 1" />
+            </a>
+            <a href="#" class="montserrat-regular">
+              <img id="pet-cam2" src="" alt="Camera 2" />
+            </a>
+          </div>
+          <a href="#" class="donate montserrat-regular">
+            DONATE NOW
+            <img id="arrow-icon" src="../../assets/icons/image.png" alt="Go to destination" />
+          </a>
+
+          <div class="donation">
+            <h2 class="montserrat-regular" id="donation-title"></h2>
+            <p class="montserrat-regular" id="donation-desc"></p>
+            <h3 class="montserrat-semi-bold">Quick Donate</h3>
+            <form class="donation-form" onsubmit="return false;">
+              <input type="number" placeholder="$ DONATION AMOUNT" />
+              <button type="submit" class="montserrat-semi-bold donate">
+                <img src="../../assets/icons/image.png" alt="Donate" />
+              </button>
+            </form>
+          </div>
+
+          <div class="banner">
+            <h3 class="montserrat-semi-bold">did you know?</h3>
+            <p class="montserrat-regular" id="did-you-know"></p>
+          </div>
+
+          <img class="baby-image" id="pet-baby" src="" alt="Animal" />
+        </section>
+
+        <section class="facts" id="pet-facts">
+          <h4 class="montserrat-semi-bold">Common name:</h4>
+          <p class="montserrat-regular" id="fact-common-name"></p>
+          <h4 class="montserrat-semi-bold">Scientific name:</h4>
+          <p class="montserrat-regular" id="fact-scientific-name"></p>
+          <h4 class="montserrat-semi-bold">Type:</h4>
+          <p class="montserrat-regular" id="fact-type"></p>
+          <h4 class="montserrat-semi-bold">Diet:</h4>
+          <p class="montserrat-regular" id="fact-diet"></p>
+          <h4 class="montserrat-semi-bold">Habitat:</h4>
+          <p class="montserrat-regular" id="fact-habitat"></p>
+          <h4 class="montserrat-semi-bold">Range:</h4>
+          <p class="montserrat-regular" id="fact-range"></p>
+          <a href="../../pages/map/map.html" style="background-color: white; color: #F58021;" class="montserrat-semi-bold view">
+            VIEW MAP
+            <img id="arrow-icon" src="../../assets/icons/arrow.png" alt="Go to destination" />
+          </a>
+          <p class="montserrat-regular" id="fact-description"></p>
+        </section>
+
+        <!-- Error state -->
+        <p class="content-error" id="content-error"></p>
+
+      </main>
+    </div>
+
+    <footer>
       <div class="footer-content">
         <div class="footer-first">
-
-        <div class="footer-logo">
-          <img src="../../assets/icons/footer-logo.png" alt="Logo" />
-          <img src="../../assets/icons/footer-yem-mobile.png" alt="Logo" />
-          <img src="../../assets/icons/rs-logo-mobile.png" alt="Logo" />
+          <div class="footer-logo">
+            <img src="../../assets/icons/footer-logo.png" alt="Logo" />
+            <img src="../../assets/icons/footer-yem-mobile.png" alt="Logo" />
+            <img src="../../assets/icons/rs-logo-mobile.png" alt="Logo" />
+          </div>
+          <ul class="footer-links">
+            <li><a style="color: #00A092;" href="../../index.html">ABOUT</a></li>
+            <li><a href="../../pages/map/map.html">MAP</a></li>
+            <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
+            <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
+          </ul>
+          <a href="#" style="background-color: var(--blue); border: 1px solid var(--white); margin-top: 2rem; z-index: 999; position: relative;"
+            class="montserrat-semi-bold footer-donate donate">Donate For Volunteers
+            <img id="arrow-icon" src="../../assets/icons/image.png" alt="Go to destination"/>
+          </a>
         </div>
-        <ul class="footer-links">
-        <li><a style="color: #00A092;" href="../landing/landing.html">ABOUT</a></li>
-        <li><a href="../../pages/map/map.html">MAP</a></li>
-        <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
-        <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
-        </ul>
-        <a
-          href="#"
-          style="
-            background-color: var(--blue);
-            border: 1px solid var(--white);
-            margin-top: 2rem;
-            z-index: 999;
-            position: relative;
-          "
-          class="montserrat-semi-bold footer-donate donate"
-          >Donate For Volunteers
-          <img
-            id="arrow-icon"
-            src="../../assets/icons/image.png"
-            alt="Go to destination"
-        /></a>
-        </div>
-         <hr class="coala-pc"/>
-
+        <hr class="coala-pc"/>
         <div class="footer-pc">
-        <ul class="social-media">
-          <li>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><img src="../../assets/icons/facebook.png" alt="Facebook"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/" target="_blank"
-              ><img src="../../assets/icons/instagram.png" alt="instagram"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/" target="_blank"
-              ><img src="../../assets/icons/youtube.png" alt="youtube"
-            /></a>
-          </li>
-        </ul>
-        <hr  class="remove"/>
-        <ul class="copyright">
-          <li><p class="montserrat-regular">© 2026 Dinak</p></li>
-          <li><p class="montserrat-regular">© 2026 Yem Digital</p></li>
-          <li><p class="montserrat-regular">© 2026 RSSchool</p></li>
-        </ul>
-      </div>
+          <ul class="social-media">
+            <li><a href="https://www.facebook.com/" target="_blank"><img src="../../assets/icons/facebook.png" alt="Facebook"/></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank"><img src="../../assets/icons/instagram.png" alt="instagram"/></a></li>
+            <li><a href="https://www.youtube.com/" target="_blank"><img src="../../assets/icons/youtube.png" alt="youtube"/></a></li>
+          </ul>
+          <hr class="remove"/>
+          <ul class="copyright">
+            <li><p class="montserrat-regular">© 2026 Dinak</p></li>
+            <li><p class="montserrat-regular">© 2026 Yem Digital</p></li>
+            <li><p class="montserrat-regular">© 2026 RSSchool</p></li>
+          </ul>
+        </div>
       </div>
     </footer>
+
+    <script src="../../pages/animal/animal-page.js"></script>
 </body>
 </html>
