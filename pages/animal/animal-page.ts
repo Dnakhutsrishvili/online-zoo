@@ -1,32 +1,10 @@
+import { Pet,PetDetail } from "../../models/animal";
 const API_PETS      = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets";
 const API_PET_BY_ID = (id: string) =>
   `https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets/${id}`;
 
-// ── Types ─────────────────────────────────────────────────────────
-type Pet = {
-  id: string;
-  name: string;
-  commonName?: string;
-  description?: string;
-  image?: string;
-};
 
-type PetDetail = {
-  id: string;
-  name: string;
-  commonName?: string;
-  scientificName?: string;
-  type?: string;
-  diet?: string;
-  habitat?: string;
-  range?: string;
-  description?: string;
-  didYouKnow?: string;
-  image?: string;
-  images?: string[];
-};
 
-// ── DOM refs ──────────────────────────────────────────────────────
 const sidebarLoader  = document.getElementById("sidebar-loader")  as HTMLElement;
 const sidebarList    = document.getElementById("sidebar-list")    as HTMLUListElement;
 const sidebarError   = document.getElementById("sidebar-error")   as HTMLElement;
@@ -35,7 +13,6 @@ const contentError   = document.getElementById("content-error")   as HTMLElement
 const petSection     = document.getElementById("pet-section")     as HTMLElement;
 const petFacts       = document.getElementById("pet-facts")       as HTMLElement;
 
-// section elements
 const petTitle       = document.getElementById("pet-title")           as HTMLElement;
 const petHero        = document.getElementById("pet-hero")            as HTMLImageElement;
 const petCam1        = document.getElementById("pet-cam1")            as HTMLImageElement;
@@ -54,7 +31,6 @@ const factDesc       = document.getElementById("fact-description")    as HTMLEle
 
 const FALLBACK_IMG = "../../assets/landing/coala-mobile.png";
 
-// ── Loader helpers ────────────────────────────────────────────────
 function showOverlay(): void {
   contentOverlay.classList.remove("hidden");
   petSection.classList.remove("visible");
@@ -66,7 +42,6 @@ function hideOverlay(): void {
   contentOverlay.classList.add("hidden");
 }
 
-// ── Populate the page with pet detail data ────────────────────────
 function renderPetDetail(pet: PetDetail): void {
   const hero = pet.image || (pet.images && pet.images[0]) || FALLBACK_IMG;
   const cam1 = (pet.images && pet.images[1]) || hero;
@@ -95,7 +70,6 @@ function renderPetDetail(pet: PetDetail): void {
   petFacts.classList.add("visible");
 }
 
-// ── Fetch pet detail by ID ────────────────────────────────────────
 async function loadPetDetail(id: string): Promise<void> {
   showOverlay();
 
@@ -104,7 +78,6 @@ async function loadPetDetail(id: string): Promise<void> {
     if (!res.ok) throw new Error("Failed to fetch pet");
 
     const json = await res.json();
-    // handle both { data: {...} } and flat response shapes
     const pet: PetDetail = json.data ?? json;
 
     hideOverlay();
@@ -118,7 +91,6 @@ async function loadPetDetail(id: string): Promise<void> {
   }
 }
 
-// ── Build the side menu from pets list ────────────────────────────
 function buildSidebar(pets: Pet[]): void {
   sidebarLoader.classList.add("hidden");
   sidebarList.innerHTML = "";
@@ -140,7 +112,6 @@ function buildSidebar(pets: Pet[]): void {
   });
 }
 
-// ── Init — fetch all pets, build sidebar, load first ─────────────
 async function init(): Promise<void> {
   try {
     const res = await fetch(API_PETS);
@@ -152,14 +123,12 @@ async function init(): Promise<void> {
     buildSidebar(pets);
 
     if (pets.length > 0) {
-      // mark first item active
       const firstItem = sidebarList.querySelector<HTMLElement>(".sidebar-item");
       firstItem?.classList.add("active");
       loadPetDetail(pets[0].id);
     }
 
   } catch (err) {
-    // both panels show error
     sidebarLoader.classList.add("hidden");
     sidebarError.textContent = "Something went wrong. Please, refresh the page.";
     sidebarError.classList.add("visible");

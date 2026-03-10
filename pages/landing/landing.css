@@ -71,6 +71,8 @@ ul {
   color: var(--white);
   text-decoration: none;
   font-size: 1.2rem;
+  text-transform: uppercase;
+
 }
 
 .nav-links li a:hover {
@@ -1093,12 +1095,7 @@ dialog p {
 }
 
 
-.user-widget {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-left: 0.5rem;
-}
+
 
 .user-btn {
   display: flex;
@@ -1263,10 +1260,22 @@ dialog p {
 }
 
 .user-widget {
-  display: flex;
+  display: none;
 }
 
+
 @media (min-width: 640px) {
+  #user-item {
+    display: none;
+  }
+
+  .user-widget {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+  }
+
   .burger {
     display: none;
   }
@@ -1280,6 +1289,7 @@ dialog p {
     gap: 1rem;
     padding: 0;
     right: 0;
+    text-transform: uppercase;
   }
 
   .contact p {
@@ -1320,6 +1330,7 @@ dialog p {
     flex-direction: row;
   }
 }
+
 
 @media (min-width: 940px) {
   .social-media-header {

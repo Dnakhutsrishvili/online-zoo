@@ -6,6 +6,7 @@ const API_URL_LOGIN    = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.
 
 const dialog = document.getElementById("donation-dialog") as HTMLDialogElement;
 const steps  = document.querySelectorAll<HTMLElement>("#donation-dialog .step");
+const navItem=document.getElementById('user-item') as HTMLElement;
 let currentStep: number = 0;
 
 function showStep(index: number): void {
@@ -57,6 +58,12 @@ type StoredUser = { name: string; email: string } | null;
 function getUser(): StoredUser {
   try {
     const raw = localStorage.getItem("zoo_user");
+if (navItem&&raw) {
+  navItem.textContent = 'Profile';
+} else {
+  navItem.textContent = 'Sign up';
+  navItem.setAttribute('href','./pages/registration/registration.html')
+}
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
