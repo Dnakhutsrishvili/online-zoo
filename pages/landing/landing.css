@@ -85,6 +85,10 @@ ul {
   width: 24px;
 }
 
+.slider> :not(:first-child) {
+  display: none;
+}
+
 .arrow-btn {
   height: 60px;
   width: 60px;
@@ -259,12 +263,22 @@ ul {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.animal-name {
+  display: flex;
+  position: absolute;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  background-color: transparent;
+}
+
 .animal-card h3 {
   position: relative;
   font-size: 1.6rem;
   color: var(--white);
   background-color: var(--blue);
-  display: block;
+  display: inline-block;
+  width: 118px;
   margin-bottom: 0.5rem;
   padding: 10px 20px 10px 20px;
   border-top-left-radius: 10px;
@@ -1296,6 +1310,10 @@ dialog p {
 @media (min-width: 640px) {
   #user-item {
     display: none;
+  }
+
+  .slider> :not(:first-child) {
+    display: block;
   }
 
   .user-widget {

@@ -267,7 +267,6 @@ function initSigninModal(): void {
           password: passwordInput.value,
         }),
       });
-console.log(response)
       if (!response.ok) {
         if (serverErr) serverErr.textContent = "Incorrect login or password.";
         submitBtn.disabled = false;
@@ -276,7 +275,6 @@ console.log(response)
       }
 
       const data = await response.json().catch(() => ({}));
-      console.log(data)
       localStorage.setItem("zoo_user", JSON.stringify({
         name:  data?.data?.user.name  ||'',
         email: data?.data?.user.email || '',
@@ -333,6 +331,36 @@ function showTestimonialsSkeleton(slider: HTMLElement): void {
 
   slider.appendChild(skeleton);
 }
+const LOCAL_IMAGES: Record<number, string> = {
+  1:  "../../assets/animal/animals/1_Giant_Panda.jpg",
+  2:  "../../assets/animal/animals/2_Ring-Tailed_Lemur.jpg",
+  3:  "../../assets/animal/animals/3_Gorilla.jpg",
+  4:  "../../assets/animal/animals/4_Chinese_Alligator.jpg",
+  5:  "../../assets/animal/animals/5_Bald_Eagle.jpg",
+  6:  "../../assets/animal/animals/6_Koala.jpg",
+  7:  "../../assets/animal/animals/7_African_Lion.jpg",
+  8:  "../../assets/animal/animals/8_Sumatran_Tiger.jpg",
+  9:  "../../assets/animal/animals/9_Red_Panda.jpg",
+  10: "../../assets/animal/animals/10_Mountain_Gorilla.jpg",
+  11: "../../assets/animal/animals/11_African_Elephant.jpg",
+  12: "../../assets/animal/animals/12_Sea_Otter.jpg",
+  13: "../../assets/animal/animals/13_Bengal_Tiger.jpg",
+  14: "../../assets/animal/animals/14_Gray_Wolf.jpg",
+  15: "../../assets/animal/animals/15_Fennec_Fox.jpg",
+  16: "../../assets/animal/animals/16_Grizzly_Bear.jpg",
+  17: "../../assets/animal/animals/17_Bottlenose_Dolphin.jpg",
+  18: "../../assets/animal/animals/18_Snow_Leopard.jpg",
+  19: "../../assets/animal/animals/19_Polar_Bear.jpg",
+  20: "../../assets/animal/animals/20_Jaguar.jpg",
+  21: "../../assets/animal/animals/21_Ring-Tailed_Lemur.jpg",
+  22: "../../assets/animal/animals/22_White_Rhinoceros.jpg",
+  23: "../../assets/animal/animals/23_Arctic_Fox.jpg",
+  24: "../../assets/animal/animals/24_Saltwater_Crocodile.jpg",
+  25: "../../assets/animal/animals/25_Scarlet_Macaw.jpg",
+  26: "../../assets/animal/animals/26_Komodo_Dragon.jpg",
+  27: "../../assets/animal/animals/27_Sloth.jpg",
+  28: "../../assets/animal/animals/28_Cheetah.jpg",
+};
 
 async function renderPets(): Promise<void> {
   const list = document.getElementById("pc-view") as HTMLElement;
@@ -345,10 +373,10 @@ async function renderPets(): Promise<void> {
     if (!res.ok) throw new Error("Failed to fetch pets");
 
     const data = await res.json();
-    const animals: Animal[] = (data.data as any[]).map((pet) => ({
-      ...pet,
-      image: pet?.image || "../../assets/landing/coala-mobile.png",
-    }));
+const animals: Animal[] = (data.data as any[]).map((pet) => ({
+  ...pet,
+  image: LOCAL_IMAGES[pet.id] || pet?.image || "../../assets/landing/coala-mobile.png",
+}));
 
     document.getElementById("pets-skeleton")?.remove();
 
@@ -356,7 +384,7 @@ async function renderPets(): Promise<void> {
       const card = document.createElement("div");
       card.className = "animal-card";
       card.innerHTML = `
-      <div class='badge'>
+      <div>
         <h3 class="montserrat-regular">${animal.name}</h3>
         </div>
         <img src="${animal.image}" alt="${animal.name}" />
