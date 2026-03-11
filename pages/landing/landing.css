@@ -481,7 +481,6 @@ input[type="radio"] {
 
 .slider {
   overflow: hidden;
-  max-width: 600px;
   margin: 2rem auto;
 }
 
@@ -1458,9 +1457,10 @@ dialog p {
     width: 30%;
   }
 
-  .slider {
+  /* .slider {
     overflow: unset;
-  }
+    max-width: 600px;
+  } */
 
   .slides {
     display: grid;
@@ -1554,8 +1554,19 @@ dialog p {
   }
 
   .slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    grid-auto-columns: 430px;
+    column-gap: 4rem;
+    row-gap: 1rem;
+    overflow-x: auto;
+    max-width: 90%;
+    margin-left: 20%;
+  }
+
+  .slider::-webkit-scrollbar {
+    display: none;
   }
 
   .slide {
