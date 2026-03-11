@@ -267,7 +267,7 @@ function initSigninModal(): void {
           password: passwordInput.value,
         }),
       });
-
+console.log(response)
       if (!response.ok) {
         if (serverErr) serverErr.textContent = "Incorrect login or password.";
         submitBtn.disabled = false;
@@ -276,9 +276,10 @@ function initSigninModal(): void {
       }
 
       const data = await response.json().catch(() => ({}));
+      console.log(data)
       localStorage.setItem("zoo_user", JSON.stringify({
-        name:  data?.name  || loginInput.value.trim(),
-        email: data?.email || "",
+        name:  data?.data?.user.name  ||'',
+        email: data?.data?.user.email || '',
       }));
 
       modal.close();
