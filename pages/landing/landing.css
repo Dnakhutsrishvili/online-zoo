@@ -69,6 +69,17 @@ ul {
   width: 24px;
 }
 
+#testimonial-right img {
+  height: 24px;
+  width: 24px;
+}
+
+#testimonial-left img {
+  transform: rotate(180deg);
+  height: 24px;
+  width: 24px;
+}
+
 #right img {
   height: 24px;
   width: 24px;
@@ -78,6 +89,7 @@ ul {
   height: 60px;
   width: 60px;
   margin-top: 4rem;
+  cursor: pointer;
 }
 
 .logo img {

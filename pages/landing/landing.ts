@@ -44,6 +44,37 @@ const container = document.getElementById("pc-view");
 const leftBtn   = document.getElementById("left");
 const rightBtn  = document.getElementById("right");
 
+const containerTestimonials = document.getElementById("testimonial-slider");
+const leftBtnTestimonials  = document.getElementById("testimonial-left");
+const rightBtnTestimonials  = document.getElementById("testimonial-right");
+
+if (containerTestimonials && leftBtnTestimonials && rightBtnTestimonials) {
+  rightBtnTestimonials.addEventListener("click", () => {
+    const isEnd =
+      containerTestimonials.scrollLeft + containerTestimonials.clientWidth >= containerTestimonials.scrollWidth - 1;
+
+    if (isEnd) {
+      containerTestimonials.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      containerTestimonials.scrollBy({ left: 250, behavior: "smooth" });
+    }
+  });
+
+  leftBtnTestimonials.addEventListener("click", () => {
+    const isStart = containerTestimonials.scrollLeft <= 0;
+
+    if (isStart) {
+      containerTestimonials.scrollTo({
+        left: containerTestimonials.scrollWidth,
+        behavior: "smooth",
+      });
+    } else {
+      containerTestimonials.scrollBy({ left: -250, behavior: "smooth" });
+    }
+  });
+}
+
+
 if (container && leftBtn && rightBtn) {
   rightBtn.addEventListener("click", () => {
     const isEnd =
@@ -371,26 +402,7 @@ async function loadFeedback(): Promise<void> {
       slider.appendChild(slide);
     });
 
-    let currentIndex = 0;
-    const totalSlides   = data.data.length;
-    const visibleSlides = 3;
 
-    const updateSlider = () => {
-      const slideWidth = (slider.children[0] as HTMLElement).clientWidth + 16;
-      slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-      Array.from(buttonsContainer.children).forEach((btn, i) =>
-        btn.classList.toggle("active", i === currentIndex)
-      );
-    };
-
-    for (let i = 0; i < totalSlides - visibleSlides + 1; i++) {
-      const btn = document.createElement("button");
-      btn.addEventListener("click", () => { currentIndex = i; updateSlider(); });
-      if (i === 0) btn.classList.add("active");
-      buttonsContainer.appendChild(btn);
-    }
-
-    updateSlider();
   } catch (error) {
     document.getElementById("testimonials-skeleton")?.remove();
     slider.innerHTML = `<p class="section-error">Something went wrong. Please, refresh the page.</p>`;
