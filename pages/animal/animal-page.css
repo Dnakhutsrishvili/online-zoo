@@ -59,10 +59,18 @@ section h3 {
 }
 
 .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
     object-fit: cover;
-    width: 96%;
+    width: 60%;
     margin-top: 2rem;
+    ;
     padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .banner h3 {
@@ -71,7 +79,7 @@ section h3 {
 }
 
 .baby-image {
-    width: 100%;
+    width: 80%;
     height: 200px;
     object-fit: cover;
     border-radius: 6px;
@@ -83,12 +91,40 @@ section h3 {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.5rem;
+    margin-left: 6rem;
+    margin-top: 2rem;
 }
+
+.facts-split {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 4rem;
+}
+
+.info-render div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 10%;
+}
+
+.info-render div :first-child {
+    width: 160px;
+    flex-shrink: 0;
+}
+
+.info-render div h4 {
+    text-align: left;
+}
+
+
 
 .facts p {
     text-align: left;
     line-height: normal;
-    margin-top: 2rem;
 }
 
 .view {
@@ -134,6 +170,11 @@ section h3 {
     margin: 0;
 }
 
+.sidebar-list li {
+    cursor: pointer;
+    border-bottom: 1px solid var(--white);
+}
+
 .sidebar-item {
     cursor: pointer;
     padding: 0.4rem;
@@ -174,6 +215,7 @@ section h3 {
     margin-top: 0.25rem;
     opacity: 0.6;
     transition: opacity 0.2s;
+    transform: rotate(90deg);
 }
 
 .sidebar-arrow:hover {
@@ -256,8 +298,12 @@ section h3 {
     }
 }
 
-#pet-section,
-#pet-facts {
+#pet-hero {
+    width: 80%;
+    height: 780px;
+}
+
+#pet-section {
     display: none;
 }
 
@@ -292,13 +338,16 @@ section h3 {
     .zoo-sidebar {
         width: 80px;
         flex-shrink: 0;
-        min-height: calc(100vh - 140px);
         position: sticky;
         top: 0;
         padding: 1rem 0.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: fixed;
+        margin-top: 4.7rem;
+        z-index: 999;
+
     }
 
     .sidebar-list {
@@ -324,6 +373,7 @@ section h3 {
     }
 
     .baby-image {
-        height: 300px;
+        height: 440px;
+        width: 440px;
     }
 }
