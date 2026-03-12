@@ -483,7 +483,7 @@ if(user?.name&&user?.email){
   nameInput.value  = user?.name  || "";
   emailInput.value = user?.email || "";
   buttonSecond.disabled=false;
-
+}
  
 
 function validateName(value: string): boolean {
@@ -517,7 +517,7 @@ emailInput.addEventListener("input", () => {
   }
   checkFormValidity();
 });
-}
+
   } catch (err) {
     console.error("Error fetching pets:", err);
   }

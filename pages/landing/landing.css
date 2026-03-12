@@ -150,7 +150,7 @@ ul {
 
 .hero h2 {
   font-size: 2.3rem;
-  color: var(--pale-green);
+  color: var(--pale-green-hower);
   margin-bottom: 1rem;
   letter-spacing: 0.02em;
 }
@@ -1357,16 +1357,8 @@ dialog p {
     padding-bottom: 25rem;
   }
 
-  .hero h2 {
-    color: #05786E;
-    font-size: 3.2rem;
-    width: 890px;
-  }
 
-  .hero .here-text {
-    padding-left: 14rem;
-    padding-top: 10rem;
-  }
+
 
   .hero a {
     width: 240px;
@@ -1399,6 +1391,18 @@ dialog p {
     width: 100%;
     height: 40px;
   }
+
+  .hero .here-text {
+    padding-left: 14rem;
+    padding-top: 10rem;
+  }
+
+  .hero h2 {
+    color: #05786E;
+    font-size: 3.2rem;
+    width: 890px;
+  }
+
 
   .welcome {
     padding-left: 4rem;
