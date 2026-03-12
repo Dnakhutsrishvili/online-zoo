@@ -45,7 +45,7 @@
 <input type="checkbox" id="recurring-donation" name="recurring-donation" />
 </div>
 
-<button class="next-btn">Next <img src="../../assets/icons/image.png" alt="Next" /></button>
+<button class="next-btn" id="first-step">Next <img src="../../assets/icons/image.png" alt="Next" /></button>
 
           <div class="buttons-step">
             <label for="step1"></label>
@@ -59,14 +59,14 @@
             <form class="info-form">
               <div class="payment-details">
                 <label for="name" class="montserrat-regular">*Your Name</label>
-                <input type="text" placeholder="First and last name" required />
-                <label for="email" class="montserrat-regular">*Your Email</label>
-                <input type="email" placeholder="Enter your email" required />
+                <input type="text" id="name-input" placeholder="First and last name" required />
+                <label for="email"  class="montserrat-regular">*Your Email</label>
+                <input type="email" id="email-input" placeholder="Enter your email" required />
                 <p class="montserrat-regular">You will receive emails from the Online Zoo, including updates and news on the latest discoveries and translations. You can unsubscribe at any time.</p>
 
               </div>
             </form>
-           <button class="next-btn">Next <img src="../../assets/icons/image.png" alt="Next"/></button>
+           <button class="next-btn" id="second-step">Next <img src="../../assets/icons/image.png" alt="Next"/></button>
            <a class="prev-btn">
              Back
            </a>

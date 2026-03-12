@@ -440,13 +440,17 @@ async function loadFeedback(): Promise<void> {
 }
 
 async function loadPopup(): Promise<void> {
-  const button = document.querySelector(".next-btn") as HTMLButtonElement;
+  const button = document.querySelector("#first-step") as HTMLButtonElement;
+  const buttonSecond = document.querySelector("#second-step") as HTMLButtonElement;
   const select = document.getElementById("pet-select") as HTMLSelectElement;
   const donationInput = document.getElementById("donation") as HTMLInputElement;
+  const nameInput = document.getElementById("name-input") as HTMLInputElement;
+  const emailInput = document.getElementById("email-input") as HTMLInputElement;
 const donationButtons = document.getElementsByClassName(
   "donation-amount"
 ) as HTMLCollectionOf<HTMLButtonElement>;
   button.disabled=true;
+  buttonSecond.disabled=true;
 Array.from(donationButtons).forEach(btn => {
   btn.addEventListener("click", () => {
     donationInput.value=btn.value
@@ -467,12 +471,53 @@ Array.from(donationButtons).forEach(btn => {
     if (!res.ok) throw new Error("Failed to fetch pets");
     const data = await res.json();
     const animals: Animal[] = (data.data as any[])
-  animals.forEach((animal) => {
-  const option = document.createElement("option");
-  option.value = animal.id;
-  option.textContent = animal.name;
-  select.appendChild(option);
+    animals.forEach((animal) => {
+    const option = document.createElement("option");
+    option.value = animal.id;
+    option.textContent = animal.name;
+    select.appendChild(option);
 });
+
+  const user = getUser();
+if(user?.name&&user?.email){
+  nameInput.value  = user?.name  || "";
+  emailInput.value = user?.email || "";
+  buttonSecond.disabled=false;
+
+ 
+
+function validateName(value: string): boolean {
+  return /^[a-zA-Z\s]+$/.test(value.trim());
+}
+
+function validateEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+function checkFormValidity(): void {
+  const nameValid  = validateName(nameInput.value);
+  const emailValid = validateEmail(emailInput.value);
+  buttonSecond.disabled  = !(nameValid && emailValid);
+}
+
+nameInput.addEventListener("input", () => {
+  if (!validateName(nameInput.value)) {
+    nameInput.setCustomValidity("Name can only contain letters and spaces.");
+  } else {
+    nameInput.setCustomValidity("");
+  }
+  checkFormValidity();
+});
+
+emailInput.addEventListener("input", () => {
+  if (!validateEmail(emailInput.value)) {
+    emailInput.setCustomValidity("Please enter a valid email address.");
+  } else {
+    emailInput.setCustomValidity("");
+  }
+  checkFormValidity();
+});
+}
   } catch (err) {
     console.error("Error fetching pets:", err);
   }
