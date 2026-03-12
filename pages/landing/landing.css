@@ -1820,6 +1820,12 @@ dialog p {
   background-color: var(--pale-green-hower);
 }
 
+.next-btn:disabled {
+  background-color: var(--pale-green-hower);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 #signin-submit:hover:not(:disabled) svg {
   transform: translateX(4px);
 }

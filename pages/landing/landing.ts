@@ -439,9 +439,51 @@ async function loadFeedback(): Promise<void> {
   }
 }
 
+async function loadPopup(): Promise<void> {
+  const button = document.querySelector(".next-btn") as HTMLButtonElement;
+  const select = document.getElementById("pet-select") as HTMLSelectElement;
+  const donationInput = document.getElementById("donation") as HTMLInputElement;
+const donationButtons = document.getElementsByClassName(
+  "donation-amount"
+) as HTMLCollectionOf<HTMLButtonElement>;
+  button.disabled=true;
+Array.from(donationButtons).forEach(btn => {
+  btn.addEventListener("click", () => {
+    donationInput.value=btn.value
+    button.disabled = false;
+  });
+});
+
+  if(button&&donationInput){
+  donationInput.addEventListener('input',(e:Event)=>{
+    const value = donationInput.value;
+      const isValid = /^\d*\.?\d+$/.test(value) && parseFloat(value) > 0;
+      button.disabled = !isValid;
+  })
+  }
+
+  try {
+    const res = await fetch(API_URL_ANIMAL);
+    if (!res.ok) throw new Error("Failed to fetch pets");
+    const data = await res.json();
+    const animals: Animal[] = (data.data as any[])
+  animals.forEach((animal) => {
+  const option = document.createElement("option");
+  option.value = animal.id;
+  option.textContent = animal.name;
+  select.appendChild(option);
+});
+  } catch (err) {
+    console.error("Error fetching pets:", err);
+  }
+  
+
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initUserWidget();
   initSigninModal();
   renderPets();
   loadFeedback();
+  loadPopup()
 });
