@@ -71,32 +71,34 @@
              Back
            </a>
                 </div>
-                <div class="step step-3">
-            <p class="montserrat-heavy donation-info">Payment Information:</p>
-            <hr/>
-            <form class="payment-form">
-              <div class="payment-details">
-                <label for="card-number" class="montserrat-regular">*Card Number</label>
-                <input type="text" placeholder="1234 5678 9012 3456" required />
-                <label for="cvv" class="montserrat-regular">*CVV</label>
-                <input type="text" placeholder="123" required />
-                 <label for="expiry-date" class="montserrat-regular">*Expiry Date</label>
-                <input type="text" placeholder="MM/YY" required />
-              </div>
-              </form>
-                <a class="prev-btn">
-             Back
-          </a>
-              <div class="complate-donation">
-           <a href="#" class="montserrat-semi-bold"
-          >COMPLETE DONATION
-          <img
-            id="arrow-icon"
-            src="../../assets/icons/image.png"
-            alt="Go to destination"
-        /></a>
- </div>
+       <div class="step step-3">
+  <p class="montserrat-heavy donation-info">Payment Information:</p>
+  <hr/>
+
+  <div id="saved-cards-container"></div>
+
+  <form class="payment-form" id="card-form">
+    <div class="payment-details">
+      <label for="card-number" class="montserrat-regular">*Card Number</label>
+      <input type="text" id="card-number" placeholder="1234567890123456" required />
+      <label for="expiry-date" class="montserrat-regular">*Expiry Date</label>
+      <input type="text" id="expiry-date" placeholder="MM/YY" required />
+      <label for="cvv" class="montserrat-regular">*CVV</label>
+      <input type="text" id="cvv" placeholder="123" required />
+    </div>
+  </form>
+
+  <div id="save-card-container"></div>
+
+  <a class="prev-btn">Back</a>
+
+  <div class="complate-donation">
+    <button id="complete-donation-btn" class="montserrat-semi-bold" disabled>
+      COMPLETE DONATION
+      <img id="arrow-icon" src="../../assets/icons/image.png" alt="Go to destination"/>
+    </button>
   </div>
+</div>
     </dialog> 
     <header class="navbar">
       <div class="logo">

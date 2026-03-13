@@ -3,10 +3,42 @@ import { Animal, Feedback } from "../../models/main";
 const API_URL_ANIMAL   = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets";
 const API_URL_FEEDBACK = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/feedback";
 const API_URL_LOGIN    = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/login";
+const API_DONATE       = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/donation";
 
-const dialog = document.getElementById("donation-dialog") as HTMLDialogElement;
-const steps  = document.querySelectorAll<HTMLElement>("#donation-dialog .step");
-const navItem=document.getElementById('user-item') as HTMLElement;
+const LOCAL_IMAGES: Record<number, string> = {
+  1:  "../../assets/animal/animals/1_Giant_Panda.jpg",
+  2:  "../../assets/animal/animals/2_Ring-Tailed_Lemur.jpg",
+  3:  "../../assets/animal/animals/3_Gorilla.jpg",
+  4:  "../../assets/animal/animals/4_Chinese_Alligator.jpg",
+  5:  "../../assets/animal/animals/5_Bald_Eagle.jpg",
+  6:  "../../assets/animal/animals/6_Koala.jpg",
+  7:  "../../assets/animal/animals/7_African_Lion.jpg",
+  8:  "../../assets/animal/animals/8_Sumatran_Tiger.jpg",
+  9:  "../../assets/animal/animals/9_Red_Panda.jpg",
+  10: "../../assets/animal/animals/10_Mountain_Gorilla.jpg",
+  11: "../../assets/animal/animals/11_African_Elephant.jpg",
+  12: "../../assets/animal/animals/12_Sea_Otter.jpg",
+  13: "../../assets/animal/animals/13_Bengal_Tiger.jpg",
+  14: "../../assets/animal/animals/14_Gray_Wolf.jpg",
+  15: "../../assets/animal/animals/15_Fennec_Fox.jpg",
+  16: "../../assets/animal/animals/16_Grizzly_Bear.jpg",
+  17: "../../assets/animal/animals/17_Bottlenose_Dolphin.jpg",
+  18: "../../assets/animal/animals/18_Snow_Leopard.jpg",
+  19: "../../assets/animal/animals/19_Polar_Bear.jpg",
+  20: "../../assets/animal/animals/20_Jaguar.jpg",
+  21: "../../assets/animal/animals/21_Ring-Tailed_Lemur.jpg",
+  22: "../../assets/animal/animals/22_White_Rhinoceros.jpg",
+  23: "../../assets/animal/animals/23_Arctic_Fox.jpg",
+  24: "../../assets/animal/animals/24_Saltwater_Crocodile.jpg",
+  25: "../../assets/animal/animals/25_Scarlet_Macaw.jpg",
+  26: "../../assets/animal/animals/26_Komodo_Dragon.jpg",
+  27: "../../assets/animal/animals/27_Sloth.jpg",
+  28: "../../assets/animal/animals/28_Cheetah.jpg",
+};
+
+const dialog  = document.getElementById("donation-dialog") as HTMLDialogElement;
+const steps   = document.querySelectorAll<HTMLElement>("#donation-dialog .step");
+const navItem = document.getElementById("user-item") as HTMLElement;
 let currentStep: number = 0;
 
 function showStep(index: number): void {
@@ -27,32 +59,28 @@ document.querySelectorAll<HTMLButtonElement>(".prev-btn").forEach((btn) => {
   });
 });
 
-document.querySelectorAll<HTMLButtonElement>(".donate").forEach((btn) => {
-  btn.addEventListener("click", () => dialog.showModal());
+document.querySelectorAll<HTMLElement>(".donate").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    currentStep = 0;
+    showStep(currentStep);
+    dialog.showModal();
+  });
 });
 
 dialog.addEventListener("click", (e: MouseEvent) => {
   if (e.target === dialog) dialog.close();
 });
 
-const completeDonationBtn = document.getElementsByClassName(
-  "complate-donation"
-)[0] as HTMLButtonElement;
-completeDonationBtn.addEventListener("click", () => dialog.close());
-
-const container = document.getElementById("pc-view");
-const leftBtn   = document.getElementById("left");
-const rightBtn  = document.getElementById("right");
-
-const containerTestimonials = document.getElementById("testimonial-slider");
-const leftBtnTestimonials  = document.getElementById("testimonial-left");
-const rightBtnTestimonials  = document.getElementById("testimonial-right");
+const container              = document.getElementById("pc-view");
+const leftBtn                = document.getElementById("left");
+const rightBtn               = document.getElementById("right");
+const containerTestimonials  = document.getElementById("testimonial-slider");
+const leftBtnTestimonials    = document.getElementById("testimonial-left");
+const rightBtnTestimonials   = document.getElementById("testimonial-right");
 
 if (containerTestimonials && leftBtnTestimonials && rightBtnTestimonials) {
   rightBtnTestimonials.addEventListener("click", () => {
-    const isEnd =
-      containerTestimonials.scrollLeft + containerTestimonials.clientWidth >= containerTestimonials.scrollWidth - 1;
-
+    const isEnd = containerTestimonials.scrollLeft + containerTestimonials.clientWidth >= containerTestimonials.scrollWidth - 1;
     if (isEnd) {
       containerTestimonials.scrollTo({ left: 0, behavior: "smooth" });
     } else {
@@ -62,24 +90,17 @@ if (containerTestimonials && leftBtnTestimonials && rightBtnTestimonials) {
 
   leftBtnTestimonials.addEventListener("click", () => {
     const isStart = containerTestimonials.scrollLeft <= 0;
-
     if (isStart) {
-      containerTestimonials.scrollTo({
-        left: containerTestimonials.scrollWidth,
-        behavior: "smooth",
-      });
+      containerTestimonials.scrollTo({ left: containerTestimonials.scrollWidth, behavior: "smooth" });
     } else {
       containerTestimonials.scrollBy({ left: -250, behavior: "smooth" });
     }
   });
 }
 
-
 if (container && leftBtn && rightBtn) {
   rightBtn.addEventListener("click", () => {
-    const isEnd =
-      container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
-
+    const isEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
     if (isEnd) {
       container.scrollTo({ left: 0, behavior: "smooth" });
     } else {
@@ -89,12 +110,8 @@ if (container && leftBtn && rightBtn) {
 
   leftBtn.addEventListener("click", () => {
     const isStart = container.scrollLeft <= 0;
-
     if (isStart) {
-      container.scrollTo({
-        left: container.scrollWidth,
-        behavior: "smooth",
-      });
+      container.scrollTo({ left: container.scrollWidth, behavior: "smooth" });
     } else {
       container.scrollBy({ left: -250, behavior: "smooth" });
     }
@@ -106,12 +123,12 @@ type StoredUser = { name: string; email: string } | null;
 function getUser(): StoredUser {
   try {
     const raw = localStorage.getItem("zoo_user");
-if (navItem&&raw) {
-  navItem.textContent = 'Profile';
-} else {
-  navItem.textContent = 'Sign up';
-  navItem.setAttribute('href','./pages/registration/registration.html')
-}
+    if (navItem && raw) {
+      navItem.textContent = "Profile";
+    } else {
+      navItem.textContent = "Sign up";
+      navItem.setAttribute("href", "./pages/registration/registration.html");
+    }
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -255,18 +272,19 @@ function initSigninModal(): void {
     e.preventDefault();
     if (serverErr) serverErr.textContent = "";
 
-    submitBtn.disabled = true;
+    submitBtn.disabled    = true;
     submitBtn.textContent = "Signing in…";
 
     try {
       const response = await fetch(API_URL_LOGIN, {
-        method: "POST",
+        method:  "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           login:    loginInput.value.trim(),
           password: passwordInput.value,
         }),
       });
+
       if (!response.ok) {
         if (serverErr) serverErr.textContent = "Incorrect login or password.";
         submitBtn.disabled = false;
@@ -276,8 +294,8 @@ function initSigninModal(): void {
 
       const data = await response.json().catch(() => ({}));
       localStorage.setItem("zoo_user", JSON.stringify({
-        name:  data?.data?.user.name  ||'',
-        email: data?.data?.user.email || '',
+        name:  data?.data?.user.name  || "",
+        email: data?.data?.user.email || "",
       }));
 
       modal.close();
@@ -293,9 +311,8 @@ function initSigninModal(): void {
 
 function showPetsSkeleton(list: HTMLElement): void {
   const skeleton = document.createElement("div");
-  skeleton.id = "pets-skeleton";
+  skeleton.id        = "pets-skeleton";
   skeleton.className = "pets-skeleton";
-
   for (let i = 0; i < 4; i++) {
     skeleton.innerHTML += `
       <div class="pets-skeleton-card">
@@ -308,15 +325,13 @@ function showPetsSkeleton(list: HTMLElement): void {
       </div>
     `;
   }
-
   list.appendChild(skeleton);
 }
 
 function showTestimonialsSkeleton(slider: HTMLElement): void {
   const skeleton = document.createElement("div");
-  skeleton.id = "testimonials-skeleton";
+  skeleton.id        = "testimonials-skeleton";
   skeleton.className = "testimonials-skeleton";
-
   for (let i = 0; i < 3; i++) {
     skeleton.innerHTML += `
       <div class="testimonials-skeleton-card">
@@ -328,39 +343,9 @@ function showTestimonialsSkeleton(slider: HTMLElement): void {
       </div>
     `;
   }
-
   slider.appendChild(skeleton);
 }
-const LOCAL_IMAGES: Record<number, string> = {
-  1:  "../../assets/animal/animals/1_Giant_Panda.jpg",
-  2:  "../../assets/animal/animals/2_Ring-Tailed_Lemur.jpg",
-  3:  "../../assets/animal/animals/3_Gorilla.jpg",
-  4:  "../../assets/animal/animals/4_Chinese_Alligator.jpg",
-  5:  "../../assets/animal/animals/5_Bald_Eagle.jpg",
-  6:  "../../assets/animal/animals/6_Koala.jpg",
-  7:  "../../assets/animal/animals/7_African_Lion.jpg",
-  8:  "../../assets/animal/animals/8_Sumatran_Tiger.jpg",
-  9:  "../../assets/animal/animals/9_Red_Panda.jpg",
-  10: "../../assets/animal/animals/10_Mountain_Gorilla.jpg",
-  11: "../../assets/animal/animals/11_African_Elephant.jpg",
-  12: "../../assets/animal/animals/12_Sea_Otter.jpg",
-  13: "../../assets/animal/animals/13_Bengal_Tiger.jpg",
-  14: "../../assets/animal/animals/14_Gray_Wolf.jpg",
-  15: "../../assets/animal/animals/15_Fennec_Fox.jpg",
-  16: "../../assets/animal/animals/16_Grizzly_Bear.jpg",
-  17: "../../assets/animal/animals/17_Bottlenose_Dolphin.jpg",
-  18: "../../assets/animal/animals/18_Snow_Leopard.jpg",
-  19: "../../assets/animal/animals/19_Polar_Bear.jpg",
-  20: "../../assets/animal/animals/20_Jaguar.jpg",
-  21: "../../assets/animal/animals/21_Ring-Tailed_Lemur.jpg",
-  22: "../../assets/animal/animals/22_White_Rhinoceros.jpg",
-  23: "../../assets/animal/animals/23_Arctic_Fox.jpg",
-  24: "../../assets/animal/animals/24_Saltwater_Crocodile.jpg",
-  25: "../../assets/animal/animals/25_Scarlet_Macaw.jpg",
-  26: "../../assets/animal/animals/26_Komodo_Dragon.jpg",
-  27: "../../assets/animal/animals/27_Sloth.jpg",
-  28: "../../assets/animal/animals/28_Cheetah.jpg",
-};
+
 
 async function renderPets(): Promise<void> {
   const list = document.getElementById("pc-view") as HTMLElement;
@@ -373,20 +358,18 @@ async function renderPets(): Promise<void> {
     if (!res.ok) throw new Error("Failed to fetch pets");
 
     const data = await res.json();
-const animals: Animal[] = (data.data as any[]).map((pet) => ({
-  ...pet,
-  image: LOCAL_IMAGES[pet.id] || pet?.image || "../../assets/landing/coala-mobile.png",
-}));
+    const animals: Animal[] = (data.data as any[]).map((pet) => ({
+      ...pet,
+      image: LOCAL_IMAGES[pet.id] || pet?.image || "../../assets/landing/coala-mobile.png",
+    }));
 
     document.getElementById("pets-skeleton")?.remove();
 
     animals.forEach((animal: Animal) => {
-      const card = document.createElement("div");
+      const card     = document.createElement("div");
       card.className = "animal-card";
       card.innerHTML = `
-      <div>
-        <h3 class="montserrat-regular">${animal.name}</h3>
-        </div>
+        <div><h3 class="montserrat-regular">${animal.name}</h3></div>
         <img src="${animal.image}" alt="${animal.name}" />
         <h4 class="montserrat-regular">${animal.commonName}</h4>
         <p class="montserrat-regular">${animal.description}</p>
@@ -416,11 +399,10 @@ async function loadFeedback(): Promise<void> {
     if (!response.ok) throw new Error("Failed to fetch feedback");
 
     const data = await response.json();
-
     document.getElementById("testimonials-skeleton")?.remove();
 
     (data.data as Feedback[]).forEach((item) => {
-      const slide = document.createElement("div");
+      const slide     = document.createElement("div");
       slide.className = "slide";
       slide.innerHTML = `
         <img src="../../assets/icons/testemonial.png" alt="Testimonial ${item.name}" />
@@ -431,7 +413,6 @@ async function loadFeedback(): Promise<void> {
       slider.appendChild(slide);
     });
 
-
   } catch (error) {
     document.getElementById("testimonials-skeleton")?.remove();
     slider.innerHTML = `<p class="section-error">Something went wrong. Please, refresh the page.</p>`;
@@ -439,90 +420,275 @@ async function loadFeedback(): Promise<void> {
   }
 }
 
-async function loadPopup(): Promise<void> {
-  const button = document.querySelector("#first-step") as HTMLButtonElement;
-  const buttonSecond = document.querySelector("#second-step") as HTMLButtonElement;
-  const select = document.getElementById("pet-select") as HTMLSelectElement;
-  const donationInput = document.getElementById("donation") as HTMLInputElement;
-  const nameInput = document.getElementById("name-input") as HTMLInputElement;
-  const emailInput = document.getElementById("email-input") as HTMLInputElement;
-const donationButtons = document.getElementsByClassName(
-  "donation-amount"
-) as HTMLCollectionOf<HTMLButtonElement>;
-  button.disabled=true;
-  buttonSecond.disabled=true;
-Array.from(donationButtons).forEach(btn => {
-  btn.addEventListener("click", () => {
-    donationInput.value=btn.value
-    button.disabled = false;
-  });
-});
+interface SavedCard {
+  cardNumber: string;
+  expiry:     string;
+  cvv:        string;
+  label:      string;
+}
 
-  if(button&&donationInput){
-  donationInput.addEventListener('input',(e:Event)=>{
-    const value = donationInput.value;
-      const isValid = /^\d*\.?\d+$/.test(value) && parseFloat(value) > 0;
-      button.disabled = !isValid;
-  })
+function getSavedCards(): SavedCard[] {
+  return JSON.parse(localStorage.getItem("zoo-saved-cards") || "[]");
+}
+
+function saveCardToStorage(card: SavedCard): void {
+  const cards  = getSavedCards();
+  const exists = cards.find(c => c.cardNumber === card.cardNumber);
+  if (!exists) {
+    cards.push(card);
+    localStorage.setItem("zoo-saved-cards", JSON.stringify(cards));
   }
+}
+
+function formatCardLabel(cardNumber: string): string {
+  const d = cardNumber.replace(/\D/g, "");
+  return `${d.slice(0, 4)} **** **** ${d.slice(-4)}`;
+}
+
+function showNotification(message: string, success: boolean): void {
+  const existing = document.getElementById("donation-notification");
+  if (existing) existing.remove();
+
+  const notification     = document.createElement("div");
+  notification.id        = "donation-notification";
+  notification.className = `donation-notification ${success ? "success" : "error"}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+
+  setTimeout(() => notification.remove(), 5000);
+}
+
+async function loadPopup(): Promise<void> {
+  const firstStepBtn   = document.querySelector("#first-step")            as HTMLButtonElement;
+  const secondStepBtn  = document.querySelector("#second-step")           as HTMLButtonElement;
+  const completeDonBtn = document.getElementById("complete-donation-btn") as HTMLButtonElement;
+  const select         = document.getElementById("pet-select")            as HTMLSelectElement;
+  const donationInput  = document.getElementById("donation")              as HTMLInputElement;
+  const nameInput      = document.getElementById("name-input")            as HTMLInputElement;
+  const emailInput     = document.getElementById("email-input")           as HTMLInputElement;
+  const cardNumberInput= document.getElementById("card-number")           as HTMLInputElement;
+  const expiryInput    = document.getElementById("expiry-date")           as HTMLInputElement;
+  const cvvInput       = document.getElementById("cvv")                   as HTMLInputElement;
+  const savedCardsContainer = document.getElementById("saved-cards-container") as HTMLElement;
+  const saveCardContainer   = document.getElementById("save-card-container")   as HTMLElement;
+
+  const donationButtons = document.getElementsByClassName("donation-amount") as HTMLCollectionOf<HTMLButtonElement>;
+
+  firstStepBtn.disabled  = true;
+  secondStepBtn.disabled = true;
+  completeDonBtn.disabled = true;
+
+  Array.from(donationButtons).forEach(btn => {
+    btn.addEventListener("click", () => {
+      donationInput.value    = btn.value;
+      firstStepBtn.disabled  = false;
+    });
+  });
+
+  donationInput.addEventListener("input", () => {
+    const value   = donationInput.value;
+    const isValid = /^\d*\.?\d+$/.test(value) && parseFloat(value) > 0;
+    firstStepBtn.disabled = !isValid;
+  });
+
+  function validateName(value: string): boolean {
+    return /^[a-zA-Z\s]+$/.test(value.trim());
+  }
+
+  function validateEmail(value: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  }
+
+  function checkStep2Validity(): void {
+    secondStepBtn.disabled = !(validateName(nameInput.value) && validateEmail(emailInput.value));
+  }
+
+  nameInput.addEventListener("input", () => {
+    nameInput.setCustomValidity(validateName(nameInput.value) ? "" : "Name can only contain letters and spaces.");
+    checkStep2Validity();
+  });
+
+  emailInput.addEventListener("input", () => {
+    emailInput.setCustomValidity(validateEmail(emailInput.value) ? "" : "Please enter a valid email address.");
+    checkStep2Validity();
+  });
+
+  function validateCardNumber(value: string): boolean {
+    return /^\d{16}$/.test(value.replace(/\s/g, ""));
+  }
+
+  function validateExpiry(value: string): boolean {
+    if (!/^\d{2}\/\d{2}$/.test(value)) return false;
+    const [mm, yy]   = value.split("/").map(Number);
+    if (mm < 1 || mm > 12) return false;
+    const now        = new Date();
+    const currentYY  = now.getFullYear() % 100;
+    const currentMM  = now.getMonth() + 1;
+    return yy > currentYY || (yy === currentYY && mm >= currentMM);
+  }
+
+  function validateCVV(value: string): boolean {
+    return /^\d{3}$/.test(value);
+  }
+
+ function checkStep3Validity(): void {
+  const cardValid   = validateCardNumber(cardNumberInput.value);
+  const expiryValid = validateExpiry(expiryInput.value);
+  const cvvValid    = validateCVV(cvvInput.value);
+  completeDonBtn.disabled = !(cardValid && expiryValid && cvvValid);
+}
+
+  cardNumberInput.addEventListener("input", () => {
+    cardNumberInput.value = cardNumberInput.value.replace(/\D/g, "").slice(0, 16);
+    cardNumberInput.setCustomValidity(validateCardNumber(cardNumberInput.value) ? "" : "Card number must be exactly 16 digits.");
+    checkStep3Validity();
+  });
+
+  expiryInput.addEventListener("input", () => {
+    let val = expiryInput.value.replace(/\D/g, "").slice(0, 4);
+    if (val.length >= 3) val = val.slice(0, 2) + "/" + val.slice(2);
+    expiryInput.value = val;
+    expiryInput.setCustomValidity(validateExpiry(expiryInput.value) ? "" : "Enter a valid future date in MM/YY format.");
+    checkStep3Validity();
+  });
+
+  cvvInput.addEventListener("keydown", (e) => {
+    if (["e", "E", "+", "-"].includes(e.key)) e.preventDefault();
+  });
+
+  cvvInput.addEventListener("input", () => {
+    cvvInput.value = cvvInput.value.replace(/\D/g, "").slice(0, 3);
+    cvvInput.setCustomValidity(validateCVV(cvvInput.value) ? "" : "CVV must be exactly 3 digits.");
+    checkStep3Validity();
+  });
 
   try {
     const res = await fetch(API_URL_ANIMAL);
     if (!res.ok) throw new Error("Failed to fetch pets");
-    const data = await res.json();
-    const animals: Animal[] = (data.data as any[])
+
+    const data           = await res.json();
+    const animals: Animal[] = data.data as any[];
+
     animals.forEach((animal) => {
-    const option = document.createElement("option");
-    option.value = animal.id;
-    option.textContent = animal.name;
-    select.appendChild(option);
-});
+      const option       = document.createElement("option");
+      option.value       = animal.id;
+      option.textContent = animal.name;
+      select.appendChild(option);
+    });
 
-  const user = getUser();
-if(user?.name&&user?.email){
-  nameInput.value  = user?.name  || "";
-  emailInput.value = user?.email || "";
-  buttonSecond.disabled=false;
-}
- 
+    const user = getUser();
 
-function validateName(value: string): boolean {
-  return /^[a-zA-Z\s]+$/.test(value.trim());
-}
+    if (user?.name && user?.email) {
+      nameInput.value        = user.name;
+      emailInput.value       = user.email;
+      secondStepBtn.disabled = false;
 
-function validateEmail(value: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-}
+      const savedCards = getSavedCards();
+      if (savedCards.length > 0 && savedCardsContainer) {
+        const label        = document.createElement("label");
+        label.className    = "montserrat-regular";
+        label.textContent  = "Saved cards";
 
-function checkFormValidity(): void {
-  const nameValid  = validateName(nameInput.value);
-  const emailValid = validateEmail(emailInput.value);
-  buttonSecond.disabled  = !(nameValid && emailValid);
-}
+        const savedSelect  = document.createElement("select");
+        savedSelect.id     = "saved-cards-select";
+        savedSelect.className = "saved-cards-select";
 
-nameInput.addEventListener("input", () => {
-  if (!validateName(nameInput.value)) {
-    nameInput.setCustomValidity("Name can only contain letters and spaces.");
-  } else {
-    nameInput.setCustomValidity("");
-  }
-  checkFormValidity();
-});
+        const defaultOpt       = document.createElement("option");
+        defaultOpt.value       = "";
+        defaultOpt.textContent = "Select a saved card...";
+        savedSelect.appendChild(defaultOpt);
 
-emailInput.addEventListener("input", () => {
-  if (!validateEmail(emailInput.value)) {
-    emailInput.setCustomValidity("Please enter a valid email address.");
-  } else {
-    emailInput.setCustomValidity("");
-  }
-  checkFormValidity();
-});
+        savedCards.forEach((card, index) => {
+          const opt       = document.createElement("option");
+          opt.value       = String(index);
+          opt.textContent = card.label;
+          savedSelect.appendChild(opt);
+        });
+
+        savedSelect.addEventListener("change", () => {
+          const index = parseInt(savedSelect.value);
+          if (!isNaN(index)) {
+            const card            = savedCards[index];
+            cardNumberInput.value = card.cardNumber;
+            expiryInput.value     = card.expiry;
+            cvvInput.value        = card.cvv;
+            checkStep3Validity();
+          } else {
+            cardNumberInput.value = "";
+            expiryInput.value     = "";
+            cvvInput.value        = "";
+            checkStep3Validity();
+          }
+        });
+
+        savedCardsContainer.appendChild(label);
+        savedCardsContainer.appendChild(savedSelect);
+      }
+
+      if (saveCardContainer) {
+        const wrapper      = document.createElement("div");
+        wrapper.className  = "save-card-wrapper";
+
+        const checkbox     = document.createElement("input");
+        checkbox.type      = "checkbox";
+        checkbox.id        = "save-card";
+
+        const checkLabel   = document.createElement("label");
+        checkLabel.htmlFor = "save-card";
+        checkLabel.className  = "montserrat-regular";
+        checkLabel.textContent = "Save card info for future donations";
+
+        wrapper.appendChild(checkbox);
+        wrapper.appendChild(checkLabel);
+        saveCardContainer.appendChild(wrapper);
+      }
+    }
 
   } catch (err) {
-    console.error("Error fetching pets:", err);
+    console.error("Error in loadPopup:", err);
   }
-  
 
+  completeDonBtn.addEventListener("click", async () => {
+    const checkbox   = document.getElementById("save-card") as HTMLInputElement | null;
+    const shouldSave = checkbox?.checked ?? false;
+    const amount     = donationInput.value;
+    const petName    = select.options[select.selectedIndex]?.textContent || "";
+
+    if (shouldSave) {
+      saveCardToStorage({
+        cardNumber: cardNumberInput.value,
+        expiry:     expiryInput.value,
+        cvv:        cvvInput.value,
+        label:      formatCardLabel(cardNumberInput.value),
+      });
+    }
+
+    completeDonBtn.disabled = true;
+
+    try {
+      const res = await fetch(API_DONATE, {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount,
+          petName,
+          cardNumber: cardNumberInput.value,
+          expiry:     expiryInput.value,
+          cvv:        cvvInput.value,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Donation failed");
+      
+
+      dialog.close();
+      showNotification(`Thank you for your donation of $${amount} to ${petName}!`, true);
+
+    } catch {
+      showNotification("Something went wrong. Please, try again later.", false);
+      completeDonBtn.disabled = false;
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -530,5 +696,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initSigninModal();
   renderPets();
   loadFeedback();
-  loadPopup()
+  loadPopup();
 });

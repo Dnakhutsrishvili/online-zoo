@@ -1838,3 +1838,66 @@ dialog p {
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+.donation-notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+  max-width: 320px;
+}
+
+.donation-notification.success {
+  background-color: #00A092;
+  color: #fff;
+}
+
+.donation-notification.error {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.save-card-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.saved-cards-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+#complete-donation-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#complete-donation-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
