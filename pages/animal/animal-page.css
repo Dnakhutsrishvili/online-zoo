@@ -337,17 +337,17 @@ section h3 {
 
     .zoo-sidebar {
         width: 80px;
-        flex-shrink: 0;
-        position: sticky;
-        top: 0;
+        position: fixed;
+        top: 4.7rem;
+        bottom: 0;
         padding: 1rem 0.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: fixed;
-        margin-top: 4.7rem;
         z-index: 999;
-
+        overflow-y: auto;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
     }
 
     .sidebar-list {
