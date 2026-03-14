@@ -117,11 +117,11 @@ ul {
 }
 
 .burger {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 999;
 }
 
 .burger span {
@@ -921,8 +921,8 @@ dialog p {
 
 .prev-btn {
   color: var(--pale-green-hower);
-  text-decoration: none;
   cursor: pointer;
+  text-decoration: underline;
   text-decoration-color: var(--pale-green-hower);
 }
 
@@ -955,24 +955,9 @@ dialog p {
   display: block;
 }
 
-#pet-select option:focus {
-  background-color: var(--pale-green);
-}
-
-.donation-options button:hover {
-  background-color: var(--pale-green-hower);
-}
-
+.donation-options button:hover,
 .donation-options button:focus {
   background-color: var(--pale-green-hower);
-}
-
-.burger {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  z-index: 999;
 }
 
 .nav-links {
@@ -1137,9 +1122,6 @@ dialog p {
   margin-top: 4px;
 }
 
-
-
-
 .user-btn {
   display: flex;
   align-items: center;
@@ -1194,7 +1176,6 @@ dialog p {
   transform: translateY(0);
 }
 
-/* Guest panel */
 .popup-guest,
 .popup-user {
   display: none;
@@ -1357,9 +1338,6 @@ dialog p {
     padding-bottom: 25rem;
   }
 
-
-
-
   .hero a {
     width: 240px;
   }
@@ -1490,11 +1468,6 @@ dialog p {
   .donate {
     width: 30%;
   }
-
-  /* .slider {
-    overflow: unset;
-    max-width: 600px;
-  } */
 
   .slides {
     display: grid;
