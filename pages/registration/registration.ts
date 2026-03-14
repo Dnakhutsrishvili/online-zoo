@@ -1,3 +1,4 @@
+import { validateLogin ,validateNameRegistration,validateEmailRegistration,validatePassword} from "../../utils";
 const API_URL_REGISTER = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/register";
 
 const form          = document.getElementById("register-form") as HTMLFormElement;
@@ -9,34 +10,6 @@ const confirmInput  = document.getElementById("confirm")       as HTMLInputEleme
 const registerBtn   = document.getElementById("register-btn")  as HTMLButtonElement;
 const serverError   = document.getElementById("server-error")  as HTMLElement;
 
-function validateLogin(value: string): string {
-  if (!value) return "Login is required.";
-  if (!/^[a-zA-Z]/.test(value)) return "Login must start with a letter.";
-  if (!/^[a-zA-Z]+$/.test(value)) return "Login must contain only English letters.";
-  if (value.length < 3) return "Login must be at least 3 characters.";
-  return "";
-}
-
-function validateName(value: string): string {
-  if (!value) return "Name is required.";
-  if (!/^[a-zA-Z]+$/.test(value)) return "Name must contain only English letters.";
-  if (value.length < 3) return "Name must be at least 3 characters.";
-  return "";
-}
-
-function validateEmail(value: string): string {
-  if (!value) return "Email is required.";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Please enter a valid email address.";
-  return "";
-}
-
-function validatePassword(value: string): string {
-  if (!value) return "Password is required.";
-  if (value.length < 6) return "Password must be at least 6 characters.";
-  if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?`~]/.test(value))
-    return "Password must contain at least 1 special character.";
-  return "";
-}
 
 function validateConfirm(value: string): string {
   if (!value) return "Please confirm your password.";
@@ -59,8 +32,8 @@ function setValid(groupId: string, errorId: string): void {
 function updateButtonState(): void {
   const allValid =
     validateLogin(loginInput.value)    === "" &&
-    validateName(nameInput.value)      === "" &&
-    validateEmail(emailInput.value)    === "" &&
+    validateNameRegistration(nameInput.value)      === "" &&
+    validateEmailRegistration(emailInput.value)    === "" &&
     validatePassword(passwordInput.value) === "" &&
     validateConfirm(confirmInput.value)   === "";
 
@@ -75,14 +48,14 @@ loginInput.addEventListener("blur", () => {
 });
 
 nameInput.addEventListener("blur", () => {
-  const msg = validateName(nameInput.value);
+  const msg = validateNameRegistration(nameInput.value);
   msg ? setInvalid("group-name", "error-name", msg)
       : setValid("group-name", "error-name");
   updateButtonState();
 });
 
 emailInput.addEventListener("blur", () => {
-  const msg = validateEmail(emailInput.value);
+  const msg = validateEmailRegistration(emailInput.value);
   msg ? setInvalid("group-email", "error-email", msg)
       : setValid("group-email", "error-email");
   updateButtonState();
