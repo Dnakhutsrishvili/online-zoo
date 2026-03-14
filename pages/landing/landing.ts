@@ -1,40 +1,14 @@
-import { Animal, Feedback } from "../../models/main";
+import { Feedback ,StoredUser} from "../../models/main";
+import { Pet } from "../../models/animal";
+import { SavedCard } from "../../models/card";
+import { LOCAL_IMAGES } from "../../constants/paths";
+import { validateLogin ,validatePassword ,validateName,validateEmail,formatCardLabel} from "../../utils";
+
 
 const API_URL_ANIMAL   = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets";
 const API_URL_FEEDBACK = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/feedback";
 const API_URL_LOGIN    = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/login";
 const API_DONATE       = "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/donation";
-
-const LOCAL_IMAGES: Record<number, string> = {
-  1:  "../../assets/animal/animals/1_Giant_Panda.jpg",
-  2:  "../../assets/animal/animals/2_Ring-Tailed_Lemur.jpg",
-  3:  "../../assets/animal/animals/3_Gorilla.jpg",
-  4:  "../../assets/animal/animals/4_Chinese_Alligator.jpg",
-  5:  "../../assets/animal/animals/5_Bald_Eagle.jpg",
-  6:  "../../assets/animal/animals/6_Koala.jpg",
-  7:  "../../assets/animal/animals/7_African_Lion.jpg",
-  8:  "../../assets/animal/animals/8_Sumatran_Tiger.jpg",
-  9:  "../../assets/animal/animals/9_Red_Panda.jpg",
-  10: "../../assets/animal/animals/10_Mountain_Gorilla.jpg",
-  11: "../../assets/animal/animals/11_African_Elephant.jpg",
-  12: "../../assets/animal/animals/12_Sea_Otter.jpg",
-  13: "../../assets/animal/animals/13_Bengal_Tiger.jpg",
-  14: "../../assets/animal/animals/14_Gray_Wolf.jpg",
-  15: "../../assets/animal/animals/15_Fennec_Fox.jpg",
-  16: "../../assets/animal/animals/16_Grizzly_Bear.jpg",
-  17: "../../assets/animal/animals/17_Bottlenose_Dolphin.jpg",
-  18: "../../assets/animal/animals/18_Snow_Leopard.jpg",
-  19: "../../assets/animal/animals/19_Polar_Bear.jpg",
-  20: "../../assets/animal/animals/20_Jaguar.jpg",
-  21: "../../assets/animal/animals/21_Ring-Tailed_Lemur.jpg",
-  22: "../../assets/animal/animals/22_White_Rhinoceros.jpg",
-  23: "../../assets/animal/animals/23_Arctic_Fox.jpg",
-  24: "../../assets/animal/animals/24_Saltwater_Crocodile.jpg",
-  25: "../../assets/animal/animals/25_Scarlet_Macaw.jpg",
-  26: "../../assets/animal/animals/26_Komodo_Dragon.jpg",
-  27: "../../assets/animal/animals/27_Sloth.jpg",
-  28: "../../assets/animal/animals/28_Cheetah.jpg",
-};
 
 const dialog  = document.getElementById("donation-dialog") as HTMLDialogElement;
 const steps   = document.querySelectorAll<HTMLElement>("#donation-dialog .step");
@@ -118,7 +92,6 @@ if (container && leftBtn && rightBtn) {
   });
 }
 
-type StoredUser = { name: string; email: string } | null;
 
 function getUser(): StoredUser {
   try {
@@ -202,19 +175,6 @@ function initSigninModal(): void {
     document.getElementById(groupId)?.classList.remove("invalid");
     const el = document.getElementById(errorId);
     if (el) el.textContent = "";
-  }
-
-  function validateLogin(v: string): string {
-    if (!v) return "Login is required.";
-    if (!/^[a-zA-Z]/.test(v)) return "Must start with a letter.";
-    if (!/^[a-zA-Z]+$/.test(v)) return "Only English letters allowed.";
-    if (v.length < 3) return "At least 3 characters.";
-    return "";
-  }
-
-  function validatePassword(v: string): string {
-    if (!v) return "Password is required.";
-    return "";
   }
 
   function updateBtn(): void {
@@ -346,45 +306,37 @@ function showTestimonialsSkeleton(slider: HTMLElement): void {
   slider.appendChild(skeleton);
 }
 
+async function fetchPets(): Promise<Pet[]> {
+  const res = await fetch(API_URL_ANIMAL);
+  if (!res.ok) throw new Error("Failed to fetch pets");
+  const data = await res.json();
+  return (data.data as any[]).map((pet) => ({
+    ...pet,
+    image: LOCAL_IMAGES[pet.id] || pet?.image || "../../assets/landing/coala-mobile.png",
+  }));
+}
 
-async function renderPets(): Promise<void> {
+function renderPets(animals: Pet[]): void {
   const list = document.getElementById("pc-view") as HTMLElement;
   if (!list) return;
 
-  showPetsSkeleton(list);
+  document.getElementById("pets-skeleton")?.remove();
 
-  try {
-    const res = await fetch(API_URL_ANIMAL);
-    if (!res.ok) throw new Error("Failed to fetch pets");
-
-    const data = await res.json();
-    const animals: Animal[] = (data.data as any[]).map((pet) => ({
-      ...pet,
-      image: LOCAL_IMAGES[pet.id] || pet?.image || "../../assets/landing/coala-mobile.png",
-    }));
-
-    document.getElementById("pets-skeleton")?.remove();
-
-    animals.forEach((animal: Animal) => {
-      const card     = document.createElement("div");
-      card.className = "animal-card";
-      card.innerHTML = `
-        <div><h3 class="montserrat-regular">${animal.name}</h3></div>
-        <img src="${animal.image}" alt="${animal.name}" />
-        <h4 class="montserrat-regular">${animal.commonName}</h4>
-        <p class="montserrat-regular">${animal.description}</p>
-        <a href="#" class="montserrat-semi-bold">
-          VIEW LIVE CAM
-          <img src="../../assets/icons/arrow.png" alt="Go to destination"/>
-        </a>
-      `;
-      list.appendChild(card);
-    });
-  } catch (err) {
-    document.getElementById("pets-skeleton")?.remove();
-    list.innerHTML = `<p class="section-error">Something went wrong. Please, refresh the page.</p>`;
-    console.error("Error fetching pets:", err);
-  }
+  animals.forEach((animal: Pet) => {
+    const card     = document.createElement("div");
+    card.className = "animal-card";
+    card.innerHTML = `
+      <div><h3 class="montserrat-regular">${animal.name}</h3></div>
+      <img src="${animal.image}" alt="${animal.name}" />
+      <h4 class="montserrat-regular">${animal.commonName}</h4>
+      <p class="montserrat-regular">${animal.description}</p>
+      <a href="#" class="montserrat-semi-bold">
+        VIEW LIVE CAM
+        <img src="../../assets/icons/arrow.png" alt="Go to destination"/>
+      </a>
+    `;
+    list.appendChild(card);
+  });
 }
 
 async function loadFeedback(): Promise<void> {
@@ -420,13 +372,6 @@ async function loadFeedback(): Promise<void> {
   }
 }
 
-interface SavedCard {
-  cardNumber: string;
-  expiry:     string;
-  cvv:        string;
-  label:      string;
-}
-
 function getSavedCards(): SavedCard[] {
   return JSON.parse(localStorage.getItem("zoo-saved-cards") || "[]");
 }
@@ -440,10 +385,6 @@ function saveCardToStorage(card: SavedCard): void {
   }
 }
 
-function formatCardLabel(cardNumber: string): string {
-  const d = cardNumber.replace(/\D/g, "");
-  return `${d.slice(0, 4)} **** **** ${d.slice(-4)}`;
-}
 
 function showNotification(message: string, success: boolean): void {
   const existing = document.getElementById("donation-notification");
@@ -458,7 +399,7 @@ function showNotification(message: string, success: boolean): void {
   setTimeout(() => notification.remove(), 5000);
 }
 
-async function loadPopup(): Promise<void> {
+async function loadPopup(animals: Pet[]): Promise<void> {
   const firstStepBtn   = document.querySelector("#first-step")            as HTMLButtonElement;
   const secondStepBtn  = document.querySelector("#second-step")           as HTMLButtonElement;
   const completeDonBtn = document.getElementById("complete-donation-btn") as HTMLButtonElement;
@@ -490,14 +431,7 @@ async function loadPopup(): Promise<void> {
     const isValid = /^\d*\.?\d+$/.test(value) && parseFloat(value) > 0;
     firstStepBtn.disabled = !isValid;
   });
-
-  function validateName(value: string): boolean {
-    return /^[a-zA-Z\s]+$/.test(value.trim());
-  }
-
-  function validateEmail(value: string): boolean {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-  }
+ 
 
   function checkStep2Validity(): void {
     secondStepBtn.disabled = !(validateName(nameInput.value) && validateEmail(emailInput.value));
@@ -531,12 +465,12 @@ async function loadPopup(): Promise<void> {
     return /^\d{3}$/.test(value);
   }
 
- function checkStep3Validity(): void {
-  const cardValid   = validateCardNumber(cardNumberInput.value);
-  const expiryValid = validateExpiry(expiryInput.value);
-  const cvvValid    = validateCVV(cvvInput.value);
-  completeDonBtn.disabled = !(cardValid && expiryValid && cvvValid);
-}
+  function checkStep3Validity(): void {
+    const cardValid   = validateCardNumber(cardNumberInput.value);
+    const expiryValid = validateExpiry(expiryInput.value);
+    const cvvValid    = validateCVV(cvvInput.value);
+    completeDonBtn.disabled = !(cardValid && expiryValid && cvvValid);
+  }
 
   cardNumberInput.addEventListener("input", () => {
     cardNumberInput.value = cardNumberInput.value.replace(/\D/g, "").slice(0, 16);
@@ -562,90 +496,79 @@ async function loadPopup(): Promise<void> {
     checkStep3Validity();
   });
 
-  try {
-    const res = await fetch(API_URL_ANIMAL);
-    if (!res.ok) throw new Error("Failed to fetch pets");
+  animals.forEach((animal) => {
+    const option       = document.createElement("option");
+    option.value       = animal.id;
+    option.textContent = animal.name;
+    select.appendChild(option);
+  });
 
-    const data           = await res.json();
-    const animals: Animal[] = data.data as any[];
+  const user = getUser();
 
-    animals.forEach((animal) => {
-      const option       = document.createElement("option");
-      option.value       = animal.id;
-      option.textContent = animal.name;
-      select.appendChild(option);
-    });
+  if (user?.name && user?.email) {
+    nameInput.value        = user.name;
+    emailInput.value       = user.email;
+    secondStepBtn.disabled = false;
 
-    const user = getUser();
+    const savedCards = getSavedCards();
+    if (savedCards.length > 0 && savedCardsContainer) {
+      const label        = document.createElement("label");
+      label.className    = "montserrat-regular";
+      label.textContent  = "Saved cards";
 
-    if (user?.name && user?.email) {
-      nameInput.value        = user.name;
-      emailInput.value       = user.email;
-      secondStepBtn.disabled = false;
+      const savedSelect  = document.createElement("select");
+      savedSelect.id     = "saved-cards-select";
+      savedSelect.className = "saved-cards-select";
 
-      const savedCards = getSavedCards();
-      if (savedCards.length > 0 && savedCardsContainer) {
-        const label        = document.createElement("label");
-        label.className    = "montserrat-regular";
-        label.textContent  = "Saved cards";
+      const defaultOpt       = document.createElement("option");
+      defaultOpt.value       = "";
+      defaultOpt.textContent = "Select a saved card...";
+      savedSelect.appendChild(defaultOpt);
 
-        const savedSelect  = document.createElement("select");
-        savedSelect.id     = "saved-cards-select";
-        savedSelect.className = "saved-cards-select";
+      savedCards.forEach((card, index) => {
+        const opt       = document.createElement("option");
+        opt.value       = String(index);
+        opt.textContent = card.label;
+        savedSelect.appendChild(opt);
+      });
 
-        const defaultOpt       = document.createElement("option");
-        defaultOpt.value       = "";
-        defaultOpt.textContent = "Select a saved card...";
-        savedSelect.appendChild(defaultOpt);
+      savedSelect.addEventListener("change", () => {
+        const index = parseInt(savedSelect.value);
+        if (!isNaN(index)) {
+          const card            = savedCards[index];
+          cardNumberInput.value = card.cardNumber;
+          expiryInput.value     = card.expiry;
+          cvvInput.value        = card.cvv;
+          checkStep3Validity();
+        } else {
+          cardNumberInput.value = "";
+          expiryInput.value     = "";
+          cvvInput.value        = "";
+          checkStep3Validity();
+        }
+      });
 
-        savedCards.forEach((card, index) => {
-          const opt       = document.createElement("option");
-          opt.value       = String(index);
-          opt.textContent = card.label;
-          savedSelect.appendChild(opt);
-        });
-
-        savedSelect.addEventListener("change", () => {
-          const index = parseInt(savedSelect.value);
-          if (!isNaN(index)) {
-            const card            = savedCards[index];
-            cardNumberInput.value = card.cardNumber;
-            expiryInput.value     = card.expiry;
-            cvvInput.value        = card.cvv;
-            checkStep3Validity();
-          } else {
-            cardNumberInput.value = "";
-            expiryInput.value     = "";
-            cvvInput.value        = "";
-            checkStep3Validity();
-          }
-        });
-
-        savedCardsContainer.appendChild(label);
-        savedCardsContainer.appendChild(savedSelect);
-      }
-
-      if (saveCardContainer) {
-        const wrapper      = document.createElement("div");
-        wrapper.className  = "save-card-wrapper";
-
-        const checkbox     = document.createElement("input");
-        checkbox.type      = "checkbox";
-        checkbox.id        = "save-card";
-
-        const checkLabel   = document.createElement("label");
-        checkLabel.htmlFor = "save-card";
-        checkLabel.className  = "montserrat-regular";
-        checkLabel.textContent = "Save card info for future donations";
-
-        wrapper.appendChild(checkbox);
-        wrapper.appendChild(checkLabel);
-        saveCardContainer.appendChild(wrapper);
-      }
+      savedCardsContainer.appendChild(label);
+      savedCardsContainer.appendChild(savedSelect);
     }
 
-  } catch (err) {
-    console.error("Error in loadPopup:", err);
+    if (saveCardContainer) {
+      const wrapper      = document.createElement("div");
+      wrapper.className  = "save-card-wrapper";
+
+      const checkbox     = document.createElement("input");
+      checkbox.type      = "checkbox";
+      checkbox.id        = "save-card";
+
+      const checkLabel   = document.createElement("label");
+      checkLabel.htmlFor = "save-card";
+      checkLabel.className  = "montserrat-regular";
+      checkLabel.textContent = "Save card info for future donations";
+
+      wrapper.appendChild(checkbox);
+      wrapper.appendChild(checkLabel);
+      saveCardContainer.appendChild(wrapper);
+    }
   }
 
   completeDonBtn.addEventListener("click", async () => {
@@ -679,7 +602,6 @@ async function loadPopup(): Promise<void> {
       });
 
       if (!res.ok) throw new Error("Donation failed");
-      
 
       dialog.close();
       showNotification(`Thank you for your donation of $${amount} to ${petName}!`, true);
@@ -691,10 +613,21 @@ async function loadPopup(): Promise<void> {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   initUserWidget();
   initSigninModal();
-  renderPets();
   loadFeedback();
-  loadPopup();
+
+  const list = document.getElementById("pc-view") as HTMLElement;
+  if (list) showPetsSkeleton(list);
+
+  try {
+    const animals = await fetchPets();
+    renderPets(animals);
+    await loadPopup(animals);
+  } catch (err) {
+    document.getElementById("pets-skeleton")?.remove();
+    if (list) list.innerHTML = `<p class="section-error">Something went wrong. Please, refresh the page.</p>`;
+    console.error("Error fetching pets:", err);
+  }
 });

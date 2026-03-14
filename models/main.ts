@@ -1,11 +1,3 @@
-export type Animal = {
-  id: string;
-  name: string;
-  commonName: string;
-  description: string;
-  image: string;
-};
-
 export type Feedback = {
   id: number;
   name: string;
@@ -14,3 +6,4 @@ export type Feedback = {
   month: string;
   year: string;
 };
+export type StoredUser = { name: string; email: string } | null;
