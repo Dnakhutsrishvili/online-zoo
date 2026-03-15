@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../pages/landing/landing.css" />
-    <link rel="stylesheet" href="../../pages/animal/animal-page.css" />
+    <link rel="stylesheet" href="../landing/landing.css" />
+    <link rel="stylesheet" href="./animal-page.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" type="image/x-icon" href="/assets/icons/main-logo.png">
@@ -14,8 +14,7 @@
     <title>Online Zoo</title>
 </head>
 <body>
-    <h1 class="montserrat-semi-bold" style="display: none;">Online Zoo</h1>
-
+       <h1 class="montserrat-semi-bold" style="display: none;">Online Zoo</h1>
     <header class="navbar">
       <div class="logo">
         <img src="/assets/icons/main-logo.png" alt="Logo" />
@@ -28,11 +27,10 @@
         <span></span>
       </label>
     <ul class="nav-links montserrat-semi-bold">
-      <li><a  href="/">ABOUT</a></li>
-      <li><a href="/src/pages/map/map.html">MAP</a></li>
-      <li><a style="color: #00A092;" href="/src/pages/animal/animal-page.html">ZOOS</a></li>
-      <li><a href="/src/pages/contact/contact.html">CONTACT US</a></li>
-      <li><a id="user-item" href=""></a></li>
+    <li><a  href="/">ABOUT</a></li>
+    <li><a href="/map">MAP</a></li>
+    <li><a  style="color: #00A092;"  href="/animal">ZOOS</a></li>
+    <li><a  href="/contact">CONTACT US</a></li>
     </ul>
       <ul class="social-media-header">
           <li>
@@ -72,7 +70,7 @@
               Sign In
             </button>
             <div class="popup-divider"></div>
-            <a href="/src/pages/registration/registration.html" class="popup-option montserrat-semi-bold">
+            <a href="/registration" class="popup-option montserrat-semi-bold">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
                 <circle cx="9" cy="7" r="4"/>
@@ -104,7 +102,6 @@
         </div>
       </div>
     </header>
-
     <div class="page-wrapper">
 
       <aside class="zoo-sidebar" id="zoo-sidebar">
@@ -237,6 +234,7 @@
       </div>
     </footer>
 
-    <script type="module" src="../../pages/animal/animal-page.ts"></script>
+<script type="module" src="./animal-page.ts"></script>
+<script type="module" src="../landing/landing.ts"></script>
 </body>
 </html>

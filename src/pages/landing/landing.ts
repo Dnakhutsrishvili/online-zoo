@@ -40,10 +40,12 @@ document.querySelectorAll<HTMLElement>(".donate").forEach((btn) => {
     dialog.showModal();
   });
 });
-
+if(dialog){
 dialog.addEventListener("click", (e: MouseEvent) => {
   if (e.target === dialog) dialog.close();
 });
+}
+
 
 const container              = document.getElementById("pc-view");
 const leftBtn                = document.getElementById("left");
