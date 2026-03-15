@@ -128,7 +128,7 @@ form.addEventListener("submit", async (e: SubmitEvent) => {
       return;
     }
 
-    window.location.href = "../../index.html";
+    window.location.href = "/";
 
   } catch (err) {
     serverError.textContent = "Something went wrong. Please try again.";
