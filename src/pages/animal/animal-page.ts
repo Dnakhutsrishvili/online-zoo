@@ -35,7 +35,7 @@ const factHabitat    = document.getElementById("fact-habitat")         as HTMLEl
 const factRange      = document.getElementById("fact-range")           as HTMLElement;
 const factDesc       = document.getElementById("fact-description")     as HTMLElement;
 
-const FALLBACK_IMG = "../../assets/landing/coala-mobile.png";
+const FALLBACK_IMG = "/assets/landing/coala-mobile.png";
 
 function showOverlay(): void {
   contentOverlay.classList.remove("hidden");
@@ -142,7 +142,7 @@ function buildSidebar(pets: Pet[]): void {
     const toggleBtn     = document.createElement("button");
     toggleBtn.id        = "sidebar-toggle";
     toggleBtn.className = "sidebar-arrow";
-    toggleBtn.innerHTML = `<img src="../../assets/icons/arrow.png" alt="Toggle" />`;
+    toggleBtn.innerHTML = `<img src="/assets/icons/arrow.png" alt="Toggle" />`;
 
     toggleBtn.addEventListener("click", () => {
       isExpanded = !isExpanded;

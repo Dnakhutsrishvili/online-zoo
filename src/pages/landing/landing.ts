@@ -312,7 +312,7 @@ async function fetchPets(): Promise<Pet[]> {
   const data = await res.json();
   return (data.data as any[]).map((pet) => ({
     ...pet,
-    image: LOCAL_IMAGES[pet.id] || pet?.image || "../../assets/landing/coala-mobile.png",
+    image: LOCAL_IMAGES[pet.id] || pet?.image || "/assets/landing/coala-mobile.png",
   }));
 }
 
@@ -332,7 +332,7 @@ function renderPets(animals: Pet[]): void {
       <p class="montserrat-regular">${animal.description}</p>
       <a href="#" class="montserrat-semi-bold">
         VIEW LIVE CAM
-        <img src="../../assets/icons/arrow.png" alt="Go to destination"/>
+        <img src="/assets/icons/arrow.png" alt="Go to destination"/>
       </a>
     `;
     list.appendChild(card);
@@ -357,7 +357,7 @@ async function loadFeedback(): Promise<void> {
       const slide     = document.createElement("div");
       slide.className = "slide";
       slide.innerHTML = `
-        <img src="../../assets/icons/testemonial.png" alt="Testimonial ${item.name}" />
+        <img src="/assets/icons/testemonial.png" alt="Testimonial ${item.name}" />
         <h4>${item.city}, ${item.month} ${item.year}</h4>
         <p>${item.text}</p>
         <h5>${item.name}</h5>
