@@ -1,3 +1,23 @@
 [build]
-command = "npm run build"  # The command to run the build
-publish = "dist"           # The directory to publish
+  command = "npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/animal"
+  to = "/src/pages/animal/animal-page.html"
+  status = 200
+
+[[redirects]]
+  from = "/map"
+  to = "/src/pages/map/map.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact"
+  to = "/src/pages/contact/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/registration"
+  to = "/src/pages/registration/registration.html"
+  status = 200

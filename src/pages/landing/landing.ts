@@ -100,7 +100,7 @@ function getUser(): StoredUser {
       navItem.textContent = "Profile";
     } else {
       navItem.textContent = "Sign up";
-      navItem.setAttribute("href", "./pages/registration/registration.html");
+      navItem.setAttribute("href", "/registration");
     }
     return raw ? JSON.parse(raw) : null;
   } catch {
