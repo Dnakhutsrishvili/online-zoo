@@ -24,26 +24,20 @@
       <hr/>
       <p class="montserrat-regular"><span>*</span> choose your donation amount:</p>
       <div class="donation-options">
-        <button >$10</button>
-        <button >$20</button>
-        <button >$30</button> 
-        <button >$40</button>
-        <button >$50</button>
-        <button >$60</button> 
+        <button  class="donation-amount" value="10">$10</button>
+        <button class="donation-amount" value="20">$20</button>
+        <button class="donation-amount" value="30">$30</button> 
+        <button class="donation-amount" value="40">$40</button>
+        <button class="donation-amount" value="50">$50</button>
+        <button class="donation-amount" value="60">$60</button> 
         <button >other</button> 
         <form method="dialog" class="custom-donation-form">
-          <input type="number"  />
+          <input id="donation" type="number"  />
         </form>
       </div>
       <button  id="special">for special pet</button>
 <select id="pet-select">
-  <option value="">choose you're favorite</option>
-  <option value="dog">liz the dog</option>
-  <option value="cat">Cat the mew</option>
-  <option value="hamster">Hamster</option>
-  <option value="parrot">Parrot</option>
-  <option value="spider">Spider</option>
-  <option value="goldfish">Goldfish</option>
+
 </select>
 <p></p>
 <div class="checkbox">
@@ -51,7 +45,7 @@
 <input type="checkbox" id="recurring-donation" name="recurring-donation" />
 </div>
 
-<button class="next-btn">Next <img src="../../assets/icons/image.png" alt="Next" /></button>
+<button class="next-btn" id="first-step">Next <img src="../../assets/icons/image.png" alt="Next" /></button>
 
           <div class="buttons-step">
             <label for="step1"></label>
@@ -65,46 +59,46 @@
             <form class="info-form">
               <div class="payment-details">
                 <label for="name" class="montserrat-regular">*Your Name</label>
-                <input type="text" placeholder="First and last name" required />
-                <label for="email" class="montserrat-regular">*Your Email</label>
-                <input type="email" placeholder="Enter your email" required />
+                <input type="text" id="name-input" placeholder="First and last name" required />
+                <label for="email"  class="montserrat-regular">*Your Email</label>
+                <input type="email" id="email-input" placeholder="Enter your email" required />
                 <p class="montserrat-regular">You will receive emails from the Online Zoo, including updates and news on the latest discoveries and translations. You can unsubscribe at any time.</p>
 
               </div>
             </form>
-           <button class="next-btn">Next <img src="../../assets/icons/image.png" alt="Next"/></button>
+           <button class="next-btn" id="second-step">Next <img src="../../assets/icons/image.png" alt="Next"/></button>
            <a class="prev-btn">
              Back
            </a>
                 </div>
-                <div class="step step-3">
-            <p class="montserrat-heavy donation-info">Payment Information:</p>
-            <hr/>
-            <form class="payment-form">
-              <div class="payment-details">
-                <label for="card-number" class="montserrat-regular">*Card Number</label>
-                <input type="text" placeholder="1234 5678 9012 3456" required />
-                <label for="cvv" class="montserrat-regular">*CVV</label>
-                <input type="text" placeholder="123" required />
-                 <label for="expiry-date" class="montserrat-regular">*Expiry Date</label>
-                <input type="text" placeholder="MM/YY" required />
-              </div>
-              </form>
-                <a class="prev-btn">
-             Back
-          </a>
-              <div class="complate-donation">
+       <div class="step step-3">
+  <p class="montserrat-heavy donation-info">Payment Information:</p>
+  <hr/>
 
-        
-           <a href="#" class="montserrat-semi-bold"
-          >COMPLETE DONATION
-          <img
-            id="arrow-icon"
-            src="../../assets/icons/image.png"
-            alt="Go to destination"
-        /></a>
- </div>
+  <div id="saved-cards-container"></div>
+
+  <form class="payment-form" id="card-form">
+    <div class="payment-details">
+      <label for="card-number" class="montserrat-regular">*Card Number</label>
+      <input type="text" id="card-number" placeholder="1234567890123456" required />
+      <label for="expiry-date" class="montserrat-regular">*Expiry Date</label>
+      <input type="text" id="expiry-date" placeholder="MM/YY" required />
+      <label for="cvv" class="montserrat-regular">*CVV</label>
+      <input type="text" id="cvv" placeholder="123" required />
+    </div>
+  </form>
+
+  <div id="save-card-container"></div>
+
+  <a class="prev-btn">Back</a>
+
+  <div class="complate-donation">
+    <button id="complete-donation-btn" class="montserrat-semi-bold" disabled>
+      COMPLETE DONATION
+      <img id="arrow-icon" src="../../assets/icons/image.png" alt="Go to destination"/>
+    </button>
   </div>
+</div>
     </dialog> 
     <header class="navbar">
       <div class="logo">
@@ -118,11 +112,11 @@
         <span></span>
       </label>
       <ul class="nav-links montserrat-semi-bold">
-        <li><a style="color: #00A092;" href="../landing/landing.html">ABOUT</a></li>
-        <li><a href="../../pages/map/map.html">MAP</a></li>
-        <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
-        <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
-        <li><a href="#">DESIGN</a></li>
+        <li><a style="color: #00A092;" href="./index.html">ABOUT</a></li>
+        <li><a href="./pages/map/map.html">MAP</a></li>
+        <li><a href="./pages/animal/animal-page.html">ZOOS</a></li>
+        <li><a href="./pages/contact/contact.html">CONTACT US</a></li>
+        <li><a id="user-item" href=""></a></li>
       </ul>
       <ul class="social-media-header">
           <li>
@@ -141,6 +135,58 @@
             /></a>
           </li>
         </ul>
+
+      <div class="user-widget" id="user-widget">
+        <button class="user-btn" id="user-btn" aria-label="User menu" aria-expanded="false">
+          <svg class="user-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          <span class="user-name montserrat-semi-bold" id="user-name"></span>
+        </button>
+
+        <div class="user-popup" id="user-popup" role="menu">
+          <div class="popup-guest" id="popup-guest">
+            <button class="popup-option montserrat-semi-bold" id="open-signin-modal">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                <polyline points="10 17 15 12 10 7"/>
+                <line x1="15" y1="12" x2="3" y2="12"/>
+              </svg>
+              Sign In
+            </button>
+            <div class="popup-divider"></div>
+            <a href="/pages/registration/registration.html" class="popup-option montserrat-semi-bold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <line x1="19" y1="8" x2="19" y2="14"/>
+                <line x1="22" y1="11" x2="16" y2="11"/>
+              </svg>
+              Registration
+            </a>
+          </div>
+
+          <div class="popup-user" id="popup-user">
+            <div class="popup-profile">
+              <div class="popup-avatar" id="popup-avatar"></div>
+              <div class="popup-info">
+                <p class="popup-info-name montserrat-semi-bold" id="popup-info-name"></p>
+                <p class="popup-info-email montserrat-regular" id="popup-info-email"></p>
+              </div>
+            </div>
+            <div class="popup-divider"></div>
+            <button class="popup-signout montserrat-semi-bold" id="signout-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                <polyline points="16 17 21 12 16 7"/>
+                <line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
     <main>
       <section class="hero">
@@ -203,7 +249,9 @@
         </p>
         <div>
         <div class="animal-card remove">
+          <div class="animal-name">
           <h3 class="montserrat-regular">Liz</h3>
+          </div>
           <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
           <h4 class="montserrat-regular">Australian Koala</h4>
           <p class="montserrat-regular">
@@ -215,90 +263,12 @@
             <img src="../../assets/icons/arrow.png" alt="Go to destination"
           /></a>
         </div>
-        <div class="pc-view">
-    <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
+        <div class="animals-wrapper">
+          <button id="left" class="arrow-btn"><img src='./assets/icons/arrow-dark.png' alt="arrow"></button>
+          <button id="right" class="arrow-btn"><img src='./assets/icons/arrow-dark.png' alt="arrow"></button>
+          <div class="pc-view" id="pc-view"></div>
         </div>
-            <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
-        </div>
-            <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
-        </div>
-        </div>
-        <div class="pc-view">
-    <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
-        </div>
-            <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
-        </div>
-            <div class="animal-card">
-          <h3 class="montserrat-regular">Liz</h3>
-          <img src="../../assets/landing/coala-mobile.png" alt="Koala" />
-          <h4 class="montserrat-regular">Australian Koala</h4>
-          <p class="montserrat-regular">
-            The elevated walkways bring you to eye level with the koalas as they
-            perch in their forest.
-          </p>
-          <a href="#" class="montserrat-semi-bold"
-            >VIEW LIVE CAM
-            <img src="../../assets/icons/arrow.png" alt="Go to destination"
-          /></a>
-        </div>
-  
-        </div>
-                <a
+        <a
           href="./pages/animal/animal-page.html"
           class="montserrat-semi-bold pc-btn"
           >choose your favorite
@@ -366,7 +336,7 @@
         <div class="pc-flex">
         <img
           src="../../assets/landing/banana-chimp-mobile.png"
-          alt="Pay and feed step     5"
+          alt="Pay and feed step 5"
         />
         <div>
         <img
@@ -385,7 +355,7 @@
         </p>
         </div>
         </div>
-        <a href="#" class="donate" class="montserrat-semi-bold"
+        <a href="#" class="donate montserrat-semi-bold"
           >DONATE NOW
           <img
             id="arrow-icon"
@@ -401,81 +371,14 @@
           from past clients.
         </p>
         <div class="testimonial-section">
-          <input type="radio" name="testimonial-slider" id="slide1" checked />
-          <input type="radio" name="testimonial-slider" id="slide2" />
-          <input type="radio" name="testimonial-slider" id="slide3" />
-          <input type="radio" name="testimonial-slider" id="slide4" />
-
-          <div class="slider">
-            <div class="slides">
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Karen Maithlan</h5>
-              </div>
-
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Pow Maithlan</h5>
-              </div>
-
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Ika Maithlan</h5>
-              </div>
-              <div class="slide">
-                <img
-                  src="../../assets/icons/testemonial.png"
-                  alt="Testimonial 1"
-                />
-                <h4 class="montserrat-semi-bold">New Jersey, November 2020</h4>
-                <p class="montserrat-regular">
-                  I am writing to thank you for your mission is to bring people
-                  closer to nature! Like myself, children were very impressed by
-                  the opportunity to explore the life of incredible animals in
-                  real-time.
-                </p>
-                <h5 class="montserrat-heavy">Anna Maithlan</h5>
-              </div>
-            </div>
+          <div class="slider-wrapper">
+            <div class="slider" id="testimonial-slider"></div>
           </div>
+          <div class="buttons" id="slider-buttons"></div>
 
-          <div class="buttons">
-            <label for="slide1"></label>
-            <label for="slide2"></label>
-            <label for="slide3"></label>
-            <label for="slide4"></label>
-          </div>
         </div>
+          <button id="testimonial-left" class="arrow-btn"><img src='./assets/icons/arrow-dark.png' alt="arrow"></button>
+          <button id="testimonial-right" class="arrow-btn"><img src='./assets/icons/arrow-dark.png' alt="arrow"></button>
         <a
           href="#"
           style="
@@ -532,7 +435,6 @@
                     alt="Go to destination"
                 /></a>
               </div>
-
               <div class="slide">
                 <img
                   src="../../assets/landing/panda-slide-mobile.png"
@@ -553,7 +455,6 @@
                     alt="Go to destination"
                 /></a>
               </div>
-
               <div class="slide">
                 <img
                   src="../../assets/landing/panda-slide-mobile.png"
@@ -621,65 +522,97 @@
     <footer>
       <div class="footer-content">
         <div class="footer-first">
-
-        <div class="footer-logo">
-          <img src="../../assets/icons/footer-logo.png" alt="Logo" />
-          <img src="../../assets/icons/footer-yem-mobile.png" alt="Logo" />
-          <img src="../../assets/icons/rs-logo-mobile.png" alt="Logo" />
+          <div class="footer-logo">
+            <img src="../../assets/icons/footer-logo.png" alt="Logo" />
+            <img src="../../assets/icons/footer-yem-mobile.png" alt="Logo" />
+            <img src="../../assets/icons/rs-logo-mobile.png" alt="Logo" />
+          </div>
+          <ul class="footer-links">
+          <li><a style="color: #00A092;" href="./index.html">ABOUT</a></li>
+          <li><a href="./pages/map/map.html">MAP</a></li>
+          <li><a href="./pages/animal/animal-page.html">ZOOS</a></li>
+           <li><a href="./pages/contact/contact.html">CONTACT US</a></li>
+         <li><a href="#">DESIGN</a></li>
+          </ul>
+          <a
+            href="#"
+            style="
+              background-color: var(--blue);
+              border: 1px solid var(--white);
+              margin-top: 2rem;
+              z-index: 999;
+              position: relative;
+            "
+            class="montserrat-semi-bold footer-donate donate"
+            >Donate For Volunteers
+            <img
+              id="arrow-icon"
+              src="../../assets/icons/image.png"
+              alt="Go to destination"
+          /></a>
         </div>
-        <ul class="footer-links">
-        <li><a style="color: #00A092;" href="../landing/landing.html">ABOUT</a></li>
-        <li><a href="../../pages/map/map.html">MAP</a></li>
-        <li><a href="../../pages/animal/animal-page.html">ZOOS</a></li>
-        <li><a href="../../pages/contact/contact.html">CONTACT US</a></li>
-        </ul>
-        <a
-          href="#"
-          style="
-            background-color: var(--blue);
-            border: 1px solid var(--white);
-            margin-top: 2rem;
-            z-index: 999;
-            position: relative;
-          "
-          class="montserrat-semi-bold footer-donate donate"
-          >Donate For Volunteers
-          <img
-            id="arrow-icon"
-            src="../../assets/icons/image.png"
-            alt="Go to destination"
-        /></a>
-        </div>
-         <hr class="coala-pc"/>
-
+        <hr class="coala-pc"/>
         <div class="footer-pc">
-        <ul class="social-media">
-          <li>
-            <a href="https://www.facebook.com/" target="_blank"
-              ><img src="../../assets/icons/facebook.png" alt="Facebook"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/" target="_blank"
-              ><img src="../../assets/icons/instagram.png" alt="instagram"
-            /></a>
-          </li>
-          <li>
-            <a href="https://www.youtube.com/" target="_blank"
-              ><img src="../../assets/icons/youtube.png" alt="youtube"
-            /></a>
-          </li>
-        </ul>
-        <hr  class="remove"/>
-        <ul class="copyright">
-          <li><p class="montserrat-regular">© 2026 Dinak</p></li>
-          <li><p class="montserrat-regular">© 2026 Yem Digital</p></li>
-          <li><p class="montserrat-regular">© 2026 RSSchool</p></li>
-        </ul>
-      </div>
+          <ul class="social-media">
+            <li>
+              <a href="https://www.facebook.com/" target="_blank"
+                ><img src="../../assets/icons/facebook.png" alt="Facebook"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" target="_blank"
+                ><img src="../../assets/icons/instagram.png" alt="instagram"
+              /></a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank"
+                ><img src="../../assets/icons/youtube.png" alt="youtube"
+              /></a>
+            </li>
+          </ul>
+          <hr class="remove"/>
+          <ul class="copyright">
+            <li><p class="montserrat-regular">© 2026 Dinak</p></li>
+            <li><p class="montserrat-regular">© 2026 Yem Digital</p></li>
+            <li><p class="montserrat-regular">© 2026 RSSchool</p></li>
+          </ul>
+        </div>
       </div>
     </footer>
+    <dialog id="signin-modal" class="auth-modal">
+      <div class="auth-modal-header">
+        <h2 class="montserrat-heavy">Sign In</h2>
+        <button class="auth-modal-close" id="close-signin-modal" aria-label="Close">&times;</button>
+      </div>
+      <form id="signin-form" novalidate>
+        <div class="auth-field-group" id="auth-group-login">
+          <label class="montserrat-semi-bold" for="signin-login">Login</label>
+          <div class="auth-input-wrap">
+            <input type="text" id="signin-login" placeholder="e.g. johnDoe" autocomplete="username" />
+            <span class="auth-error-icon">!</span>
+          </div>
+          <span class="auth-field-error montserrat-regular" id="auth-error-login"></span>
+        </div>
+        <div class="auth-field-group" id="auth-group-password">
+          <label class="montserrat-semi-bold" for="signin-password">Password</label>
+          <div class="auth-input-wrap">
+            <input type="password" id="signin-password" placeholder="Your password" autocomplete="current-password" />
+            <button type="button" class="auth-toggle-pw" data-target="signin-password">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+            <span class="auth-error-icon pw-icon">!</span>
+          </div>
+          <span class="auth-field-error montserrat-regular" id="auth-error-password"></span>
+        </div>
+        <p class="auth-server-error montserrat-regular" id="auth-server-error"></p>
+        <button type="submit" id="signin-submit" class="montserrat-semi-bold" disabled>
+          SIGN IN
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </dialog>
 
-    <script src="./pages/landing/landing.js"></script>
+   
+    <script type="module" src="./pages/landing/landing.js"></script>
   </body>
 </html>

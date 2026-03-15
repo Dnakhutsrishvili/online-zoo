@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./registration.css" />
+    <link rel="stylesheet" href="../landing/landing.css" />
+    <link rel="icon" type="image/x-icon" href="../../assets/icons/main-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Register — Online Zoo</title>
+  </head>
+  <body>
+
+    <header class="navbar">
+      <div class="logo">
+        <img src="../../assets/icons/main-logo.png" alt="Logo" />
+      </div>
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+      <label for="menu-toggle" class="burger">
+        <span></span><span></span><span></span>
+      </label>
+      <ul class="nav-links montserrat-semi-bold">
+        <li><a href="../../index.html">ABOUT</a></li>
+        <li><a href="../map/map.html">MAP</a></li>
+        <li><a href="../animal/animal-page.html">ZOOS</a></li>
+        <li><a href="../contact/contact.html">CONTACT US</a></li>
+      </ul>
+    </header>
+
+    <main class="register-main">
+      <div class="register-card">
+
+        <div class="card-accent"></div>
+
+        <div class="card-body">
+          <h1 class="montserrat-heavy">Create Account</h1>
+          <p class="montserrat-regular subtitle">Join the Online Zoo community</p>
+
+          <form id="register-form" novalidate>
+
+            <div class="field-group" id="group-login">
+              <label class="montserrat-semi-bold" for="login">Login</label>
+              <div class="input-wrap">
+                <input
+                  type="text"
+                  id="login"
+                  name="login"
+                  placeholder="e.g. johnDoe"
+                  autocomplete="username"
+                />
+                <span class="error-icon" aria-hidden="true">!</span>
+              </div>
+              <span class="field-error montserrat-regular" id="error-login"></span>
+            </div>
+
+            <div class="field-group" id="group-name">
+              <label class="montserrat-semi-bold" for="name">Name</label>
+              <div class="input-wrap">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="e.g. John"
+                  autocomplete="given-name"
+                />
+                <span class="error-icon" aria-hidden="true">!</span>
+              </div>
+              <span class="field-error montserrat-regular" id="error-name"></span>
+            </div>
+
+            <div class="field-group" id="group-email">
+              <label class="montserrat-semi-bold" for="email">Email</label>
+              <div class="input-wrap">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="e.g. john@example.com"
+                  autocomplete="email"
+                />
+                <span class="error-icon" aria-hidden="true">!</span>
+              </div>
+              <span class="field-error montserrat-regular" id="error-email"></span>
+            </div>
+
+            <div class="field-group" id="group-password">
+              <label class="montserrat-semi-bold" for="password">Password</label>
+              <div class="input-wrap">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Min. 6 chars + special character"
+                  autocomplete="new-password"
+                />
+                <button type="button" class="toggle-pw" data-target="password" aria-label="Toggle password visibility">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+                <span class="error-icon" aria-hidden="true">!</span>
+              </div>
+              <span class="field-error montserrat-regular" id="error-password"></span>
+            </div>
+
+            <div class="field-group" id="group-confirm">
+              <label class="montserrat-semi-bold" for="confirm">Confirm Password</label>
+              <div class="input-wrap">
+                <input
+                  type="password"
+                  id="confirm"
+                  name="confirm"
+                  placeholder="Repeat your password"
+                  autocomplete="new-password"
+                />
+                <button type="button" class="toggle-pw" data-target="confirm" aria-label="Toggle confirm password visibility">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                </button>
+                <span class="error-icon" aria-hidden="true">!</span>
+              </div>
+              <span class="field-error montserrat-regular" id="error-confirm"></span>
+            </div>
+
+            <p class="server-error montserrat-regular" id="server-error" aria-live="polite"></p>
+
+            <button type="submit" id="register-btn" class="montserrat-semi-bold" disabled>
+              REGISTER
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+          </form>
+
+          <p class="montserrat-regular login-link">
+            Already have an account? <a href="../login/login.html">Sign in</a>
+          </p>
+        </div>
+
+      </div>
+    </main>
+
+    <script type="module" src="./registration.ts"></script>
+  </body>
+</html>

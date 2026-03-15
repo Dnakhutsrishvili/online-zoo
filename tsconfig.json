@@ -10,7 +10,8 @@
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "allowJs": true
+    "allowJs": true,
+    "noImplicitAny": true,
   },
   "include": [
     "src"
