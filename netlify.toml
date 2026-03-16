@@ -3,21 +3,6 @@
   publish = "dist"
 
 [[redirects]]
-  from = "/animal"
-  to = "/src/pages/animal/animal-page.html"
-  status = 200
-
-[[redirects]]
-  from = "/map"
-  to = "/src/pages/map/map.html"
-  status = 200
-
-[[redirects]]
-  from = "/contact"
-  to = "/src/pages/contact/contact.html"
-  status = 200
-
-[[redirects]]
-  from = "/registration"
-  to = "/src/pages/registration/registration.html"
+  from = "/*"
+  to = "/index.html"
   status = 200

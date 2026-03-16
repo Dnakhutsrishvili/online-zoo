@@ -1,0 +1,17 @@
+import { Routes, Route } from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
+import LandingPage from './pages/landing/LandingPage';
+import RegistrationPage from './pages/registration/RegistrationPage'
+
+ 
+export default function App() {
+  return (
+    <UserProvider>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/registration" element={<RegistrationPage />} />
+      </Routes>
+    </UserProvider>
+  );
+}
+ 
