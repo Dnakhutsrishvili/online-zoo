@@ -1,12 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useDonation } from '../context/DonationContext';
 import styles from './Footer.module.css';
 
-interface FooterProps {
-  onDonate?: () => void;
-}
-
-export default function Footer({ onDonate }: FooterProps) {
+export default function Footer() {
   const location = useLocation();
+  const { openDonation } = useDonation(); 
 
   function isActive(path: string) {
     return location.pathname === path ? { color: '#00A092' } : undefined;
@@ -21,7 +19,6 @@ export default function Footer({ onDonate }: FooterProps) {
             <img src="/assets/icons/footer-yem-mobile.png" alt="Yem Digital Logo" />
             <img src="/assets/icons/rs-logo-mobile.png" alt="RS School Logo" />
           </div>
-
           <ul className={styles.footer_links}>
             <li><Link style={isActive('/')} to="/">ABOUT</Link></li>
             <li><Link style={isActive('/map')} to="/map">MAP</Link></li>
@@ -29,9 +26,8 @@ export default function Footer({ onDonate }: FooterProps) {
             <li><Link style={isActive('/contact')} to="/contact">CONTACT US</Link></li>
             <li><a href="#">DESIGN</a></li>
           </ul>
-
           <button
-            onClick={onDonate}
+            onClick={openDonation}
             className={`montserrat-semi-bold ${styles.footer_donate}`}
             style={{ 
               backgroundColor: 'var(--blue)', 
@@ -44,9 +40,7 @@ export default function Footer({ onDonate }: FooterProps) {
             <img src="/assets/icons/image.png" alt="Go to destination" />
           </button>
         </div>
-
         <hr className={styles.coala_pc} />
-
         <div className={styles.footer_pc}>
           <ul className={styles.social_media}>
             <li>
@@ -65,9 +59,7 @@ export default function Footer({ onDonate }: FooterProps) {
               </a>
             </li>
           </ul>
-
           <hr className={styles.remove} />
-
           <ul className={styles.copyright}>
             <li><p className="montserrat-regular">© 2026 Dinak</p></li>
             <li><p className="montserrat-regular">© 2026 Yem Digital</p></li>

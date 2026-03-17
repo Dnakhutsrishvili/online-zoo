@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useUser } from '../context/UserContext';
+import styles from './donation.module.css';
 
 const API_DONATE = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/donation';
 
@@ -49,20 +50,20 @@ interface Props {
 
 export default function DonationDialog({ isOpen, onClose, pets, onNotification }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const { user }  = useUser();
+  const { user } = useUser();
 
-  const [step, setStep]               = useState(0);
-  const [amount, setAmount]           = useState('');
-  const [petId, setPetId]             = useState('');
-  const [recurring, setRecurring]     = useState(false);
-  const [name, setName]               = useState(user?.name || '');
-  const [email, setEmail]             = useState(user?.email || '');
-  const [cardNumber, setCardNumber]   = useState('');
-  const [expiry, setExpiry]           = useState('');
-  const [cvv, setCvv]                 = useState('');
-  const [saveCard, setSaveCard]       = useState(false);
+  const [step, setStep] = useState(0);
+  const [amount, setAmount] = useState('');
+  const [petId, setPetId] = useState('');
+  const [recurring, setRecurring] = useState(false);
+  const [name, setName] = useState(user?.name || '');
+  const [email, setEmail] = useState(user?.email || '');
+  const [cardNumber, setCardNumber] = useState('');
+  const [expiry, setExpiry] = useState('');
+  const [cvv, setCvv] = useState('');
+  const [saveCard, setSaveCard] = useState(false);
   const [selectedSaved, setSelectedSaved] = useState('');
-  const [loading, setLoading]         = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const savedCards = getSavedCards();
 
@@ -73,8 +74,12 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (isOpen) { setStep(0); dialog.showModal(); }
-    else dialog.close();
+    if (isOpen) {
+      setStep(0);
+      dialog.showModal();
+    } else {
+      dialog.close();
+    }
   }, [isOpen]);
 
   useEffect(() => {
@@ -97,7 +102,9 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
       setExpiry(card.expiry);
       setCvv(card.cvv);
     } else {
-      setCardNumber(''); setExpiry(''); setCvv('');
+      setCardNumber('');
+      setExpiry('');
+      setCvv('');
     }
   }
 
@@ -130,108 +137,216 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
   }
 
   return (
-    <dialog ref={dialogRef} id="donation-dialog" onClick={handleBackdrop}>
-      <header className="dialog-header">
+    <dialog className={styles.auto} ref={dialogRef} onClick={handleBackdrop}>
+      <header className={styles.dialog_header}>
         <h2 className="montserrat-semi-bold">make your donation</h2>
       </header>
-
-      {/* Step 1 */}
-      <div className={`step step-1 ${step === 0 ? 'active' : ''}`}>
-        <p className="montserrat-heavy donation-info">Donation Information</p>
+      <div className={`${styles.step} ${styles.step_1} ${step === 0 ? styles.active : ''}`}>
+        <p className={`montserrat-heavy ${styles.donation_info}`}>Donation Information</p>
         <hr />
-        <p className="montserrat-regular"><span>*</span> choose your donation amount:</p>
-        <div className="donation-options">
-          {['10','20','30','40','50','60'].map(v => (
+        <p className="montserrat-regular">
+          <span>*</span> choose your donation amount:
+        </p>
+
+        <div className={styles.donation_options}>
+          {['10', '20', '30', '40', '50', '60'].map(v => (
             <button
               key={v}
-              className={`donation-amount ${amount === v ? 'active' : ''}`}
+              className={`${styles.donation_amount} ${amount === v ? styles.active : ''}`}
               value={v}
               onClick={() => setAmount(v)}
-            >${v}</button>
+            >
+              ${v}
+            </button>
           ))}
-          <button onClick={() => setAmount('')}>other</button>
-          <div className="custom-donation-form">
+          <button className={styles.donation_amount} onClick={() => setAmount('')}>other</button>
+          <div className={styles.custom_donation_form}>
             <input
               id="donation"
               type="number"
               value={amount}
               onChange={e => setAmount(e.target.value)}
+              placeholder="Enter amount"
             />
           </div>
         </div>
-        <button id="special">for special pet</button>
-        <select id="pet-select" value={petId} onChange={e => setPetId(e.target.value)}>
+
+        <button className={styles.special}>for special pet</button>
+
+        <select 
+          className={styles.pet_select}
+          value={petId}
+          onChange={e => setPetId(e.target.value)}
+        >
           <option value="">Select a pet...</option>
-          {pets.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
+          {pets.map(p => (
+            <option key={p.id} value={p.id}>
+              {p.name}
+            </option>
+          ))}
         </select>
-        <div className="checkbox">
-          <label className="montserrat-regular" htmlFor="recurring-donation">Make this a monthly recurring gift</label>
-          <input type="checkbox" id="recurring-donation" checked={recurring} onChange={e => setRecurring(e.target.checked)} />
+
+        <div className={styles.checkbox}>
+          <input
+            type="checkbox"
+            id="recurring-donation"
+            checked={recurring}
+            onChange={e => setRecurring(e.target.checked)}
+          />
+          <label htmlFor="recurring-donation" className="montserrat-regular">
+            Make this a monthly recurring gift
+          </label>
         </div>
-        <button className="next-btn" id="first-step" disabled={!step1Valid} onClick={() => setStep(1)}>
+
+        <button
+          className={styles.next_btn}
+          disabled={!step1Valid}
+          onClick={() => setStep(1)}
+        >
           Next <img src="/assets/icons/image.png" alt="Next" />
         </button>
-        <div className="buttons-step">
+
+        <div className={styles.buttons_step}>
           <label htmlFor="step1"></label>
           <label htmlFor="step2"></label>
           <label htmlFor="step3"></label>
         </div>
       </div>
 
-      {/* Step 2 */}
-      <div className={`step step-2 ${step === 1 ? 'active' : ''}`}>
-        <p className="montserrat-heavy donation-info">Payment Information</p>
+      <div className={`${styles.step} ${styles.step_2} ${step === 1 ? styles.active : ''}`}>
+        <p className={`montserrat-heavy ${styles.donation_info}`}>Payment Information</p>
         <hr />
-        <div className="info-form">
-          <div className="payment-details">
-            <label htmlFor="name-input" className="montserrat-regular">*Your Name</label>
-            <input type="text" id="name-input" placeholder="First and last name" value={name} onChange={e => setName(e.target.value)} />
-            <label htmlFor="email-input" className="montserrat-regular">*Your Email</label>
-            <input type="email" id="email-input" placeholder="Enter your email" value={email} onChange={e => setEmail(e.target.value)} />
-            <p className="montserrat-regular">You will receive emails from the Online Zoo, including updates and news on the latest discoveries and translations. You can unsubscribe at any time.</p>
+
+        <div className={styles.info_form}>
+          <div className={styles.payment_details}>
+            <label htmlFor="name-input" className="montserrat-regular">
+              *Your Name
+            </label>
+            <input
+              type="text"
+              id="name-input"
+              placeholder="First and last name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+
+            <label htmlFor="email-input" className="montserrat-regular">
+              *Your Email
+            </label>
+            <input
+              type="email"
+              id="email-input"
+              placeholder="Enter your email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+
+            <p className="montserrat-regular">
+              You will receive emails from the Online Zoo, including updates and news on the latest discoveries and translations. You can unsubscribe at any time.
+            </p>
           </div>
         </div>
-        <button className="next-btn" id="second-step" disabled={!step2Valid} onClick={() => setStep(2)}>
+
+        <button
+          className={styles.next_btn}
+          disabled={!step2Valid}
+          onClick={() => setStep(2)}
+        >
           Next <img src="/assets/icons/image.png" alt="Next" />
         </button>
-        <button className="prev-btn" onClick={() => setStep(0)}>Back</button>
+        <button className={styles.prev_btn} onClick={() => setStep(0)}>
+          Back
+        </button>
       </div>
 
-      {/* Step 3 */}
-      <div className={`step step-3 ${step === 2 ? 'active' : ''}`}>
-        <p className="montserrat-heavy donation-info">Payment Information:</p>
+      <div className={`${styles.step} ${styles.step_3} ${step === 2 ? styles.active : ''}`}>
+        <p className={`montserrat-heavy ${styles.donation_info}`}>Payment Information:</p>
         <hr />
+
         {savedCards.length > 0 && (
-          <div id="saved-cards-container">
+          <div className={styles.saved_cards_container}>
             <label className="montserrat-regular">Saved cards</label>
-            <select className="saved-cards-select" value={selectedSaved} onChange={e => handleSavedCardSelect(e.target.value)}>
+            <select
+              className={styles.saved_cards_select}
+              value={selectedSaved}
+              onChange={e => handleSavedCardSelect(e.target.value)}
+            >
               <option value="">Select a saved card...</option>
-              {savedCards.map((card, i) => <option key={i} value={String(i)}>{card.label}</option>)}
+              {savedCards.map((card, i) => (
+                <option key={i} value={String(i)}>
+                  {card.label}
+                </option>
+              ))}
             </select>
           </div>
         )}
-        <div className="payment-details">
-          <label htmlFor="card-number" className="montserrat-regular">*Card Number</label>
-          <input type="text" id="card-number" placeholder="1234567890123456" value={cardNumber}
-            onChange={e => setCardNumber(e.target.value.replace(/\D/g, '').slice(0, 16))} />
-          <label htmlFor="expiry-date" className="montserrat-regular">*Expiry Date</label>
-          <input type="text" id="expiry-date" placeholder="MM/YY" value={expiry}
-            onChange={e => handleExpiryInput(e.target.value)} />
-          <label htmlFor="cvv" className="montserrat-regular">*CVV</label>
-          <input type="text" id="cvv" placeholder="123" value={cvv}
-            onChange={e => setCvv(e.target.value.replace(/\D/g, '').slice(0, 3))} />
+
+        <div className={styles.payment_details}>
+          <label htmlFor="card-number" className="montserrat-regular">
+            *Card Number
+          </label>
+          <input
+            type="text"
+            id="card-number"
+            placeholder="1234567890123456"
+            value={cardNumber}
+            onChange={e =>
+              setCardNumber(e.target.value.replace(/\D/g, '').slice(0, 16))
+            }
+          />
+
+          <label htmlFor="expiry-date" className="montserrat-regular">
+            *Expiry Date
+          </label>
+          <input
+            type="text"
+            id="expiry-date"
+            placeholder="MM/YY"
+            value={expiry}
+            onChange={e => handleExpiryInput(e.target.value)}
+          />
+
+          <label htmlFor="cvv" className="montserrat-regular">
+            *CVV
+          </label>
+          <input
+            type="text"
+            id="cvv"
+            placeholder="123"
+            value={cvv}
+            onChange={e =>
+              setCvv(e.target.value.replace(/\D/g, '').slice(0, 3))
+            }
+          />
         </div>
+
         {user && (
-          <div id="save-card-container">
-            <div className="save-card-wrapper">
-              <input type="checkbox" id="save-card" checked={saveCard} onChange={e => setSaveCard(e.target.checked)} />
-              <label htmlFor="save-card" className="montserrat-regular">Save card info for future donations</label>
+          <div className={styles.save_card_container}>
+            <div className={styles.save_card_wrapper}>
+              <input
+                type="checkbox"
+                id="save-card"
+                checked={saveCard}
+                onChange={e => setSaveCard(e.target.checked)}
+              />
+              <label htmlFor="save-card" className="montserrat-regular">
+                Save card info for future donations
+              </label>
             </div>
           </div>
         )}
-        <button className="prev-btn" onClick={() => setStep(1)}>Back</button>
-        <div className="complate-donation">
-          <button id="complete-donation-btn" className="montserrat-semi-bold" disabled={!step3Valid || loading} onClick={handleComplete}>
+
+        <button className={styles.prev_btn} onClick={() => setStep(1)}>
+          Back
+        </button>
+
+        <div className={styles.complate_donation}>
+          <button
+            id="complete-donation-btn"
+            className={`montserrat-semi-bold ${styles.complete_donation_btn}`}
+            disabled={!step3Valid || loading}
+            onClick={handleComplete}
+          >
             {loading ? 'Processing...' : 'COMPLETE DONATION'}
             <img src="/assets/icons/image.png" alt="Go to destination" />
           </button>
