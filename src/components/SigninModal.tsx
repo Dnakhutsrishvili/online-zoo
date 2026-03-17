@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useUser } from '../context/UserContext';
+import styles from './singIn.module.css'
 
 const API_URL_LOGIN = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/login';
 
@@ -85,15 +86,15 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
   }
 
   return (
-    <dialog ref={dialogRef} id="signin-modal" className="auth-modal" onClick={handleBackdropClick}>
-      <div className="auth-modal-header">
+    <dialog ref={dialogRef} id="signin-modal" className={styles.authModal} onClick={handleBackdropClick}>
+      <div className={styles.authModalHeader}>
         <h2 className="montserrat-heavy">Sign In</h2>
-        <button className="auth-modal-close" onClick={onClose} aria-label="Close">&times;</button>
+        <button className={styles.authModalClose} onClick={onClose} aria-label="Close">&times;</button>
       </div>
-      <form id="signin-form" noValidate onSubmit={handleSubmit}>
+      <form className={styles.signinForm} noValidate onSubmit={handleSubmit}>
         <div className={`auth-field-group ${loginErr ? 'invalid' : ''}`} id="auth-group-login">
           <label className="montserrat-semi-bold" htmlFor="signin-login">Login</label>
-          <div className="auth-input-wrap">
+          <div className={styles.authInputWrap}>
             <input
               type="text"
               id="signin-login"
@@ -104,14 +105,15 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
               onBlur={() => setLoginErr(validateLogin(loginVal))}
               onFocus={() => setLoginErr('')}
             />
-            <span className="auth-error-icon">!</span>
+            <span className={styles.authErrorIcon}>!</span>
           </div>
-          {loginErr && <span className="auth-field-error montserrat-regular">{loginErr}</span>}
+          {loginErr &&  <span className={`${styles.authFieldError} montserrat-regular`}>
+{loginErr}</span>}
         </div>
 
         <div className={`auth-field-group ${passwordErr ? 'invalid' : ''}`} id="auth-group-password">
           <label className="montserrat-semi-bold" htmlFor="signin-password">Password</label>
-          <div className="auth-input-wrap">
+          <div className={styles.authInputWrap}>
             <input
               type={showPassword ? 'text' : 'password'}
               id="signin-password"
@@ -122,20 +124,20 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
               onBlur={() => setPasswordErr(validatePassword(passwordVal))}
               onFocus={() => setPasswordErr('')}
             />
-            <button type="button" className="auth-toggle-pw" onClick={() => setShowPassword(p => !p)}>
+            <button type="button" className={styles.authTogglePw} onClick={() => setShowPassword(p => !p)}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                 <circle cx="12" cy="12" r="3"/>
               </svg>
             </button>
-            <span className="auth-error-icon pw-icon">!</span>
+            <span className={styles.authErrorIcon}>!</span>
           </div>
-          {passwordErr && <span className="auth-field-error montserrat-regular">{passwordErr}</span>}
+          {passwordErr && <span className={styles.authFieldError}>{passwordErr}</span>}
         </div>
 
-        {serverErr && <p className="auth-server-error montserrat-regular">{serverErr}</p>}
+        {serverErr && <p className={styles.authServerError}>{serverErr}</p>}
 
-        <button type="submit" className="montserrat-semi-bold" disabled={!isValid || loading}>
+        <button type="submit" className={styles.signinSubmit} disabled={!isValid || loading}>
           {loading ? 'Signing in…' : 'SIGN IN'}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M12 5l7 7-7 7"/>

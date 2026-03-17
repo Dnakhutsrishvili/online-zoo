@@ -83,7 +83,8 @@ export default function Navbar() {
                   </Link>
                 </div>
               ) : (
-      <div className={`${styles.popupUser} ${popupOpen ? styles.active : ''}`}>                  <div className="popup-profile">
+      <div className={`${styles.popupUser} ${popupOpen ? styles.active : ''}`}>
+         <div className={styles.popupProfile}>
                     <div className={styles.popupAvatar}>{user.name.charAt(0).toUpperCase()}</div>
                     <div className={styles.popupInfo}>
                      <p className={`${styles.popupInfoName} montserrat-semi-bold`}>{user.name}</p>

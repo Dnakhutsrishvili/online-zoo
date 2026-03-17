@@ -1,0 +1,195 @@
+.authModal {
+    margin: auto;
+    border: none;
+    border-radius: 4px;
+    padding: 0;
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(32, 17, 61, 0.18);
+}
+
+.authModal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.authModalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--main-color);
+}
+
+.authModalHeader h2 {
+    font-size: 1.2rem;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.authModalClose {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.6rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 4px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.authModalClose:hover {
+    opacity: 1;
+}
+
+.signinForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: 1.5rem;
+}
+
+.auth-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.auth-field-group label {
+    font-size: 0.78rem;
+    color: var(--blue);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.authInputWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.authInputWrap input {
+    width: 100%;
+    height: 44px;
+    padding: 0 40px 0 12px;
+    border: 1.5px solid #d0ccd8;
+    border-radius: 3px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    color: var(--black);
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.authInputWrap input:focus {
+    border-color: var(--pale-green-hower);
+    background: var(--white);
+}
+
+.authInputWrap input::placeholder {
+    color: #aaa;
+}
+
+.authTogglePw {
+    position: absolute;
+    right: 34px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.authTogglePw:hover {
+    color: var(--blue);
+}
+
+.authTogglePw svg {
+    width: 16px;
+    height: 16px;
+}
+
+.authErrorIcon {
+    position: absolute;
+    right: 10px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #d93025;
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 800;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.authErrorIcon.pwIcon {
+    right: 56px;
+}
+
+.authFieldGroupInvalid .authInputWrap input {
+    border-color: #d93025;
+    background: rgba(217, 48, 37, 0.06);
+}
+
+.authFieldGroupInvalid .authErrorIcon {
+    display: flex;
+}
+
+.authFieldError {
+    font-size: 0.76rem;
+    color: #d93025;
+    min-height: 1rem;
+}
+
+.authServerError {
+    font-size: 0.82rem;
+    color: #d93025;
+    text-align: center;
+    min-height: 1rem;
+}
+
+.signinSubmit {
+    height: 46px;
+    background-color: var(--main-color);
+    color: var(--white);
+    border: none;
+    border-radius: 3px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.2s, opacity 0.2s;
+    margin-top: 0.25rem;
+}
+
+.signinSubmit svg {
+    width: 17px;
+    height: 17px;
+    transition: transform 0.2s;
+}
+
+.signinSubmit:hover:not(:disabled) {
+    background-color: var(--pale-green-hower);
+}
+
+.signinSubmit:hover:not(:disabled) svg {
+    transform: translateX(4px);
+}
+
+.signinSubmit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
