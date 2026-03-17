@@ -126,7 +126,6 @@
     padding-right: 0;
 }
 
-/* Media Queries */
 @media (min-width: 940px) {
     .main img {
         height: 600px;
