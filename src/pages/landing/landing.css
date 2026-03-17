@@ -1,68 +1,3 @@
-:root {
-  --main-color: #f58021;
-  --black: #000;
-  --black-transparant: rgba(0, 0, 0, 0.5);
-  --white: #fff;
-  --blue: #20113d;
-  --pale-green: rgba(0, 160, 146, 0.5);
-  --pale-green-hower: #05786E;
-}
-
-a:link,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.montserrat-heavy {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.montserrat-semi-bold {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.montserrat-regular {
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-ul {
-  list-style: none;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: var(--main-color);
-  color: var(--white);
-  position: relative;
-  overflow: visible;
-}
-
 #left img {
   transform: rotate(180deg);
   height: 24px;
@@ -96,41 +31,12 @@ ul {
   cursor: pointer;
 }
 
-.logo img {
-  height: 40px;
-}
 
-.nav-links li a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 1.2rem;
-  text-transform: uppercase;
 
-}
 
-.nav-links li a:hover {
-  text-decoration: underline;
-}
 
-.menu-toggle {
-  display: none;
-}
 
-.burger {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  z-index: 999;
-}
 
-.burger span {
-  width: 30px;
-  height: 2.5px;
-  background: var(--black);
-  transition: all 0.3s ease;
-  transform-origin: center;
-}
 
 .hero {
   background-image: url("../../assets/landing/panda-landing-mobile.png");
@@ -960,44 +866,10 @@ dialog p {
   background-color: var(--pale-green-hower);
 }
 
-.nav-links {
-  position: fixed;
-  top: 0;
-  right: -300px;
-  height: 100vh;
-  width: 300px;
-  background: var(--blue);
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  transition: right 0.3s ease;
-  z-index: 100;
-}
 
-.menu-toggle:checked~.nav-links {
-  right: 0;
-  padding-top: 30%;
-  text-align: center;
-  gap: 3rem;
-}
 
-.menu-toggle:checked+.burger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-  background-color: var(--white);
-}
 
-.menu-toggle:checked+.burger span:nth-child(2) {
-  opacity: 0;
-}
 
-.menu-toggle:checked+.burger span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-  background-color: var(--white);
-}
-
-.social-media-header {
-  display: none;
-}
 
 .pc-view {
   display: none;
@@ -1122,97 +994,13 @@ dialog p {
   margin-top: 4px;
 }
 
-.user-btn {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
 
-.user-btn:hover {
-  background: rgba(0, 0, 0, 0.07);
-}
 
-.user-icon {
-  width: 26px;
-  height: 26px;
-  color: var(--blue);
-  flex-shrink: 0;
-}
 
-.user-name {
-  font-size: 0.82rem;
-  color: var(--blue);
-  max-width: 100px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
-.user-popup {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  min-width: 210px;
-  background: var(--white);
-  border-radius: 6px;
-  box-shadow: 0 8px 32px rgba(32, 17, 61, 0.16);
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-  z-index: 1000;
-}
 
-.user-popup.open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
 
-.popup-guest,
-.popup-user {
-  display: none;
-}
 
-.popup-guest.active,
-.popup-user.active {
-  display: block;
-}
-
-.popup-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 16px;
-  color: var(--blue);
-  font-size: 0.88rem;
-  text-decoration: none;
-  transition: background 0.15s;
-}
-
-.popup-option svg {
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
-  color: var(--pale-green-hower);
-}
-
-.popup-option:hover {
-  background: #f5f3f8;
-}
-
-.popup-divider {
-  height: 1px;
-  background: #ece9f1;
-  margin: 0;
-}
 
 .popup-profile {
   display: flex;
@@ -1222,66 +1010,12 @@ dialog p {
   background: #f8f6fb;
 }
 
-.popup-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--main-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--white);
-  font-family: "Montserrat", sans-serif;
-  flex-shrink: 0;
-}
 
-.popup-info {
-  overflow: hidden;
-}
 
-.popup-info-name {
-  font-size: 0.9rem;
-  color: var(--blue);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
-.popup-info-email {
-  font-size: 0.75rem;
-  color: #888;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-top: 2px;
-}
 
-.popup-signout {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 13px 16px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.88rem;
-  color: #c0392b;
-  transition: background 0.15s;
-}
 
-.popup-signout svg {
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
-}
 
-.popup-signout:hover {
-  background: #fdf0ef;
-}
 
 .user-widget {
   display: none;
@@ -1304,21 +1038,6 @@ dialog p {
     margin-left: 0.5rem;
   }
 
-  .burger {
-    display: none;
-  }
-
-  .nav-links {
-    position: static;
-    height: auto;
-    width: auto;
-    background: none;
-    flex-direction: row;
-    gap: 1rem;
-    padding: 0;
-    right: 0;
-    text-transform: uppercase;
-  }
 
   .contact p {
     text-align: center;
@@ -1357,18 +1076,6 @@ dialog p {
 
 
 @media (min-width: 940px) {
-  .social-media-header {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 1rem;
-    padding-left: 4rem;
-  }
-
-  .social-media-header img {
-    width: 100%;
-    height: 40px;
-  }
 
   .hero .here-text {
     padding-left: 14rem;
