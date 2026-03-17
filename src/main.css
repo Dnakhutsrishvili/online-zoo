@@ -6,6 +6,12 @@
     --blue: #20113d;
     --pale-green: rgba(0, 160, 146, 0.5);
     --pale-green-hower: #05786E;
+    --black: #000;
+    --pale-green: rgba(0, 160, 146, 0.5);
+    --pale-green-solid: #00a092;
+    --pale-green-hover: #05786e;
+    --error-bg: rgba(217, 48, 37, 0.08);
+    --success: #05786e;
 }
 
 a:link,

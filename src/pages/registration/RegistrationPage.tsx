@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import { validateLogin, validateNameRegistration, validateEmailRegistration, validatePassword } from '../../utils';
+import styles from './registration.module.css';
+import SigninModal from '../../components/SigninModal';
 
 const API_URL_REGISTER = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/auth/register';
 
@@ -9,6 +11,7 @@ export default function RegistrationPage() {
   const navigate = useNavigate();
 
   const [login, setLogin]       = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [name, setName]         = useState('');
   const [email, setEmail]       = useState('');
   const [password, setPassword] = useState('');
@@ -74,17 +77,17 @@ export default function RegistrationPage() {
   return (
     <>
       <Navbar />
-      <main className="register-main">
-        <div className="register-card">
-          <div className="card-accent"></div>
-          <div className="card-body">
+      <main className={styles.register_main}>
+        <div className={styles.register_card}>
+          <div className={styles.card_accent}></div>
+          <div className={styles.card_body}>
             <h1 className="montserrat-heavy">Create Account</h1>
-            <p className="montserrat-regular subtitle">Join the Online Zoo community</p>
+            <p className={`montserrat-regular ${styles.subtitle}`}>Join the Online Zoo community</p>
 
-            <form id="register-form" noValidate onSubmit={handleSubmit}>
-              <div className={`field-group ${loginErr ? 'invalid' : ''}`} id="group-login">
+            <form id="register-form" className={styles.form} noValidate onSubmit={handleSubmit}>
+              <div className={`${styles.field_group} ${loginErr ? styles.invalid : ''}`} id="group-login">
                 <label className="montserrat-semi-bold" htmlFor="reg-login">Login</label>
-                <div className="input-wrap">
+                <div className={styles.input_wrap}>
                   <input
                     type="text"
                     id="reg-login"
@@ -95,13 +98,13 @@ export default function RegistrationPage() {
                     onBlur={() => setLoginErr(validateLogin(login))}
                     onFocus={() => setLoginErr('')}
                   />
-                  <span className="error-icon" aria-hidden="true">!</span>
+                  <span className={styles.error_icon} aria-hidden="true">!</span>
                 </div>
-                {loginErr && <span className="field-error montserrat-regular">{loginErr}</span>}
+                {loginErr && <span className={`${styles.field_error} montserrat-regular`}>{loginErr}</span>}
               </div>
-              <div className={`field-group ${nameErr ? 'invalid' : ''}`} id="group-name">
+              <div className={`${styles.field_group} ${nameErr ? styles.invalid : ''}`} id="group-name">
                 <label className="montserrat-semi-bold" htmlFor="reg-name">Name</label>
-                <div className="input-wrap">
+                <div className={styles.input_wrap}>
                   <input
                     type="text"
                     id="reg-name"
@@ -112,13 +115,13 @@ export default function RegistrationPage() {
                     onBlur={() => setNameErr(validateNameRegistration(name))}
                     onFocus={() => setNameErr('')}
                   />
-                  <span className="error-icon" aria-hidden="true">!</span>
+                  <span className={styles.error_icon} aria-hidden="true">!</span>
                 </div>
-                {nameErr && <span className="field-error montserrat-regular">{nameErr}</span>}
+                {nameErr && <span className={`${styles.field_error} montserrat-regular`}>{nameErr}</span>}
               </div>
-              <div className={`field-group ${emailErr ? 'invalid' : ''}`} id="group-email">
+              <div className={`${styles.field_group} ${emailErr ? styles.invalid : ''}`} id="group-email">
                 <label className="montserrat-semi-bold" htmlFor="reg-email">Email</label>
-                <div className="input-wrap">
+                <div className={styles.input_wrap}>
                   <input
                     type="email"
                     id="reg-email"
@@ -129,14 +132,13 @@ export default function RegistrationPage() {
                     onBlur={() => setEmailErr(validateEmailRegistration(email))}
                     onFocus={() => setEmailErr('')}
                   />
-                  <span className="error-icon" aria-hidden="true">!</span>
+                  <span className={styles.error_icon} aria-hidden="true">!</span>
                 </div>
-                {emailErr && <span className="field-error montserrat-regular">{emailErr}</span>}
+                {emailErr && <span className={`${styles.field_error} montserrat-regular`}>{emailErr}</span>}
               </div>
-
-              <div className={`field-group ${passwordErr ? 'invalid' : ''}`} id="group-password">
+              <div className={`${styles.field_group} ${passwordErr ? styles.invalid : ''}`} id="group-password">
                 <label className="montserrat-semi-bold" htmlFor="reg-password">Password</label>
-                <div className="input-wrap">
+                <div className={styles.input_wrap}>
                   <input
                     type={showPassword ? 'text' : 'password'}
                     id="reg-password"
@@ -150,20 +152,24 @@ export default function RegistrationPage() {
                     }}
                     onFocus={() => setPasswordErr('')}
                   />
-                  <button type="button" className="toggle-pw" onClick={() => setShowPassword(p => !p)}>
+                  <button 
+                    type="button" 
+                    className={styles.toggle_pw} 
+                    onClick={() => setShowPassword(p => !p)}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                       <circle cx="12" cy="12" r="3"/>
                     </svg>
                   </button>
-                  <span className="error-icon" aria-hidden="true">!</span>
+                  <span className={styles.error_icon} aria-hidden="true">!</span>
                 </div>
-                {passwordErr && <span className="field-error montserrat-regular">{passwordErr}</span>}
+                {passwordErr && <span className={`${styles.field_error} montserrat-regular`}>{passwordErr}</span>}
               </div>
-
-              <div className={`field-group ${confirmErr ? 'invalid' : ''}`} id="group-confirm">
+              <div className={`${styles.field_group} ${confirmErr ? styles.invalid : ''}`} id="group-confirm">
                 <label className="montserrat-semi-bold" htmlFor="reg-confirm">Confirm Password</label>
-                <div className="input-wrap">
+                <div className={styles.input_wrap}>
                   <input
                     type={showConfirm ? 'text' : 'password'}
                     id="reg-confirm"
@@ -174,20 +180,27 @@ export default function RegistrationPage() {
                     onBlur={() => setConfirmErr(validateConfirm(confirm))}
                     onFocus={() => setConfirmErr('')}
                   />
-                  <button type="button" className="toggle-pw" onClick={() => setShowConfirm(p => !p)}>
+                  <button 
+                    type="button" 
+                    className={styles.toggle_pw} 
+                    onClick={() => setShowConfirm(p => !p)}
+                    aria-label={showConfirm ? 'Hide confirm password' : 'Show confirm password'}
+                  >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
                       <circle cx="12" cy="12" r="3"/>
                     </svg>
                   </button>
-                  <span className="error-icon" aria-hidden="true">!</span>
+                  <span className={styles.error_icon} aria-hidden="true">!</span>
                 </div>
-                {confirmErr && <span className="field-error montserrat-regular">{confirmErr}</span>}
+                {confirmErr && <span className={`${styles.field_error} montserrat-regular`}>{confirmErr}</span>}
               </div>
-
-              {serverErr && <p className="server-error montserrat-regular">{serverErr}</p>}
-
-              <button type="submit" id="register-btn" className="montserrat-semi-bold" disabled={!isValid || loading}>
+              {serverErr && <p className={`${styles.server_error} montserrat-regular`}>{serverErr}</p>}
+              <button 
+                type="submit" 
+                className={`${styles.register_btn} montserrat-semi-bold`} 
+                disabled={!isValid || loading}
+              >
                 {loading ? 'Registering…' : 'REGISTER'}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -195,11 +208,15 @@ export default function RegistrationPage() {
               </button>
             </form>
 
-            <p className="montserrat-regular login-link">
-              Already have an account? <button className="link-btn" onClick={() => navigate('/')}>Sign in</button>
+            <p className={`montserrat-regular ${styles.login_link}`}>
+              Already have an account? <button className={styles.linkBtn} onClick={() => setIsModalOpen(true)}>Sign in</button>
             </p>
           </div>
         </div>
+            <SigninModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
       </main>
     </>
   );
