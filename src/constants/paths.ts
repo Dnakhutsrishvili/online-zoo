@@ -28,6 +28,16 @@ export const LOCAL_IMAGES: Record<number, string> = {
   27: "/assets/animal/animals/27_Sloth.jpg",
   28: "/assets/animal/animals/28_Cheetah.jpg",
 };
+export const ANIMAL_ICONS = [
+  '/assets/map/icons/animal-icon-1.png',
+  '/assets/map/icons/animal-icon-2.png',
+  '/assets/map/icons/animal-icon-3.png',
+  '/assets/map/icons/animal-icon-4.png',
+  '/assets/map/icons/animal-icon-5.png',
+  '/assets/map/icons/animal-icon-6.png',
+  '/assets/map/icons/animal-icon-7.png',
+  '/assets/map/icons/animal-icon-8.png',
+]
 
  export const LOCAL_ICONS: Record<string, string> = {
   "1":  "/assets/animal/animals/icons/1_Giant_Panda.svg",

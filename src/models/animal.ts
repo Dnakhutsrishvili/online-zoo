@@ -5,6 +5,10 @@ export type Pet = {
   description?: string;
   image?: string;
 };
+export interface IconPosition {
+  top: number
+  left: number
+}
  
 export type PetDetail = {
   id: string;
