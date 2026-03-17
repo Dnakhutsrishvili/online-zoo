@@ -100,7 +100,6 @@ export default function LandingPage() {
       <Navbar />
 
       <main>
-        {/* Hero */}
         <section className="hero">
           <div className="here-text">
             <h2 className="montserrat-heavy">WATCH YOUR FAVORITE ANIMAL ONLINE</h2>
@@ -112,8 +111,6 @@ export default function LandingPage() {
             </Link>
           </div>
         </section>
-
-        {/* Welcome */}
         <section className="welcome">
           <img src="/assets/landing/welcome-mobile.png" alt="banner" />
           <h2 className="montserrat-regular">Welcome to the Online Zoo!</h2>
@@ -127,7 +124,6 @@ export default function LandingPage() {
           </p>
         </section>
 
-        {/* Donation CTA */}
         <section className="donation">
           <div>
             <h2 className="montserrat-regular">Your donation makes a difference!</h2>
@@ -146,7 +142,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Pets carousel */}
         <section className="contact">
           <h2 className="montserrat-regular">MEET SOME OUR PETS</h2>
           <p className="montserrat-regular">
@@ -204,7 +199,6 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Pay and feed */}
         <section className="pay-and-feed">
           <h2 className="montserrat-regular">PAY AND FEED</h2>
           {[
@@ -284,7 +278,6 @@ export default function LandingPage() {
           <img id="linear-panda" src="/assets/landing/linear-panda.png" alt="Feedback banner" />
         </section>
 
-        {/* Care section */}
         <section className="care">
           <h2 className="montserrat-regular">care for the animals you love</h2>
           <p className="montserrat-regular">You can help to look after the animals you love with your gift today</p>
