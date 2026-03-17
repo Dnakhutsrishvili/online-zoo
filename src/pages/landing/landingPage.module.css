@@ -1,0 +1,1043 @@
+#left img {
+    transform: rotate(180deg);
+    height: 24px;
+    width: 24px;
+}
+
+#testimonial_right img {
+    height: 24px;
+    width: 24px;
+}
+
+#testimonial_left img {
+    transform: rotate(180deg);
+    height: 24px;
+    width: 24px;
+}
+
+#right img {
+    height: 24px;
+    width: 24px;
+}
+
+.slider> :not(:first-child) {
+    display: none;
+}
+
+.arrow_btn {
+    height: 60px;
+    width: 60px;
+    margin-top: 4rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.arrow_btn:hover {
+    opacity: 0.8;
+}
+
+.hero {
+    background-image: url("../../assets/landing/panda-landing-mobile.png");
+    display: block;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100% 38%;
+    padding-bottom: 15.5rem;
+}
+
+.hero_text {
+    padding-top: 1.5rem;
+    padding-left: 0.5rem;
+    text-align: left;
+    width: 95%;
+}
+
+.hero h2 {
+    font-size: 2.3rem;
+    color: var(--pale-green-hover);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+}
+
+.hero_text p {
+    color: var(--black);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.06em;
+}
+
+.hero_text a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 18px;
+    height: 45px;
+    text-align: center;
+    background-color: var(--main-color);
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+    gap: 0.5rem;
+}
+
+.hero_text a:hover {
+    background-color: var(--pale-green-hover);
+}
+
+.hero_text a img {
+    width: 20px;
+}
+
+.welcome {
+    padding-top: 4rem;
+    text-align: center;
+}
+
+.welcome img {
+    width: 100%;
+    height: 212px;
+    margin-bottom: 2rem;
+}
+
+.welcome h2 {
+    font-size: 1.5rem;
+    color: var(--pale-green);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+    text-align: left;
+    padding-left: 0.5rem;
+}
+
+.welcome p {
+    color: var(--black);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.06em;
+    text-align: left;
+    padding-left: 0.5rem;
+}
+
+.adjust {
+    margin-top: 1.5rem;
+}
+
+.donation {
+    padding: 2rem 0.5rem;
+    background-color: var(--blue);
+    text-align: center;
+}
+
+.donation h2 {
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+}
+
+.donation p {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.06em;
+}
+
+.donation h3 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+}
+
+.donation_form {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.donation_form input {
+    padding: 0.5rem;
+    padding-left: 1.5rem;
+    width: 92%;
+    height: 45px;
+    border: 1px solid var(--white);
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: "Montserrat", sans-serif;
+}
+
+.donation_form input::placeholder {
+    color: var(--white);
+    opacity: 1;
+}
+
+.donation_form input:focus {
+    border-color: var(--main-color);
+}
+
+.donation_form button {
+    position: absolute;
+    right: 10%;
+    padding: 0.5rem 1rem;
+    height: 42px;
+    width: 59px;
+    background-color: var(--main-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.donation_form button:hover {
+    background-color: var(--pale-green-hover);
+}
+
+.donation_form button img {
+    margin-left: 10px;
+    height: 24px;
+    width: 18px;
+}
+
+.animal_card {
+    background-color: var(--blue);
+    border-radius: 20px;
+    margin-top: 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animal_name {
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    background-color: transparent;
+}
+
+.animal_card h3 {
+    position: relative;
+    font-size: 1.6rem;
+    color: var(--white);
+    background-color: var(--blue);
+    display: inline-block;
+    width: 118px;
+    margin-bottom: 0.5rem;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.animal_card img {
+    width: 100%;
+    height: 333px;
+    margin-bottom: 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    object-fit: cover;
+}
+
+.animal_card h4 {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.animal_card p {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    line-height: 1.5;
+}
+
+.animal_card a {
+    display: flex;
+    padding: 0.5rem 1rem;
+    background-color: var(--blue);
+    color: var(--main-color);
+    text-decoration: none;
+    justify-content: center;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    transition: all 0.2s;
+    gap: 0.5rem;
+}
+
+.animal_card a:hover {
+    background-color: rgba(0, 160, 146, 0.1);
+}
+
+.animal_card a img {
+    height: 20px;
+    width: 27px;
+}
+
+.contact {
+    padding: 2rem 0.5rem;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 1.5rem;
+    color: var(--pale-green);
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.contact p {
+    font-size: 1rem;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+}
+
+.animals_wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 1rem;
+    position: relative;
+}
+
+.pc_view {
+    display: none;
+    grid-template-rows: repeat(2, 2fr);
+    grid-auto-flow: column;
+    gap: 1rem;
+    overflow-x: auto;
+    width: 100%;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+}
+
+.remove {
+    display: none;
+}
+
+.pc_btn {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: var(--black);
+    margin-top: 3rem;
+    border: 1px solid var(--black);
+    background: none;
+    cursor: pointer;
+    width: 30%;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 6rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.pc_btn:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.pc_btn img {
+    width: 18px;
+    height: 18px;
+}
+
+.pay_and_feed {
+    padding-top: 2rem;
+    text-align: center;
+    background-color: var(--blue);
+}
+
+.pay_and_feed h2 {
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.pay_and_feed p {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.number_line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding-left: 0.5rem;
+}
+
+.number_line h3 {
+    font-size: 1.6rem;
+    color: var(--white);
+    letter-spacing: 0.04em;
+}
+
+.number_line hr {
+    flex: 1;
+    border: none;
+    height: 1px;
+    background-color: var(--white);
+}
+
+.feed_icon {
+    width: 80px;
+    height: auto;
+}
+
+.pay_and_feed img {
+    width: 100%;
+    height: 200px;
+    margin-top: 1rem;
+    object-fit: cover;
+}
+
+.pc_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.donate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 18px;
+    height: 45px;
+    text-align: center;
+    background-color: var(--main-color);
+    text-decoration: none;
+    margin-left: 4%;
+    margin-right: 4%;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+    gap: 0.5rem;
+    font-family: "Montserrat", sans-serif;
+}
+
+.donate:hover {
+    background-color: var(--pale-green-hover);
+}
+
+.donate img {
+    width: 18px;
+    height: 18px;
+}
+
+.testimonial_section {
+    text-align: center;
+    padding: 0.2rem;
+}
+
+.slider_wrapper {
+    overflow: hidden;
+}
+
+.slider {
+    overflow: hidden;
+    margin: 2rem auto;
+}
+
+.slides {
+    display: flex;
+    width: 400%;
+    transition: 0.5s;
+}
+
+.slide {
+    width: 100%;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+}
+
+.slide img {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+}
+
+.slide h4 {
+    font-size: 1.6rem;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+}
+
+.slide h5 {
+    font-size: 1.1rem;
+    color: var(--black);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+}
+
+.slide p {
+    font-size: 1.1rem;
+    color: var(--black);
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+}
+
+.buttons {
+    margin-top: 1rem;
+}
+
+.buttons label {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+    border: 1px solid var(--white);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.care {
+    padding: 2rem 0.5rem;
+    text-align: center;
+}
+
+.care h2 {
+    font-size: 1.62rem;
+    color: var(--pale-green);
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    letter-spacing: 0.03em;
+}
+
+.care p {
+    color: var(--black);
+    font-size: 1.12rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.animal_section {
+    text-align: center;
+    padding: 0.2rem;
+}
+
+.animal_section .slider .slides .slide {
+    background-color: var(--blue);
+    padding: 0;
+}
+
+.animal_section .slider .slides .slide img {
+    height: 365px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin: 0;
+    object-fit: cover;
+}
+
+.animal_section .slider .slides .slide p {
+    color: var(--white);
+    margin: 0.5rem;
+    padding: 0 1rem;
+}
+
+.animal_section .slider .slides .slide button {
+    text-decoration: none;
+    margin: 1.5rem;
+    color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    gap: 0.5rem;
+}
+
+.buttons_animals {
+    margin-top: 1rem;
+}
+
+.buttons_animals label {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+    border: 1px solid var(--blue);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#slide1:checked~.slider .slides {
+    transform: translateX(0%);
+}
+
+#slide2:checked~.slider .slides {
+    transform: translateX(-25%);
+}
+
+#slide3:checked~.slider .slides {
+    transform: translateX(-50%);
+}
+
+#slide4:checked~.slider .slides {
+    transform: translateX(-75%);
+}
+
+#animal1:checked~.slider .slides {
+    transform: translateX(0%);
+}
+
+#animal2:checked~.slider .slides {
+    transform: translateX(-25%);
+}
+
+#animal3:checked~.slider .slides {
+    transform: translateX(-50%);
+}
+
+#animal4:checked~.slider .slides {
+    transform: translateX(-75%);
+}
+
+#slide1:checked~.buttons label[for="slide1"],
+#slide2:checked~.buttons label[for="slide2"],
+#slide3:checked~.buttons label[for="slide3"],
+#slide4:checked~.buttons label[for="slide4"] {
+    background-color: var(--white);
+}
+
+#animal1:checked~.buttons_animals label[for="animal1"],
+#animal2:checked~.buttons_animals label[for="animal2"],
+#animal3:checked~.buttons_animals label[for="animal3"],
+#animal4:checked~.buttons_animals label[for="animal4"] {
+    background-color: var(--blue);
+}
+
+.linear_panda {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.lemur {
+    width: 100%;
+    height: 189px;
+    margin-top: 1rem;
+}
+
+.coala_pc {
+    display: none;
+    width: 930px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section_error {
+    color: #888;
+    font-size: 14px;
+    padding: 24px 0;
+    text-align: center;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -400px 0;
+    }
+
+    100% {
+        background-position: 400px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+    background-size: 800px 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: 6px;
+}
+
+.pets_skeleton {
+    display: flex;
+    gap: 16px;
+    padding: 8px 0;
+}
+
+.pets_skeleton_card {
+    flex: 0 0 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pets_skeleton_card .sk_title {
+    height: 18px;
+    width: 60%;
+}
+
+.pets_skeleton_card .sk_image {
+    height: 160px;
+    width: 100%;
+}
+
+.pets_skeleton_card .sk_sub {
+    height: 14px;
+    width: 45%;
+}
+
+.pets_skeleton_card .sk_text {
+    height: 11px;
+    width: 100%;
+}
+
+.pets_skeleton_card .sk_text.short {
+    width: 75%;
+}
+
+.pets_skeleton_card .sk_link {
+    height: 13px;
+    width: 40%;
+    margin-top: 4px;
+}
+
+.testimonials_skeleton {
+    display: flex;
+    gap: 16px;
+    padding: 8px 0;
+    justify-content: center;
+}
+
+.testimonials_skeleton_card {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.testimonials_skeleton_card .sk_avatar {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+}
+
+.testimonials_skeleton_card .sk_date {
+    height: 13px;
+    width: 55%;
+}
+
+.testimonials_skeleton_card .sk_line {
+    height: 11px;
+    width: 100%;
+}
+
+.testimonials_skeleton_card .sk_line.short {
+    width: 70%;
+}
+
+.testimonials_skeleton_card .sk_name {
+    height: 14px;
+    width: 40%;
+    margin-top: 4px;
+}
+
+.donation_notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    z-index: 9999;
+    animation: slideInRight 0.3s ease;
+    max-width: 320px;
+}
+
+.donation_notification.success {
+    background-color: var(--pale-green-solid);
+    color: var(--white);
+}
+
+.donation_notification.error {
+    background-color: var(--error);
+    color: var(--white);
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (min-width: 640px) {
+    .slider> :not(:first-child) {
+        display: block;
+    }
+
+    .contact p {
+        text-align: center;
+        width: 80%;
+        padding-left: 20%;
+    }
+
+    .hero {
+        background-position: top;
+        background-size: 100% 100%;
+        background-position: center;
+        padding-bottom: 25rem;
+    }
+
+    .hero_text a {
+        width: 240px;
+    }
+
+    .hero_text p {
+        width: 300px;
+    }
+
+    .welcome {
+        padding-top: 0;
+    }
+}
+
+@media (min-width: 940px) {
+    .hero_text {
+        padding-left: 14rem;
+        padding-top: 10rem;
+    }
+
+    .hero h2 {
+        color: #05786E;
+        font-size: 3.2rem;
+        width: 890px;
+    }
+
+    .welcome {
+        padding-left: 4rem;
+    }
+
+    .welcome img {
+        width: 660px;
+        height: auto;
+        padding-top: 4rem;
+        margin-left: -18rem;
+    }
+
+    .welcome h2 {
+        width: 660px;
+    }
+
+    .welcome p {
+        width: 660px;
+    }
+
+    .donation {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .donation div {
+        width: 40%;
+    }
+
+    .animal_card {
+        width: 455px;
+    }
+
+    .pc_view {
+        display: grid;
+    }
+
+    .remove {
+        display: none;
+    }
+
+    .pc_btn {
+        display: flex;
+    }
+
+    .pc_flex {
+        flex-direction: row;
+    }
+
+    .pc_flex img {
+        height: 360px;
+        width: 100%;
+        margin-bottom: 6rem;
+    }
+
+    .donate {
+        width: 30%;
+    }
+
+    .slides {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 50px;
+        width: 120%;
+    }
+
+    .slide {
+        height: 100%;
+        width: 110%;
+    }
+
+    .pay_and_feed h2 {
+        text-align: left;
+        margin-left: 2rem;
+    }
+
+    .pay_and_feed p {
+        text-align: left;
+        margin-left: 2rem;
+        width: 70%;
+    }
+
+    .buttons {
+        display: none;
+    }
+
+    .linear_panda {
+        display: none;
+    }
+
+    .pay_and_feed {
+        padding-bottom: 4rem;
+    }
+
+    .care h2 {
+        font-size: 3.2rem;
+        color: #05786E;
+        text-transform: uppercase;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .coala_pc {
+        display: flex;
+    }
+
+    .buttons_animals {
+        display: none;
+    }
+
+    .lemur {
+        height: 668px;
+    }
+
+    .testimonial_section {
+        width: 100%;
+        margin: 2rem auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .slider_wrapper {
+        overflow: hidden;
+    }
+
+    .slider {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        grid-auto-flow: column;
+        grid-auto-columns: 430px;
+        column-gap: 4rem;
+        row-gap: 1rem;
+        overflow-x: auto;
+        max-width: 90%;
+        margin-left: 20%;
+    }
+
+    .slider::-webkit-scrollbar {
+        display: none;
+    }
+
+    .slide {
+        flex: 0 0 33%;
+        box-sizing: border-box;
+        padding: 1rem;
+        margin-right: 1rem;
+        background: #f5f5f5;
+        border-radius: 10px;
+    }
+
+    .slide img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .buttons {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .buttons label {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin: 0 4px;
+        border: none;
+        background: #ccc;
+        cursor: pointer;
+    }
+
+    .buttons label.active {
+        background: #333;
+    }
+}
