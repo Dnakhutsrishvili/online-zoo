@@ -1,8 +1,8 @@
-section {
+.animalPage {
     text-align: center;
 }
 
-section h2 {
+.animalPage h2 {
     font-size: 1.4rem;
     margin-bottom: 2rem;
     margin-top: 2rem;
@@ -11,13 +11,13 @@ section h2 {
     color: #00A092;
 }
 
-section a img {
+.animalPage a img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
-section h3 {
+.animalPage h3 {
     font-size: 1.2rem;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
@@ -477,7 +477,7 @@ section h3 {
 }
 
 @media (min-width: 940px) {
-    section a img {
+    .animalPage a img {
         width: 100%;
         height: 500px;
         object-fit: cover;

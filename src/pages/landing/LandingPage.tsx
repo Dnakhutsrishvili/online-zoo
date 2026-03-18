@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { useDonation } from '../../context/DonationContext';
 import { LOCAL_IMAGES } from '../../constants/paths';
-import styles from './LandingPage.module.css';
+import styles from './landingPage.module.css';
 
 const API_URL_ANIMAL = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets';
 const API_URL_FEEDBACK = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/feedback';
@@ -29,6 +29,7 @@ export default function LandingPage() {
   const { openDonation } = useDonation();
 
   const [pets, setPets] = useState<Pet[]>([]);
+  const [petError, setPetError] = useState<string>('somthing went wrong, please refresh the page');
   const [feedback, setFeedback] = useState<Feedback[]>([]);
   const [petsLoading, setPetsLoading] = useState(true);
   const [feedbackLoading, setFeedbackLoading] = useState(true);
@@ -45,9 +46,10 @@ export default function LandingPage() {
           image: LOCAL_IMAGES[pet.id] || pet?.image || '/assets/landing/coala-mobile.png',
         }));
         setPets(mapped);
-      })
-      .catch(console.error)
-      .finally(() => setPetsLoading(false));
+      }).catch((err) => {
+  console.error('Pets API Error:', err);
+  setPetError(err);
+}).finally(() => setPetsLoading(false));
   }, []);
 
   useEffect(() => {
@@ -56,9 +58,9 @@ export default function LandingPage() {
       .then(data => {
         const raw = Array.isArray(data.data) ? data.data : Array.isArray(data) ? data : [];
         setFeedback(raw as Feedback[]);
-      })
-      .catch(console.error)
-      .finally(() => setFeedbackLoading(false));
+      }).catch((error) => {
+  console.error(error);
+}).finally(() => setFeedbackLoading(false));
   }, []);
 
   function scrollCarousel(dir: 'left' | 'right') {
@@ -139,49 +141,46 @@ export default function LandingPage() {
             Do you have a special place in your heart for animals? Who are your favorites? Perhaps you would like to donate to special ones or all our pets? We think it is important for you to choose how your donation is used.
           </p>
           <div>
-            <div className={`${styles.animal_card} ${styles.remove}`}>
-              <div className={styles.animal_name}><h3 className="montserrat-regular">Liz</h3></div>
-              <img src="/assets/landing/coala-mobile.png" alt="Koala" />
-              <h4 className="montserrat-regular">Australian Koala</h4>
-              <p className="montserrat-regular">The elevated walkways bring you to eye level with the koalas as they perch in their forest.</p>
-              <Link to="/animal" className="montserrat-semi-bold">
-                VIEW LIVE CAM <img src="/assets/icons/arrow.png" alt="Go to destination" />
-              </Link>
-            </div>
             <div className={styles.animals_wrapper}>
-              <button id="left" className={styles.arrow_btn} onClick={() => scrollCarousel('left')}>
+              <div className={styles.btn_wrapper}>
+              <button className={`${styles.arrow_btn} ${styles.left}`} onClick={() => scrollCarousel('left')}>
                 <img src="/assets/icons/arrow-dark.png" alt="arrow" />
               </button>
-              <button id="right" className={styles.arrow_btn} onClick={() => scrollCarousel('right')}>
+              <button className={`${styles.arrow_btn} ${styles.right}`}onClick={() => scrollCarousel('right')}>
                 <img src="/assets/icons/arrow-dark.png" alt="arrow" />
               </button>
+              </div>
               <div className={styles.pc_view} id="pc-view" ref={carouselRef}>
                 {petsLoading ? (
-                  <div id="pets-skeleton" className={styles.pets_skeleton}>
-                    {[...Array(4)].map((_, i) => (
-                      <div key={i} className={styles.pets_skeleton_card}>
-                        <div className={`${styles.skeleton} ${styles.sk_title}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_image}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_sub}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_text}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_text} ${styles.short}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_link}`}></div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  pets.map(animal => (
-                    <div key={animal.id} className={styles.animal_card}>
-                      <div><h3 className="montserrat-regular">{animal.name}</h3></div>
-                      <img src={animal.image} alt={animal.name} />
-                      <h4 className="montserrat-regular">{animal.commonName}</h4>
-                      <p className="montserrat-regular">{animal.description}</p>
-                      <Link to="/animal" className="montserrat-semi-bold">
-                        VIEW LIVE CAM <img src="/assets/icons/arrow.png" alt="Go to destination" />
-                      </Link>
-                    </div>
-                  ))
-                )}
+  <div id="pets-skeleton" className={styles.pets_skeleton}>
+    {[...Array(4)].map((_, i) => (
+      <div key={i} className={styles.pets_skeleton_card}>
+        <div className={`${styles.skeleton} ${styles.sk_title}`}></div>
+        <div className={`${styles.skeleton} ${styles.sk_image}`}></div>
+        <div className={`${styles.skeleton} ${styles.sk_sub}`}></div>
+        <div className={`${styles.skeleton} ${styles.sk_text}`}></div>
+        <div className={`${styles.skeleton} ${styles.sk_text} ${styles.short}`}></div>
+        <div className={`${styles.skeleton} ${styles.sk_link}`}></div>
+      </div>
+    ))}
+  </div>
+) : pets.length==0  ? (
+  <div className={styles.error}>
+    <p className="montserrat-regular">{petError}</p>
+  </div>
+) : (
+  pets.map(animal => (
+    <div key={animal.id} className={styles.animal_card}>
+      <div><h3 className="montserrat-regular">{animal.name}</h3></div>
+      <img src={animal.image} alt={animal.name} />
+      <h4 className="montserrat-regular">{animal.commonName}</h4>
+      <p className="montserrat-regular">{animal.description}</p>
+      <Link to="/animal" className="montserrat-semi-bold">
+        VIEW LIVE CAM <img src="/assets/icons/arrow.png" alt="Go to destination" />
+      </Link>
+    </div>
+  ))
+)}
               </div>
             </div>
             <button className={`montserrat-semi-bold ${styles.pc_btn}`}>
@@ -203,7 +202,7 @@ export default function LandingPage() {
                 <hr />
               </div>
               <div className={styles.pc_flex}>
-                <img src={item.img} alt={item.title} />
+                <img className={styles.banner} src={item.img} alt={item.title} />
                 <div>
                   <img className={styles.feed_icon} src={item.icon} alt={item.title} />
                   <h2 className="montserrat-regular">{item.title}</h2>
@@ -239,8 +238,7 @@ export default function LandingPage() {
                   </div>
                 ) : (
                   feedback.map((item, i) => (
-                    <div key={i} className={styles.slide}>
-                      <img src="/assets/icons/testemonial.png" alt={"Testimonial " + item.name} />
+<div key={i} className={`${styles.slide} ${i !== 0 ? styles.hide_mobile : ''}`}>                      <img src="/assets/icons/testemonial.png" alt={"Testimonial " + item.name} />
                       <h4>{item.city}, {item.month} {item.year}</h4>
                       <p>{item.text}</p>
                       <h5>{item.name}</h5>

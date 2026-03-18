@@ -149,7 +149,7 @@ export default function AnimalPage() {
 
           {petDetail && !contentLoading && (
             <>
-              <section id="pet-section" className={`${styles.visible}`}>
+              <section id="pet-section" className={`${styles.visible} ${styles.animalPage}`}>
                 <h2 className="montserrat-semi-bold">
                   live {petDetail.commonName} cams
                 </h2>
@@ -207,7 +207,7 @@ export default function AnimalPage() {
                 </p>
               </div>
 
-              <section className={`${styles.facts} ${styles.visible}`} id="pet-facts">
+              <section className={`${styles.facts} ${styles.visible} ${styles.animalPage}`} id="pet-facts">
                 <div className={styles.facts_split}>
                   <img 
                     className={styles.baby_image}
