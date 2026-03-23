@@ -238,7 +238,8 @@ export default function LandingPage() {
                   </div>
                 ) : (
                   feedback.map((item, i) => (
-<div key={i} className={`${styles.slide} ${i !== 0 ? styles.hide_mobile : ''}`}>                      <img src="/assets/icons/testemonial.png" alt={"Testimonial " + item.name} />
+<div key={i} className={`${i !== 0 ? styles.slide : styles.slide}`}>
+  <img src="/assets/icons/testemonial.png" alt={"Testimonial " + item.name} />
                       <h4>{item.city}, {item.month} {item.year}</h4>
                       <p>{item.text}</p>
                       <h5>{item.name}</h5>
@@ -247,15 +248,15 @@ export default function LandingPage() {
                 )}
               </div>
             </div>
-            <div className={styles.buttons} id="slider-buttons"></div>
+            <div className={styles.btn_wrapper}>
+          <button className={styles.arrow_btn} onClick={() => scrollTestimonial('left')}>
+            <img className={styles.leftArrow} src="/assets/icons/image.png" alt="arrow" />
+          </button>
+          <button className={styles.arrow_btn} onClick={() => scrollTestimonial('right')}>
+            <img src="/assets/icons/image.png" alt="arrow" />
+          </button>
+            </div>
           </div>
-
-          <button id="testimonial-left" className={styles.arrow_btn} onClick={() => scrollTestimonial('left')}>
-            <img src="/assets/icons/arrow-dark.png" alt="arrow" />
-          </button>
-          <button id="testimonial-right" className={styles.arrow_btn} onClick={() => scrollTestimonial('right')}>
-            <img src="/assets/icons/arrow-dark.png" alt="arrow" />
-          </button>
 
           <button
             className={`montserrat-semi-bold ${styles.donate}`}

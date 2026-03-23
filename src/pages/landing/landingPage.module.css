@@ -4,6 +4,11 @@
     width: 24px;
 }
 
+.leftArrow {
+    transform: rotate(180deg);
+
+}
+
 .btn_wrapper {
     display: flex;
     justify-content: center;
@@ -37,29 +42,11 @@
     scroll-snap-align: start;
 }
 
-.arrow_btn {
-    display: none;
-}
-
-#testimonial_right img {
-    height: 24px;
-    width: 24px;
-}
-
-#testimonial_left img {
-    transform: rotate(180deg);
-    height: 24px;
-    width: 24px;
-}
-
 .right img {
     height: 24px;
     width: 24px;
 }
 
-.slider> :not(:first-child) {
-    display: none;
-}
 
 .arrow_btn {
     height: 60px;
@@ -74,9 +61,14 @@
     transition: opacity 0.2s;
 }
 
+.arrow_btn img {
+    height: 30px;
+}
+
 .arrow_btn:hover {
     opacity: 0.8;
 }
+
 
 .hero {
     background-image: url("../../assets/landing/panda-landing-mobile.png");
@@ -345,7 +337,6 @@
 
 .contact p {
     font-size: 1rem;
-    color: var(--black);
     margin-bottom: 1.5rem;
 }
 
@@ -861,6 +852,10 @@ input[type="radio"] {
     }
 }
 
+.banner {
+    width: 100%;
+}
+
 @media (min-width: 640px) {
 
     .hide_mobile {
@@ -902,7 +897,6 @@ input[type="radio"] {
     .hero h2 {
         color: #05786E;
         font-size: 3.2rem;
-        width: 890px;
     }
 
     .welcome {
@@ -991,8 +985,9 @@ input[type="radio"] {
     }
 
     .buttons {
-        display: none;
+        display: block;
     }
+
 
     .linear_panda {
         display: none;
