@@ -8,8 +8,7 @@ import { Pet, PetDetail } from '../../models/animal';
 import styles from './animalpage.module.css';
 
 const API_PETS = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets';
-const API_PET_BY_ID = (id: string) =>
-  `https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets/${id}`;
+const API_PET_BY_ID = (id: string) => `https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets/${id}`;
 
 const ITEMS_COLLAPSED = 4;
 const FALLBACK_IMG = '/assets/landing/coala-mobile.png';
@@ -97,7 +96,7 @@ export default function AnimalPage() {
         <aside className={styles.zoo_sidebar} id="zoo-sidebar">
           {sidebarLoading ? (
             <div className={styles.sidebar_loader} id="sidebar-loader">
-              <div className={styles.sidebar_spinner}></div>
+              <div className={styles.sidebar_spinner} />
             </div>
           ) : sidebarError ? (
             <p className={`${styles.sidebar_error} ${sidebarError ? styles.visible : ''}`}>
@@ -106,7 +105,7 @@ export default function AnimalPage() {
           ) : (
             <>
               <ul className={styles.sidebar_list} id="sidebar-list">
-                {visiblePets.map(pet => (
+                {visiblePets.map((pet) => (
                   <li
                     key={pet.id}
                     className={`${styles.sidebar_item} ${activePetId === pet.id ? styles.active : ''}`}
@@ -126,7 +125,7 @@ export default function AnimalPage() {
                 <button
                   id="sidebar-toggle"
                   className={styles.sidebar_arrow}
-                  onClick={() => setIsExpanded(e => !e)}
+                  onClick={() => setIsExpanded((e) => !e)}
                 >
                   <img
                     src="/assets/icons/arrow.png"
@@ -142,7 +141,7 @@ export default function AnimalPage() {
         <main id="zoo-main" className={styles.zoo_main_content}>
           {contentLoading && (
             <div className={styles.content_overlay} id="content-overlay">
-              <div className={styles.overlay_spinner}></div>
+              <div className={styles.overlay_spinner} />
               <span className="montserrat-regular">Loading...</span>
             </div>
           )}
@@ -151,7 +150,11 @@ export default function AnimalPage() {
             <>
               <section id="pet-section" className={`${styles.visible} ${styles.animalPage}`}>
                 <h2 className="montserrat-semi-bold">
-                  live {petDetail.commonName} cams
+                  live
+                  {' '}
+                  {petDetail.commonName}
+                  {' '}
+                  cams
                 </h2>
                 <a href="#">
                   <img className={styles.petHero} src={hero} alt={petDetail.name} />
@@ -170,7 +173,7 @@ export default function AnimalPage() {
                   </a>
                 </div>
 
-                <button 
+                <button
                   className={`montserrat-regular ${styles.donate}`}
                   onClick={openDonation}
                 >
@@ -180,17 +183,21 @@ export default function AnimalPage() {
 
                 <div className={styles.donation}>
                   <h2 className="montserrat-regular">
-                    make the {petDetail.commonName || petDetail.name} donation!
+                    make the
+                    {' '}
+                    {petDetail.commonName || petDetail.name}
+                    {' '}
+                    donation!
                   </h2>
                   <p className="montserrat-regular">{petDetail.description}</p>
 
                   <h3 className="montserrat-semi-bold">Quick Donate</h3>
                   <div className={styles.donation_form}>
-                    <input 
-                      type="number" 
+                    <input
+                      type="number"
                       placeholder="$ DONATION AMOUNT"
                     />
-                    <button 
+                    <button
                       className={styles.donate}
                       onClick={openDonation}
                     >
@@ -209,10 +216,10 @@ export default function AnimalPage() {
 
               <section className={`${styles.facts} ${styles.visible} ${styles.animalPage}`} id="pet-facts">
                 <div className={styles.facts_split}>
-                  <img 
+                  <img
                     className={styles.baby_image}
-                    src={hero} 
-                    alt={petDetail.name} 
+                    src={hero}
+                    alt={petDetail.name}
                   />
                   <div className={styles.info_render}>
                     <div>
@@ -248,7 +255,7 @@ export default function AnimalPage() {
                   </div>
                 </div>
 
-                <Link 
+                <Link
                   to="/map"
                   className={`montserrat-semi-bold ${styles.view}`}
                 >

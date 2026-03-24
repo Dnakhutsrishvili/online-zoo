@@ -39,8 +39,8 @@ export default function LandingPage() {
 
   useEffect(() => {
     fetch(API_URL_ANIMAL)
-      .then(r => r.json())
-      .then(data => {
+      .then((r) => r.json())
+      .then((data) => {
         const raw = Array.isArray(data.data) ? data.data : Array.isArray(data) ? data : [];
         const mapped = raw.map((pet: any) => ({
           ...pet,
@@ -50,18 +50,20 @@ export default function LandingPage() {
       }).catch((err) => {
   console.error('Pets API Error:', err);
   setPetError(err);
-}).finally(() => setPetsLoading(false));
+})
+.finally(() => setPetsLoading(false));
   }, []);
 
   useEffect(() => {
     fetch(API_URL_FEEDBACK)
-      .then(r => r.json())
-      .then(data => {
+      .then((r) => r.json())
+      .then((data) => {
         const raw = Array.isArray(data.data) ? data.data : Array.isArray(data) ? data : [];
         setFeedback(raw as Feedback[]);
       }).catch((error) => {
   console.error(error);
-}).finally(() => setFeedbackLoading(false));
+})
+.finally(() => setFeedbackLoading(false));
   }, []);
 
   function scrollCarousel(dir: 'left' | 'right') {
@@ -100,7 +102,9 @@ export default function LandingPage() {
               Explore the exciting and mysterious world of wild animals in a natural setting without leaving your home.
             </p>
             <Link to="/animal" className="montserrat-semi-bold">
-              VIEW LIVE CAM <img src="/assets/icons/image.png" alt="Go to destination" />
+              VIEW LIVE CAM
+              {' '}
+              <img src="/assets/icons/image.png" alt="Go to destination" />
             </Link>
           </div>
         </section>
@@ -144,40 +148,42 @@ export default function LandingPage() {
           <div>
             <div className={styles.animals_wrapper}>
               <div className={styles.btn_wrapper}>
-              <button className={`${styles.arrow_btn} ${styles.left}`} onClick={() => scrollCarousel('left')}>
-                <img src="/assets/icons/arrow-dark.png" alt="arrow" />
-              </button>
-              <button className={`${styles.arrow_btn} ${styles.right}`}onClick={() => scrollCarousel('right')}>
-                <img src="/assets/icons/arrow-dark.png" alt="arrow" />
-              </button>
+                <button className={`${styles.arrow_btn} ${styles.left}`} onClick={() => scrollCarousel('left')}>
+                  <img src="/assets/icons/arrow-dark.png" alt="arrow" />
+                </button>
+                <button className={`${styles.arrow_btn} ${styles.right}`} onClick={() => scrollCarousel('right')}>
+                  <img src="/assets/icons/arrow-dark.png" alt="arrow" />
+                </button>
               </div>
               <div className={styles.pc_view} id="pc-view" ref={carouselRef}>
                 {petsLoading ? (
-  <div id="pets-skeleton" className={styles.pets_skeleton}>
-    {[...Array(4)].map((_, i) => (
-      <div key={i} className={styles.pets_skeleton_card}>
-        <div className={`${styles.skeleton} ${styles.sk_title}`}></div>
-        <div className={`${styles.skeleton} ${styles.sk_image}`}></div>
-        <div className={`${styles.skeleton} ${styles.sk_sub}`}></div>
-        <div className={`${styles.skeleton} ${styles.sk_text}`}></div>
-        <div className={`${styles.skeleton} ${styles.sk_text} ${styles.short}`}></div>
-        <div className={`${styles.skeleton} ${styles.sk_link}`}></div>
-      </div>
+                  <div id="pets-skeleton" className={styles.pets_skeleton}>
+                    {[...Array(4)].map((_, i) => (
+                      <div key={i} className={styles.pets_skeleton_card}>
+                        <div className={`${styles.skeleton} ${styles.sk_title}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_image}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_sub}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_text}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_text} ${styles.short}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_link}`} />
+                      </div>
     ))}
-  </div>
-) : pets.length==0  ? (
+                  </div>
+) : pets.length==0 ? (
   <div className={styles.error}>
     <p className="montserrat-regular">{petError}</p>
   </div>
 ) : (
-  pets.map(animal => (
+  pets.map((animal) => (
     <div key={animal.id} className={styles.animal_card}>
       <div><h3 className="montserrat-regular">{animal.name}</h3></div>
       <img src={animal.image} alt={animal.name} />
       <h4 className="montserrat-regular">{animal.commonName}</h4>
       <p className="montserrat-regular">{animal.description}</p>
       <Link to="/animal" className="montserrat-semi-bold">
-        VIEW LIVE CAM <img src="/assets/icons/arrow.png" alt="Go to destination" />
+        VIEW LIVE CAM
+        {' '}
+        <img src="/assets/icons/arrow.png" alt="Go to destination" />
       </Link>
     </div>
   ))
@@ -185,7 +191,9 @@ export default function LandingPage() {
               </div>
             </div>
             <button className={`montserrat-semi-bold ${styles.pc_btn}`}>
-              choose your favorite <img src="/assets/icons/arrow-dark.png" alt="Go to destination" />
+              choose your favorite
+              {' '}
+              <img src="/assets/icons/arrow-dark.png" alt="Go to destination" />
             </button>
           </div>
         </section>
@@ -193,10 +201,16 @@ export default function LandingPage() {
         <section className={styles.pay_and_feed}>
           <h2 className="montserrat-regular">PAY AND FEED</h2>
           {[
-            { num: '01', img: '/assets/landing/chimp-mobile.png', icon: '/assets/icons/donation.png', title: 'Your donation has an impact', text: 'Providing our animals with high-quality nutritious diets is just one element of animal care at our Zoo. We do all the best so that our animals can eat food similar to what they might find in their natural habitats while making sure they get the right mix of nutrients, proteins, and vitamins to be happy and healthy. Please help us provide nutritious food for our animals by donating.' },
-            { num: '02', img: '/assets/landing/banana-mobile.png', icon: '/assets/icons/pay-icon.png', title: 'Make a donation', text: 'You can donate through your credit card without any fees. It is easy and safe. We do not keep donors personal information on an online network. Choose an amount to give and the pets name if needed.' },
-            { num: '03', img: '/assets/landing/banana-chimp-mobile.png', icon: '/assets/icons/vegies.png', title: 'Bring your food charity — straight to your favorites pets.', text: 'After your donation, the animal receives its favorite foods. You can support your favorite animals or any animal you care about and make a real personal impact. Never doubt that your donation can make a difference even if it is small.' },
-          ].map(item => (
+            {
+ num: '01', img: '/assets/landing/chimp-mobile.png', icon: '/assets/icons/donation.png', title: 'Your donation has an impact', text: 'Providing our animals with high-quality nutritious diets is just one element of animal care at our Zoo. We do all the best so that our animals can eat food similar to what they might find in their natural habitats while making sure they get the right mix of nutrients, proteins, and vitamins to be happy and healthy. Please help us provide nutritious food for our animals by donating.'
+},
+            {
+ num: '02', img: '/assets/landing/banana-mobile.png', icon: '/assets/icons/pay-icon.png', title: 'Make a donation', text: 'You can donate through your credit card without any fees. It is easy and safe. We do not keep donors personal information on an online network. Choose an amount to give and the pets name if needed.'
+},
+            {
+ num: '03', img: '/assets/landing/banana-chimp-mobile.png', icon: '/assets/icons/vegies.png', title: 'Bring your food charity — straight to your favorites pets.', text: 'After your donation, the animal receives its favorite foods. You can support your favorite animals or any animal you care about and make a real personal impact. Never doubt that your donation can make a difference even if it is small.'
+},
+          ].map((item) => (
             <div key={item.num}>
               <div className={styles.number_line}>
                 <h3 className="montserrat-regular">{item.num}</h3>
@@ -214,7 +228,9 @@ export default function LandingPage() {
           ))}
 
           <button className={`${styles.donate} montserrat-semi-bold`} onClick={openDonation}>
-            DONATE NOW <img src="/assets/icons/image.png" alt="Go to destination" />
+            DONATE NOW
+            {' '}
+            <img src="/assets/icons/image.png" alt="Go to destination" />
           </button>
 
           <h2 style={{ marginTop: '5rem' }} className="montserrat-regular">what our users think</h2>
@@ -229,19 +245,26 @@ export default function LandingPage() {
                   <div id="testimonials-skeleton" className={styles.testimonials_skeleton}>
                     {[...Array(3)].map((_, i) => (
                       <div key={i} className={styles.testimonials_skeleton_card}>
-                        <div className={`${styles.skeleton} ${styles.sk_avatar}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_date}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_line}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_line} ${styles.short}`}></div>
-                        <div className={`${styles.skeleton} ${styles.sk_name}`}></div>
+                        <div className={`${styles.skeleton} ${styles.sk_avatar}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_date}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_line}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_line} ${styles.short}`} />
+                        <div className={`${styles.skeleton} ${styles.sk_name}`} />
                       </div>
                     ))}
                   </div>
                 ) : (
                   feedback.map((item, i) => (
-<div key={i} className={`${i !== 0 ? styles.slide : styles.slide}`}>
-  <img src="/assets/icons/testemonial.png" alt={"Testimonial " + item.name} />
-                      <h4>{item.city}, {item.month} {item.year}</h4>
+                    <div key={i} className={`${i !== 0 ? styles.slide : styles.slide}`}>
+                      <img src="/assets/icons/testemonial.png" alt={`Testimonial ${item.name}`} />
+                      <h4>
+                        {item.city}
+                        ,
+                        {' '}
+                        {item.month}
+                        {' '}
+                        {item.year}
+                      </h4>
                       <p>{item.text}</p>
                       <h5>{item.name}</h5>
                     </div>
@@ -250,12 +273,12 @@ export default function LandingPage() {
               </div>
             </div>
             <div className={styles.btn_wrapper}>
-          <button className={styles.arrow_btn} onClick={() => scrollTestimonial('left')}>
-            <img className={styles.leftArrow} src="/assets/icons/image.png" alt="arrow" />
-          </button>
-          <button className={styles.arrow_btn} onClick={() => scrollTestimonial('right')}>
-            <img src="/assets/icons/image.png" alt="arrow" />
-          </button>
+              <button className={styles.arrow_btn} onClick={() => scrollTestimonial('left')}>
+                <img className={styles.leftArrow} src="/assets/icons/image.png" alt="arrow" />
+              </button>
+              <button className={styles.arrow_btn} onClick={() => scrollTestimonial('right')}>
+                <img src="/assets/icons/image.png" alt="arrow" />
+              </button>
             </div>
           </div>
 
@@ -264,7 +287,9 @@ export default function LandingPage() {
             onClick={openDonation}
             style={{ marginTop: '2rem' }}
           >
-            LEAVE FEEDBACK <img src="/assets/icons/image.png" alt="Go to destination" />
+            LEAVE FEEDBACK
+            {' '}
+            <img src="/assets/icons/image.png" alt="Go to destination" />
           </button>
           <img id="linear-panda" className={styles.linear_panda} src="/assets/landing/linear-panda.png" alt="Feedback banner" />
         </section>

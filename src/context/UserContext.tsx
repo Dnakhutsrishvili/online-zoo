@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import {
+ createContext, useContext, useState, useCallback, ReactNode
+} from 'react';
 
 export interface StoredUser {
   name: string;
@@ -13,7 +15,7 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | null>(null);
 
-export function UserProvider({ children }: { children: ReactNode }) {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<StoredUser | null>(() => {
     try {
       const raw = localStorage.getItem('zoo_user');

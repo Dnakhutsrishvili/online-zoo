@@ -17,14 +17,14 @@ function getSavedCards(): SavedCard[] {
 
 function saveCardToStorage(card: SavedCard) {
   const cards = getSavedCards();
-  if (!cards.find(c => c.cardNumber === card.cardNumber)) {
+  if (!cards.find((c) => c.cardNumber === card.cardNumber)) {
     cards.push(card);
     localStorage.setItem('zoo-saved-cards', JSON.stringify(cards));
   }
 }
 
 function formatCardLabel(num: string) {
-  return '**** **** **** ' + num.slice(-4);
+  return `**** **** **** ${num.slice(-4)}`;
 }
 
 function validateCardNumber(v: string) { return /^\d{16}$/.test(v.replace(/\s/g, '')); }
@@ -48,7 +48,9 @@ interface Props {
   onNotification: (msg: string, success: boolean) => void;
 }
 
-export default function DonationDialog({ isOpen, onClose, pets, onNotification }: Props) {
+export default function DonationDialog({
+ isOpen, onClose, pets, onNotification
+}: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { user } = useUser();
 
@@ -110,21 +112,25 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
 
   function handleExpiryInput(val: string) {
     let v = val.replace(/\D/g, '').slice(0, 4);
-    if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+    if (v.length >= 3) v = `${v.slice(0, 2)}/${v.slice(2)}`;
     setExpiry(v);
   }
 
   async function handleComplete() {
     if (saveCard) {
-      saveCardToStorage({ cardNumber, expiry, cvv, label: formatCardLabel(cardNumber) });
+      saveCardToStorage({
+ cardNumber, expiry, cvv, label: formatCardLabel(cardNumber)
+});
     }
     setLoading(true);
     try {
-      const petName = pets.find(p => p.id === petId)?.name || '';
+      const petName = pets.find((p) => p.id === petId)?.name || '';
       const res = await fetch(API_DONATE, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount, petName, cardNumber, expiry, cvv }),
+        body: JSON.stringify({
+ amount, petName, cardNumber, expiry, cvv
+}),
       });
       if (!res.ok) throw new Error();
       onClose();
@@ -145,18 +151,21 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
         <p className={`montserrat-heavy ${styles.donation_info}`}>Donation Information</p>
         <hr />
         <p className="montserrat-regular">
-          <span>*</span> choose your donation amount:
+          <span>*</span>
+          {' '}
+          choose your donation amount:
         </p>
 
         <div className={styles.donation_options}>
-          {['10', '20', '30', '40', '50', '60'].map(v => (
+          {['10', '20', '30', '40', '50', '60'].map((v) => (
             <button
               key={v}
               className={`${styles.donation_amount} ${amount === v ? styles.active : ''}`}
               value={v}
               onClick={() => setAmount(v)}
             >
-              ${v}
+              $
+              {v}
             </button>
           ))}
           <button className={styles.donation_amount} onClick={() => setAmount('')}>other</button>
@@ -165,7 +174,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
               id="donation"
               type="number"
               value={amount}
-              onChange={e => setAmount(e.target.value)}
+              onChange={(e) => setAmount(e.target.value)}
               placeholder="Enter amount"
             />
           </div>
@@ -173,13 +182,13 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
 
         <button className={styles.special}>for special pet</button>
 
-        <select 
+        <select
           className={styles.pet_select}
           value={petId}
-          onChange={e => setPetId(e.target.value)}
+          onChange={(e) => setPetId(e.target.value)}
         >
           <option value="">Select a pet...</option>
-          {pets.map(p => (
+          {pets.map((p) => (
             <option key={p.id} value={p.id}>
               {p.name}
             </option>
@@ -191,7 +200,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
             type="checkbox"
             id="recurring-donation"
             checked={recurring}
-            onChange={e => setRecurring(e.target.checked)}
+            onChange={(e) => setRecurring(e.target.checked)}
           />
           <label htmlFor="recurring-donation" className="montserrat-regular">
             Make this a monthly recurring gift
@@ -203,13 +212,15 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
           disabled={!step1Valid}
           onClick={() => setStep(1)}
         >
-          Next <img src="/assets/icons/image.png" alt="Next" />
+          Next
+          {' '}
+          <img src="/assets/icons/image.png" alt="Next" />
         </button>
 
         <div className={styles.buttons_step}>
-          <label htmlFor="step1"></label>
-          <label htmlFor="step2"></label>
-          <label htmlFor="step3"></label>
+          <label htmlFor="step1" />
+          <label htmlFor="step2" />
+          <label htmlFor="step3" />
         </div>
       </div>
 
@@ -227,7 +238,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
               id="name-input"
               placeholder="First and last name"
               value={name}
-              onChange={e => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
 
             <label htmlFor="email-input" className="montserrat-regular">
@@ -238,7 +249,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
               id="email-input"
               placeholder="Enter your email"
               value={email}
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <p className="montserrat-regular">
@@ -252,7 +263,9 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
           disabled={!step2Valid}
           onClick={() => setStep(2)}
         >
-          Next <img src="/assets/icons/image.png" alt="Next" />
+          Next
+          {' '}
+          <img src="/assets/icons/image.png" alt="Next" />
         </button>
         <button className={styles.prev_btn} onClick={() => setStep(0)}>
           Back
@@ -269,7 +282,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
             <select
               className={styles.saved_cards_select}
               value={selectedSaved}
-              onChange={e => handleSavedCardSelect(e.target.value)}
+              onChange={(e) => handleSavedCardSelect(e.target.value)}
             >
               <option value="">Select a saved card...</option>
               {savedCards.map((card, i) => (
@@ -290,9 +303,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
             id="card-number"
             placeholder="1234567890123456"
             value={cardNumber}
-            onChange={e =>
-              setCardNumber(e.target.value.replace(/\D/g, '').slice(0, 16))
-            }
+            onChange={(e) => setCardNumber(e.target.value.replace(/\D/g, '').slice(0, 16))}
           />
 
           <label htmlFor="expiry-date" className="montserrat-regular">
@@ -303,7 +314,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
             id="expiry-date"
             placeholder="MM/YY"
             value={expiry}
-            onChange={e => handleExpiryInput(e.target.value)}
+            onChange={(e) => handleExpiryInput(e.target.value)}
           />
 
           <label htmlFor="cvv" className="montserrat-regular">
@@ -314,9 +325,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
             id="cvv"
             placeholder="123"
             value={cvv}
-            onChange={e =>
-              setCvv(e.target.value.replace(/\D/g, '').slice(0, 3))
-            }
+            onChange={(e) => setCvv(e.target.value.replace(/\D/g, '').slice(0, 3))}
           />
         </div>
 
@@ -327,7 +336,7 @@ export default function DonationDialog({ isOpen, onClose, pets, onNotification }
                 type="checkbox"
                 id="save-card"
                 checked={saveCard}
-                onChange={e => setSaveCard(e.target.checked)}
+                onChange={(e) => setSaveCard(e.target.checked)}
               />
               <label htmlFor="save-card" className="montserrat-regular">
                 Save card info for future donations

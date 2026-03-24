@@ -9,7 +9,7 @@ export interface IconPosition {
   top: number
   left: number
 }
- 
+
 export type PetDetail = {
   id: string;
   name: string;

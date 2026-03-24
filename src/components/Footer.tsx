@@ -4,7 +4,7 @@ import styles from './Footer.module.css';
 
 export default function Footer() {
   const location = useLocation();
-  const { openDonation } = useDonation(); 
+  const { openDonation } = useDonation();
 
   function isActive(path: string) {
     return location.pathname === path ? { color: '#00A092' } : undefined;
@@ -29,8 +29,8 @@ export default function Footer() {
           <button
             onClick={openDonation}
             className={`montserrat-semi-bold ${styles.footer_donate}`}
-            style={{ 
-              backgroundColor: 'var(--blue)', 
+            style={{
+              backgroundColor: 'var(--blue)',
               border: '1px solid var(--white)',
               zIndex: 999,
               position: 'relative'

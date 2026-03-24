@@ -1,3 +1,1 @@
-export const validateEmail=(value: string): boolean =>{
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-  }
+export const validateEmail=(value: string): boolean => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())

@@ -1,4 +1,4 @@
-export const validateLogin=(value: string): string=> {
+export const validateLogin=(value: string): string => {
   if (!value) return "Login is required.";
   if (!/^[a-zA-Z]/.test(value)) return "Login must start with a letter.";
   if (!/^[a-zA-Z]+$/.test(value)) return "Login must contain only English letters.";

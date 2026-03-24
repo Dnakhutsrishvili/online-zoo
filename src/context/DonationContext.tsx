@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import {
+ createContext, useContext, useState, ReactNode
+} from 'react';
 import DonationDialog from '../components/DonationDialog';
 
 interface Pet {
@@ -27,7 +29,7 @@ const PETS: Pet[] = [
   { id: '4', name: 'Zara the Zebra' },
 ];
 
-export function DonationProvider({ children }: { children: ReactNode }) {
+export const DonationProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [notification, setNotification] = useState<Notification | null>(null);
 
@@ -79,7 +81,8 @@ export function DonationProvider({ children }: { children: ReactNode }) {
         </div>
       )}
 
-      <style>{`
+      <style>
+        {`
         @keyframes slideInRight {
           from {
             opacity: 0;
@@ -90,7 +93,8 @@ export function DonationProvider({ children }: { children: ReactNode }) {
             transform: translateX(0);
           }
         }
-      `}</style>
+      `}
+      </style>
     </DonationContext.Provider>
   );
 }

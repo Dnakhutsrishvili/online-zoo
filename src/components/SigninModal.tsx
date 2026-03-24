@@ -25,12 +25,12 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { login } = useUser();
 
-  const [loginVal, setLoginVal]         = useState('');
-  const [passwordVal, setPasswordVal]   = useState('');
-  const [loginErr, setLoginErr]         = useState('');
-  const [passwordErr, setPasswordErr]   = useState('');
-  const [serverErr, setServerErr]       = useState('');
-  const [loading, setLoading]           = useState(false);
+  const [loginVal, setLoginVal] = useState('');
+  const [passwordVal, setPasswordVal] = useState('');
+  const [loginErr, setLoginErr] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+  const [serverErr, setServerErr] = useState('');
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const isValid = validateLogin(loginVal) === '' && validatePassword(passwordVal) === '';
@@ -73,11 +73,10 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
 
       const data = await response.json().catch(() => ({}));
       login({
-        name:  data?.data?.user?.name  || '',
+        name: data?.data?.user?.name || '',
         email: data?.data?.user?.email || '',
       });
       onClose();
-
     } catch {
       setServerErr('Incorrect login or password.');
     } finally {
@@ -101,14 +100,17 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
               placeholder="e.g. johnDoe"
               autoComplete="username"
               value={loginVal}
-              onChange={e => { setLoginVal(e.target.value); setServerErr(''); }}
+              onChange={(e) => { setLoginVal(e.target.value); setServerErr(''); }}
               onBlur={() => setLoginErr(validateLogin(loginVal))}
               onFocus={() => setLoginErr('')}
             />
             <span className={styles.authErrorIcon}>!</span>
           </div>
-          {loginErr &&  <span className={`${styles.authFieldError} montserrat-regular`}>
-{loginErr}</span>}
+          {loginErr && (
+          <span className={`${styles.authFieldError} montserrat-regular`}>
+            {loginErr}
+          </span>
+)}
         </div>
 
         <div className={`auth-field-group ${passwordErr ? 'invalid' : ''}`} id="auth-group-password">
@@ -120,14 +122,14 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
               placeholder="Your password"
               autoComplete="current-password"
               value={passwordVal}
-              onChange={e => { setPasswordVal(e.target.value); setServerErr(''); }}
+              onChange={(e) => { setPasswordVal(e.target.value); setServerErr(''); }}
               onBlur={() => setPasswordErr(validatePassword(passwordVal))}
               onFocus={() => setPasswordErr('')}
             />
-            <button type="button" className={styles.authTogglePw} onClick={() => setShowPassword(p => !p)}>
+            <button type="button" className={styles.authTogglePw} onClick={() => setShowPassword((p) => !p)}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
               </svg>
             </button>
             <span className={styles.authErrorIcon}>!</span>
@@ -140,7 +142,7 @@ export default function SigninModal({ isOpen, onClose }: SigninModalProps) {
         <button type="submit" className={styles.signinSubmit} disabled={!isValid || loading}>
           {loading ? 'Signing in…' : 'SIGN IN'}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
+            <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
         </button>
       </form>

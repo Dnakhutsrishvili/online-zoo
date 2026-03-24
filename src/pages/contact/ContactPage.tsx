@@ -3,7 +3,6 @@ import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
 import styles from './contact.module.css'
 
-
 interface FormData {
   name: string
   email: string
@@ -11,7 +10,7 @@ interface FormData {
   message: string
 }
 
-function ContactPage() {
+const ContactPage = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -23,7 +22,7 @@ function ContactPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value,
     }))
@@ -32,10 +31,12 @@ function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    
+
     try {
       setSubmitted(true)
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      setFormData({
+ name: '', email: '', subject: '', message: ''
+})
       setTimeout(() => setSubmitted(false), 3000)
     } catch (error) {
     } finally {
@@ -47,15 +48,15 @@ function ContactPage() {
     <div>
       <Navbar />
       <main className={styles.main}>
-        <img 
-          src="/assets/contact/banner-mobile.png" 
-          alt="Contact Us Header" 
+        <img
+          src="/assets/contact/banner-mobile.png"
+          alt="Contact Us Header"
         />
-        
+
         <div className={styles.contact_pc}>
           <h2 className="montserrat-heavy">Get In Touch</h2>
           <p className="montserrat-regular">
-            Have questions or suggestions? We'd love to hear from you! 
+            Have questions or suggestions? We'd love to hear from you!
             Send us a message and we'll respond as soon as possible.
           </p>
 
@@ -121,8 +122,8 @@ function ContactPage() {
               </p>
             )}
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className={`montserrat-semi-bold ${styles.btn}`}
               disabled={loading}
             >
