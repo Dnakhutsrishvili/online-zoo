@@ -12,8 +12,6 @@
 }
 
 .animalPage a img {
-    width: 100%;
-    height: 200px;
     object-fit: cover;
 }
 
@@ -42,6 +40,7 @@
     color: var(--white);
     font-size: 18px;
     height: 45px;
+    width: 40%;
     text-align: center;
     background-color: var(--main-color);
     text-decoration: none;
@@ -145,6 +144,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     padding: 0.75rem 1.5rem;
     background-color: white;
     color: #F58021;
@@ -154,6 +154,11 @@
     text-decoration: none;
     gap: 0.5rem;
     transition: all 0.2s;
+}
+
+.petHero {
+    height: 100px;
+    width: 100px;
 }
 
 .view:hover {
@@ -338,7 +343,7 @@
     }
 }
 
-#pet_hero {
+.petHero {
     width: 80%;
     height: 780px;
 }
@@ -420,9 +425,8 @@
 }
 
 .donation_form button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    transform: translate(calc(-50% + 160px));
     width: 45px;
     height: 45px;
     background-color: var(--main-color);
@@ -477,11 +481,7 @@
 }
 
 @media (min-width: 940px) {
-    .animalPage a img {
-        width: 100%;
-        height: 500px;
-        object-fit: cover;
-    }
+
 
     .page_wrapper {
         flex-direction: row;

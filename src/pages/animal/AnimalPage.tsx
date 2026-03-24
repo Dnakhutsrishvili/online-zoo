@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import { useDonation } from '../../context/DonationContext';
 import { LOCAL_IMAGES, LOCAL_ICONS } from '../../constants/paths';
 import { Pet, PetDetail } from '../../models/animal';
-import styles from './AnimalPage.module.css';
+import styles from './animalpage.module.css';
 
 const API_PETS = 'https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets';
 const API_PET_BY_ID = (id: string) =>
@@ -154,7 +154,7 @@ export default function AnimalPage() {
                   live {petDetail.commonName} cams
                 </h2>
                 <a href="#">
-                  <img id="pet-hero" src={hero} alt={petDetail.name} />
+                  <img className={styles.petHero} src={hero} alt={petDetail.name} />
                 </a>
 
                 <h3 className="montserrat-semi-bold">More live views</h3>
@@ -256,7 +256,6 @@ export default function AnimalPage() {
                   <img src="/assets/icons/arrow.png" alt="Go to destination" />
                 </Link>
 
-                <p className="montserrat-regular">{petDetail.description}</p>
               </section>
             </>
           )}
