@@ -4,6 +4,15 @@
     width: 24px;
 }
 
+.heroSlide {
+    height: 100%;
+    border-radius: 0 !important;
+}
+
+.slideArrow {
+    height: 20px !important;
+}
+
 .leftArrow {
     transform: rotate(180deg);
 
@@ -491,6 +500,7 @@
 
 .slider_wrapper {
     overflow: hidden;
+    width: 100%;
 }
 
 .slider {
@@ -539,6 +549,34 @@
     line-height: 1.5;
 }
 
+.testimonial_section .slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    gap: 1rem;
+    padding: 1rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.testimonial_section .slider::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial_section .slides {
+    display: flex;
+    width: auto;
+    transition: none;
+}
+
+.testimonial_section .slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    padding: 2rem;
+    background: var(--white);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
 .buttons {
     margin-top: 1rem;
 }
@@ -581,28 +619,47 @@
     padding: 0.2rem;
 }
 
-.animal_section .slider .slides .slide {
-    background-color: var(--blue);
-    padding: 0;
+.animal_section .slider {
+    overflow: hidden;
+    margin: 2rem auto;
+    width: 100%;
 }
 
+.animal_section .slides {
+    display: flex;
+    width: 100%;
+    transition: 0.5s;
+}
 
-.animal_section .slider .slides .slide img {
+.animal_section .slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    padding: 0;
+    background-color: var(--blue);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.animal_section .slide img {
     height: 365px;
     width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin: 0;
     object-fit: cover;
+    display: block;
 }
 
-.animal_section .slider .slides .slide p {
+.animal_section .slide p {
     color: var(--white);
     margin: 0.5rem;
     padding: 0 1rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
 }
 
-.animal_section .slider .slides .slide button {
+.animal_section .slide button {
     text-decoration: none;
     margin: 1.5rem;
     color: var(--main-color);
@@ -616,6 +673,8 @@
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
     gap: 0.5rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .buttons_animals {
@@ -635,52 +694,6 @@
 
 input[type="radio"] {
     display: none;
-}
-
-#slide1:checked~.slider .slides {
-    transform: translateX(0%);
-}
-
-#slide2:checked~.slider .slides {
-    transform: translateX(-25%);
-}
-
-#slide3:checked~.slider .slides {
-    transform: translateX(-50%);
-}
-
-#slide4:checked~.slider .slides {
-    transform: translateX(-75%);
-}
-
-#animal1:checked~.slider .slides {
-    transform: translateX(0%);
-}
-
-#animal2:checked~.slider .slides {
-    transform: translateX(-25%);
-}
-
-#animal3:checked~.slider .slides {
-    transform: translateX(-50%);
-}
-
-#animal4:checked~.slider .slides {
-    transform: translateX(-75%);
-}
-
-#slide1:checked~.buttons label[for="slide1"],
-#slide2:checked~.buttons label[for="slide2"],
-#slide3:checked~.buttons label[for="slide3"],
-#slide4:checked~.buttons label[for="slide4"] {
-    background-color: var(--white);
-}
-
-#animal1:checked~.buttons_animals label[for="animal1"],
-#animal2:checked~.buttons_animals label[for="animal2"],
-#animal3:checked~.buttons_animals label[for="animal3"],
-#animal4:checked~.buttons_animals label[for="animal4"] {
-    background-color: var(--blue);
 }
 
 .linear_panda {
@@ -970,7 +983,6 @@ input[type="radio"] {
 
     .slide {
         height: 100%;
-        width: 110%;
     }
 
     .pay_and_feed h2 {
@@ -1010,6 +1022,29 @@ input[type="radio"] {
         display: flex;
     }
 
+    .animal_section .slider {
+        max-width: 90%;
+        margin: 2rem auto;
+    }
+
+    .animal_section .slides {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        width: 100%;
+        transform: translateX(0) !important;
+        transition: none;
+    }
+
+    .animal_section .slide {
+        flex: unset;
+        min-width: unset;
+    }
+
+    .animal_section .slide img {
+        height: 300px;
+    }
+
     .buttons_animals {
         display: none;
     }
@@ -1029,7 +1064,7 @@ input[type="radio"] {
         overflow: hidden;
     }
 
-    .slider {
+    .testimonial_section .slider {
         display: grid;
         grid-template-rows: repeat(2, auto);
         grid-auto-flow: column;
@@ -1045,7 +1080,7 @@ input[type="radio"] {
         display: none;
     }
 
-    .slide {
+    .testimonial_section .slide {
         flex: 0 0 33%;
         box-sizing: border-box;
         padding: 1rem;
@@ -1054,7 +1089,7 @@ input[type="radio"] {
         border-radius: 10px;
     }
 
-    .slide img {
+    .testimonial_section .slide img {
         width: 50px;
         height: 50px;
         border-radius: 50%;

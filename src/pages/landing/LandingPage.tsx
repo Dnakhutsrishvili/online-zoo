@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
+import AnimalSlider from './AnimalSlider.jsx';
 import { useDonation } from '../../context/DonationContext';
 import { LOCAL_IMAGES } from '../../constants/paths';
 import styles from './landingPage.module.css';
@@ -268,39 +269,7 @@ export default function LandingPage() {
           <img id="linear-panda" className={styles.linear_panda} src="/assets/landing/linear-panda.png" alt="Feedback banner" />
         </section>
 
-        <section className={styles.care}>
-          <h2 className="montserrat-regular">care for the animals you love</h2>
-          <p className="montserrat-regular">You can help to look after the animals you love with your gift today</p>
-          <img className={styles.coala_pc} src="/assets/landing/coala-pc.png" alt="coala" />
-          <div className={styles.animal_section}>
-            <input type="radio" name="animal-slider" id="animal1" defaultChecked />
-            <input type="radio" name="animal-slider" id="animal2" />
-            <input type="radio" name="animal-slider" id="animal3" />
-            <input type="radio" name="animal-slider" id="animal4" />
-            <div className={styles.slider}>
-              <div className={styles.slides}>
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className={styles.slide}>
-                    <img src="/assets/landing/panda-slide-mobile.png" alt="animal" />
-                    <p className="montserrat-regular">Your $30 could give Lucas a slice of panda cake, made with our secret recipe.</p>
-                    <button className="montserrat-semi-bold" onClick={openDonation}>
-                      Feed <img src="/assets/icons/arrow.png" alt="Go to destination" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={styles.buttons_animals}>
-              <label htmlFor="animal1"></label>
-              <label htmlFor="animal2"></label>
-              <label htmlFor="animal3"></label>
-              <label htmlFor="animal4"></label>
-            </div>
-          </div>
-          <button className={`montserrat-semi-bold ${styles.donate}`} onClick={openDonation}>
-            Choose Your Favorite <img src="/assets/icons/arrow-dark.png" alt="Go to destination" />
-          </button>
-        </section>
+        <AnimalSlider openDonation={openDonation} />
 
         <img className={styles.lemur} src="/assets/landing/virtual-call.png" alt="virtual banner" />
       </main>
