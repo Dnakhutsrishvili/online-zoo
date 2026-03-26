@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useDonation } from '../context/DonationContext';
-import styles from './Footer.module.css';
+import styles from './footer.module.css';
 
 export default function Footer() {
   const location = useLocation();
