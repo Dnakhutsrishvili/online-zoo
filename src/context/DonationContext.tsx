@@ -1,32 +1,18 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import DonationDialog from "../components/DonationDialog";
-
-interface Pet {
-  id: string;
-  name: string;
-}
+import { Notification } from "../models/animal";
+import { PETS } from "../constants/paths";
 
 interface DonationContextType {
   isOpen: boolean;
   openDonation: () => void;
   closeDonation: () => void;
-}
-
-interface Notification {
-  message: string;
-  success: boolean;
+  showNotification: (message: string, success: boolean) => void;
 }
 
 const DonationContext = createContext<DonationContextType | undefined>(
   undefined,
 );
-
-const PETS: Pet[] = [
-  { id: "1", name: "Leo the Lion" },
-  { id: "2", name: "Ella the Elephant" },
-  { id: "3", name: "Gigi the Giraffe" },
-  { id: "4", name: "Zara the Zebra" },
-];
 
 export const DonationProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);

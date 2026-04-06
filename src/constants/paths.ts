@@ -1,3 +1,7 @@
+interface Pet {
+  id: string;
+  name: string;
+}
 export const LOCAL_IMAGES: Record<number, string> = {
   1: "/assets/animal/animals/1_Giant_Panda.jpg",
   2: "/assets/animal/animals/2_Ring-Tailed_Lemur.jpg",
@@ -87,3 +91,10 @@ export const LOCAL_ICONS: Record<string, string> = {
   27: "/assets/animal/animals/icons/27_Sloth.svg",
   28: "/assets/animal/animals/icons/28_Cheetah.svg",
 };
+
+export const PETS: Pet[] = [
+  { id: "1", name: "Leo the Lion" },
+  { id: "2", name: "Ella the Elephant" },
+  { id: "3", name: "Gigi the Giraffe" },
+  { id: "4", name: "Zara the Zebra" },
+];
