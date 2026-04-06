@@ -6,8 +6,15 @@ export type Pet = {
   image?: string;
 };
 export interface IconPosition {
-  top: number
-  left: number
+  top: number;
+  left: number;
+}
+export interface Feedback {
+  name: string;
+  city: string;
+  month: string;
+  year: string;
+  text: string;
 }
 
 export type PetDetail = {

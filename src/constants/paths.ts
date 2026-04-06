@@ -29,17 +29,35 @@ export const LOCAL_IMAGES: Record<number, string> = {
   28: "/assets/animal/animals/28_Cheetah.jpg",
 };
 export const ANIMAL_ICONS = [
-  '/assets/map/icons/animal-icon-1.png',
-  '/assets/map/icons/animal-icon-2.png',
-  '/assets/map/icons/animal-icon-3.png',
-  '/assets/map/icons/animal-icon-4.png',
-  '/assets/map/icons/animal-icon-5.png',
-  '/assets/map/icons/animal-icon-6.png',
-  '/assets/map/icons/animal-icon-7.png',
-  '/assets/map/icons/animal-icon-8.png',
-]
+  "/assets/map/icons/animal-icon-1.png",
+  "/assets/map/icons/animal-icon-2.png",
+  "/assets/map/icons/animal-icon-3.png",
+  "/assets/map/icons/animal-icon-4.png",
+  "/assets/map/icons/animal-icon-5.png",
+  "/assets/map/icons/animal-icon-6.png",
+  "/assets/map/icons/animal-icon-7.png",
+  "/assets/map/icons/animal-icon-8.png",
+];
+export const SLIDES = [
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+  },
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+  },
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+  },
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+  },
+];
 
- export const LOCAL_ICONS: Record<string, string> = {
+export const LOCAL_ICONS: Record<string, string> = {
   1: "/assets/animal/animals/icons/1_Giant_Panda.svg",
   2: "/assets/animal/animals/icons/2_Ring-Tailed_Lemur.svg",
   3: "/assets/animal/animals/icons/3_Gorilla.svg",
