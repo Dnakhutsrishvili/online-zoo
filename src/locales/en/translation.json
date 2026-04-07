@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "watchFavoriteAnimal": "WATCH YOUR FAVORITE ANIMAL ONLINE",
+    "explore": "Explore the exciting and mysterious world of wild animals in anatural setting without leaving your home.",
+    "viewLiveCam": "VIEW LIVE CAM"
+  },
+  "landing": {
+    "welcome": "Welcome to the Online Zoo!",
+    "Website": "On our website, using live webcams, fans of all ages can observe various animals. Among them, are Giant pandas, eagles, alligators, forest gorillas, African lions, and others. It is the whole natural world in real-time in front of our cameras.",
+    "howWeWork": "How we work",
+    "slidesText": "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+    "yourDonation": "Your donation makes a difference!",
+    "quickDonate": "Quick Donate",
+    "meetSome": "MEET SOME OUR PETS",
+    "payAndFeed": "PAY AND FEED",
+    "chooseYourFavorite": "Choose your favorite",
+    "donateNow": "DONATE NOW",
+    "donationPlaceholder": "$ DONATION AMOUNT",
+    "careFor": "care for the animals you love",
+    "youCan": "You can help to look after the animals you love with your gift today",
+    "feed": "Feed",
+    "chooseYour": "Choose Your Favorite",
+    "leaveFeedback": "LEAVE FEEDBACK",
+    "WhatOurUsers": "What our users think",
+    "weAre": "We are continuously striving to improve the experiences of our future guests. Below you can leave your own feedback, or simply view feedback from past clients.",
+    "title1": "Your donation has an impact",
+    "title2": "Make a donation",
+    "title3": "Bring your food charity — straight to your favorites pets.",
+    "text1": "Providing our animals with high-quality nutritious diets is just one element of animal care at our Zoo. We do all the best so that our animals can eat food similar to what they might find in their natural habitats while making sure they get the right mix of nutrients, proteins, and vitamins to be happy and healthy. Please help us provide nutritious food for our animals by donating.",
+    "text2": "You can donate through your credit card without any fees. It is easy and safe. We do not keep donors personal information on an online network. Choose an amount to give and the pets name if needed.",
+    "text3": "After your donation, the animal receives its favorite foods. You can support your favorite animals or any animal you care about and make a real personal impact. Never doubt that your donation can make a difference even if it is small.",
+    "doYouHave": "Do you have a special place in your heart for animals? Who are your favorites? Perhaps you would like to donate to special ones or all our pets? We think it is important for you to choose how your donation is used.",
+    "theOnlineZoo": "The Online Zoo's animal webcams are some of the most famous on the internet. Tune in to watch your favourite animals — live, 24/7!",
+    "online": "Online Zoo is a nonprofit committed to inspiring awareness and preservation of nature and wild animals in our zoo and worldwide. To continue these efforts, we need your help. We are so grateful to our supporters. All donations, large and small, go a long way to the conservation efforts of our pets."
+  },
+  "auth": {
+    "login": "Login"
+  }
+}

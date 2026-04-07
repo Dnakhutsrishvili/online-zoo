@@ -45,19 +45,19 @@ export const ANIMAL_ICONS = [
 export const SLIDES = [
   {
     img: "/assets/landing/panda-slide-mobile.png",
-    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+    text: "slidesText",
   },
   {
     img: "/assets/landing/panda-slide-mobile.png",
-    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+    text: "slidesText",
   },
   {
     img: "/assets/landing/panda-slide-mobile.png",
-    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+    text: "slidesText",
   },
   {
     img: "/assets/landing/panda-slide-mobile.png",
-    text: "Your $30 could give Lucas a slice of panda cake, made with our secret recipe.",
+    text: "slidesText",
   },
 ];
 

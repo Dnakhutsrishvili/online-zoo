@@ -1,12 +1,14 @@
 import { useState } from "react";
 import styles from "./landingPage.module.css";
 import { SLIDES } from "../../constants/paths";
+import { useTranslation } from "react-i18next";
 type Props = {
   openDonation: () => void;
 };
 
 export default function AnimalSlider({ openDonation }: Props) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const { t } = useTranslation();
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -14,10 +16,8 @@ export default function AnimalSlider({ openDonation }: Props) {
 
   return (
     <section className={styles.care}>
-      <h2 className="montserrat-regular">care for the animals you love</h2>
-      <p className="montserrat-regular">
-        You can help to look after the animals you love with your gift today
-      </p>
+      <h2 className="montserrat-regular">{t("landing.careFor")}</h2>
+      <p className="montserrat-regular">{t("landing.youCan")}</p>
       <img
         className={styles.coala_pc}
         src="/assets/landing/coala-pc.png"
@@ -40,9 +40,11 @@ export default function AnimalSlider({ openDonation }: Props) {
                   src={slide.img}
                   alt={`Slide ${i + 1}`}
                 />
-                <p className="montserrat-regular">{slide.text}</p>
+                <p className="montserrat-regular">
+                  {t(`landing.${slide.text}`)}
+                </p>
                 <button className="montserrat-semi-bold" onClick={openDonation}>
-                  Feed{" "}
+                  {t("landing.feed")}
                   <img
                     className={styles.slideArrow}
                     src="/assets/icons/arrow.png"
@@ -74,7 +76,7 @@ export default function AnimalSlider({ openDonation }: Props) {
         className={`montserrat-semi-bold ${styles.donate}`}
         onClick={openDonation}
       >
-        Choose Your Favorite
+        {t("landing.chooseYour")}
         <img src="/assets/icons/arrow-dark.png" alt="Go to destination" />
       </button>
     </section>

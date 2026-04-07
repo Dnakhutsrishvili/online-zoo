@@ -7,6 +7,7 @@ import { useDonation } from "../../context/DonationContext";
 import { LOCAL_IMAGES } from "../../constants/paths";
 import styles from "./landingPage.module.css";
 import { Pet, Feedback } from "../../models/animal";
+import { useTranslation } from "react-i18next";
 
 const API_URL_ANIMAL =
   "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/pets";
@@ -15,6 +16,7 @@ const API_URL_FEEDBACK =
 
 export default function LandingPage() {
   const { openDonation } = useDonation();
+  const { t } = useTranslation();
 
   const [pets, setPets] = useState<Pet[]>([]);
   const [petError, setPetError] = useState<string>(
@@ -107,57 +109,40 @@ export default function LandingPage() {
         <section className={styles.hero}>
           <div className={styles.hero_text}>
             <h2 className="montserrat-heavy">
-              WATCH YOUR FAVORITE ANIMAL ONLINE
+              {t("hero.watchFavoriteAnimal")}
             </h2>
-            <p className="montserrat-regular">
-              Explore the exciting and mysterious world of wild animals in a
-              natural setting without leaving your home.
-            </p>
+            <p className="montserrat-regular">{t("hero.explore")}</p>
             <Link to="/animal" className="montserrat-semi-bold">
-              VIEW LIVE CAM
+              {t("hero.viewLiveCam")}
               <img src="/assets/icons/image.png" alt="Go to destination" />
             </Link>
           </div>
         </section>
-
         <section className={styles.welcome}>
           <img src="/assets/landing/welcome-mobile.png" alt="banner" />
-          <h2 className="montserrat-regular">Welcome to the Online Zoo!</h2>
-          <p className="montserrat-regular">
-            On our website, using live webcams, fans of all ages can observe
-            various animals. Among them, are Giant pandas, eagles, alligators,
-            forest gorillas, African lions, and others. It is the whole natural
-            world in real-time in front of our cameras.
-          </p>
+          <h2 className="montserrat-regular">{t("landing.welcome")}</h2>
+          <p className="montserrat-regular">{t("landing.Website")}</p>
           <img
             className={styles.adjust}
             src="/assets/landing/eagles-mobile.png"
             alt="banner"
           />
-          <h2 className="montserrat-regular">How we work</h2>
-          <p className="montserrat-regular">
-            Online Zoo is a nonprofit committed to inspiring awareness and
-            preservation of nature and wild animals in our zoo and worldwide. To
-            continue these efforts, we need your help. We are so grateful to our
-            supporters. All donations, large and small, go a long way to the
-            conservation efforts of our pets.
-          </p>
+          <h2 className="montserrat-regular">{t("landing.howWeWork")}</h2>
+          <p className="montserrat-regular">{t("landing.online")}</p>
         </section>
 
         <section className={styles.donation}>
           <div>
-            <h2 className="montserrat-regular">
-              Your donation makes a difference!
-            </h2>
-            <p className="montserrat-regular">
-              The Online Zoo's animal webcams are some of the most famous on the
-              internet. Tune in to watch your favourite animals — live, 24/7!
-            </p>
+            <h2 className="montserrat-regular">{t("landing.yourDonation")}</h2>
+            <p className="montserrat-regular">{t("landing.theOnlineZoo")}</p>
           </div>
           <div>
-            <h3 className="montserrat-semi-bold">Quick Donate</h3>
+            <h3 className="montserrat-semi-bold">{t("landing.quickDonate")}</h3>
             <div className={styles.donation_form}>
-              <input type="number" placeholder="$ DONATION AMOUNT" />
+              <input
+                type="number"
+                placeholder={t("landing.donationPlaceholder")}
+              />
               <button className="montserrat-semi-bold" onClick={openDonation}>
                 <img src="/assets/icons/image.png" alt="Donate" />
               </button>
@@ -166,13 +151,8 @@ export default function LandingPage() {
         </section>
 
         <section className={styles.contact}>
-          <h2 className="montserrat-regular">MEET SOME OUR PETS</h2>
-          <p className="montserrat-regular">
-            Do you have a special place in your heart for animals? Who are your
-            favorites? Perhaps you would like to donate to special ones or all
-            our pets? We think it is important for you to choose how your
-            donation is used.
-          </p>
+          <h2 className="montserrat-regular">{t("landing.meetSome")}</h2>
+          <p className="montserrat-regular">{t("landing.doYouHave")}</p>
           <div>
             <div className={styles.animals_wrapper}>
               <div className={styles.btn_wrapper}>
@@ -235,7 +215,7 @@ export default function LandingPage() {
                       </h4>
                       <p className="montserrat-regular">{animal.description}</p>
                       <Link to="/animal" className="montserrat-semi-bold">
-                        VIEW LIVE CAM{" "}
+                        {t("hero.viewLiveCam")}
                         <img
                           src="/assets/icons/arrow.png"
                           alt="Go to destination"
@@ -247,36 +227,35 @@ export default function LandingPage() {
               </div>
             </div>
             <button className={`montserrat-semi-bold ${styles.pc_btn}`}>
-              choose your favorite{" "}
+              {t("landing.chooseYourFavorite")}
               <img src="/assets/icons/arrow-dark.png" alt="Go to destination" />
             </button>
           </div>
         </section>
 
         <section className={styles.pay_and_feed}>
-          <h2 className="montserrat-regular">PAY AND FEED</h2>
+          <h2 className="montserrat-regular">{t("landing.payAndFeed")}</h2>
           {[
             {
               num: "01",
               img: "/assets/landing/chimp-mobile.png",
               icon: "/assets/icons/donation.png",
-              title: "Your donation has an impact",
-              text: "Providing our animals with high-quality nutritious diets is just one element of animal care at our Zoo. We do all the best so that our animals can eat food similar to what they might find in their natural habitats while making sure they get the right mix of nutrients, proteins, and vitamins to be happy and healthy. Please help us provide nutritious food for our animals by donating.",
+              title: t("landing.title1"),
+              text: t("landing.text1"),
             },
             {
               num: "02",
               img: "/assets/landing/banana-mobile.png",
               icon: "/assets/icons/pay-icon.png",
-              title: "Make a donation",
-              text: "You can donate through your credit card without any fees. It is easy and safe. We do not keep donors personal information on an online network. Choose an amount to give and the pets name if needed.",
+              title: t("landing.title2"),
+              text: t("landing.text2"),
             },
             {
               num: "03",
               img: "/assets/landing/banana-chimp-mobile.png",
               icon: "/assets/icons/vegies.png",
-              title:
-                "Bring your food charity — straight to your favorites pets.",
-              text: "After your donation, the animal receives its favorite foods. You can support your favorite animals or any animal you care about and make a real personal impact. Never doubt that your donation can make a difference even if it is small.",
+              title: t("landing.title3"),
+              text: t("landing.text3"),
             },
           ].map((item) => (
             <div key={item.num}>
@@ -307,18 +286,14 @@ export default function LandingPage() {
             className={`${styles.donate} montserrat-semi-bold`}
             onClick={openDonation}
           >
-            DONATE NOW{" "}
+            {t("landing.donateNow")}
             <img src="/assets/icons/image.png" alt="Go to destination" />
           </button>
 
           <h2 style={{ marginTop: "5rem" }} className="montserrat-regular">
-            what our users think
+            {t("landing.WhatOurUsers")}
           </h2>
-          <p className="montserrat-regular">
-            We are continuously striving to improve the experiences of our
-            future guests. Below you can leave your own feedback, or simply view
-            feedback from past clients.
-          </p>
+          <p className="montserrat-regular">{t("landing.weAre")}</p>
 
           <div className={styles.testimonial_section}>
             <div className={styles.slider_wrapper}>
@@ -400,7 +375,7 @@ export default function LandingPage() {
             onClick={openDonation}
             style={{ marginTop: "2rem" }}
           >
-            LEAVE FEEDBACK{" "}
+            {t("landing.leaveFeedback")}
             <img src="/assets/icons/image.png" alt="Go to destination" />
           </button>
           <img

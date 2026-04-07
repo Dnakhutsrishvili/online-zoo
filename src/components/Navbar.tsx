@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import SigninModal from "./SigninModal";
 import styles from "./navbar.module.css";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export default function Navbar() {
   const { user, logout } = useUser();
@@ -23,6 +24,9 @@ export default function Navbar() {
       <header className={styles.navbar}>
         <div onClick={handleClick} className={styles.logo}>
           <img src="/assets/icons/main-logo.png" alt="Logo" />
+        </div>
+        <div>
+          <LanguageSwitcher></LanguageSwitcher>
         </div>
         <input type="checkbox" id="menu-toggle" className={styles.menutoggle} />
         <label htmlFor="menu-toggle" className={styles.burger}>
