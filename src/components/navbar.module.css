@@ -1,307 +1,306 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: var(--main-color);
-    color: var(--white);
-    position: relative;
-    overflow: visible;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--main-color);
+  color: var(--white);
+  position: relative;
+  overflow: visible;
 }
 
 .logo img {
-    height: 40px;
+  cursor: pointer;
+  height: 40px;
 }
 
 .menutoggle {
-    display: none;
+  display: none;
 }
 
-.menutoggle:checked~.navLinks {
-    right: 0;
-    padding-top: 30%;
-    text-align: center;
-    gap: 3rem;
+.menutoggle:checked ~ .navLinks {
+  right: 0;
+  padding-top: 30%;
+  text-align: center;
+  gap: 3rem;
 }
 
-.menutoggle:checked+.burger span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-    background-color: var(--white);
+.menutoggle:checked + .burger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+  background-color: var(--white);
 }
 
-.menutoggle:checked+.burger span:nth-child(2) {
-    opacity: 0;
+.menutoggle:checked + .burger span:nth-child(2) {
+  opacity: 0;
 }
 
-.menutoggle:checked+.burger span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
-    background-color: var(--white);
+.menutoggle:checked + .burger span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+  background-color: var(--white);
 }
 
 .burger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 999;
 }
 
 .burger span {
-    width: 30px;
-    height: 2.5px;
-    background: var(--black);
-    transition: all 0.3s ease;
-    transform-origin: center;
+  width: 30px;
+  height: 2.5px;
+  background: var(--black);
+  transition: all 0.3s ease;
+  transform-origin: center;
 }
 
 .navLinks {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    height: 100vh;
-    width: 300px;
-    background: var(--blue);
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    transition: right 0.3s ease;
-    z-index: 100;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  height: 100vh;
+  width: 300px;
+  background: var(--blue);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transition: right 0.3s ease;
+  z-index: 100;
 }
 
 .navLinks li a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
 }
 
 .navLinks li a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .socialMediaHeader {
-    display: none;
+  display: none;
 }
 
 .userWidget {
-    display: none;
+  display: none;
 }
 
 .userBtn {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 6px 8px;
-    border-radius: 4px;
-    transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
 }
 
 .userBtn:hover {
-    background: rgba(0, 0, 0, 0.07);
+  background: rgba(0, 0, 0, 0.07);
 }
 
 .userIcon {
-    width: 26px;
-    height: 26px;
-    color: var(--blue);
-    flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  color: var(--blue);
+  flex-shrink: 0;
 }
 
 .userName {
-    font-size: 0.82rem;
-    color: var(--blue);
-    max-width: 100px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 0.82rem;
+  color: var(--blue);
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .userPopup {
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    min-width: 210px;
-    background: var(--white);
-    border-radius: 6px;
-    box-shadow: 0 8px 32px rgba(32, 17, 61, 0.16);
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-6px);
-    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-    z-index: 1000;
-    padding: 1rem;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 210px;
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(32, 17, 61, 0.16);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0.18s;
+  z-index: 1000;
+  padding: 1rem;
 }
 
-
 .popupProfile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    background: #f8f6fb;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #f8f6fb;
 }
 
 .userPopup.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .popupGuest,
 .popupUser {
-    display: none;
+  display: none;
 }
 
 .popupGuest.active,
 .popupUser.active {
-    display: block;
+  display: block;
 }
 
 .popupOption {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 13px 16px;
-    color: var(--blue);
-    font-size: 0.88rem;
-    text-decoration: none;
-    transition: background 0.15s;
-    border: none;
-    width: 100%;
-    cursor: pointer;
-    background-color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  color: var(--blue);
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: background 0.15s;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  background-color: var(--white);
 }
 
 .popupOption svg {
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    color: var(--pale-green-hower);
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  color: var(--pale-green-hower);
 }
 
 .popupOption:hover {
-    background: #888;
+  background: #888;
 }
 
 .popupDivider {
-    height: 1px;
-    background: #888;
-    margin: 0;
+  height: 1px;
+  background: #888;
+  margin: 0;
 }
 
 .popupAvatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: var(--main-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--white);
-    font-family: "Montserrat", sans-serif;
-    flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  flex-shrink: 0;
 }
 
 .popupInfo {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .popupInfoName {
-    font-size: 0.9rem;
-    color: var(--blue);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 0.9rem;
+  color: var(--blue);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .popupInfoEmail {
-    font-size: 0.75rem;
-    color: #888;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-top: 2px;
+  font-size: 0.75rem;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
 }
 
 .popupSignout {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 13px 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.88rem;
-    color: #c0392b;
-    transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.88rem;
+  color: #c0392b;
+  transition: background 0.15s;
 }
 
 .popupSignout svg {
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
 }
 
 .popupSignout:hover {
-    background: #fdf0ef;
+  background: #fdf0ef;
 }
-
 
 @media (min-width: 640px) {
-    #userIitem {
-        display: none;
-    }
+  #userIitem {
+    display: none;
+  }
 
-    .slider> :not(:first-child) {
-        display: block;
-    }
+  .slider > :not(:first-child) {
+    display: block;
+  }
 
-    .userWidget {
-        position: relative;
-        display: flex;
-        align-items: center;
-        margin-left: 0.5rem;
-    }
+  .userWidget {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 0.5rem;
+  }
 
-    .burger {
-        display: none;
-    }
+  .burger {
+    display: none;
+  }
 
-    .navLinks {
-        position: static;
-        height: auto;
-        width: auto;
-        background: none;
-        flex-direction: row;
-        gap: 1rem;
-        padding: 0;
-        right: 0;
-        text-transform: uppercase;
-    }
-
+  .navLinks {
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0;
+    right: 0;
+    text-transform: uppercase;
+  }
 }
 
-
 @media (min-width: 940px) {
-    .socialMediaHeader {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 1rem;
-        padding-left: 4rem;
-    }
+  .socialMediaHeader {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 4rem;
+  }
 
-    .socialMediaHeader img {
-        width: 100%;
-        height: 40px;
-    }
+  .socialMediaHeader img {
+    width: 100%;
+    height: 40px;
+  }
 }

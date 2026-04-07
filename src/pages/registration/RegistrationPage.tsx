@@ -6,6 +6,7 @@ import {
   validateNameRegistration,
   validateEmailRegistration,
   validatePassword,
+  validateConfirm,
 } from "../../utils";
 import styles from "./registration.module.css";
 import SigninModal from "../../components/SigninModal";
@@ -34,18 +35,12 @@ export default function RegistrationPage() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  function validateConfirm(value: string): string {
-    if (!value) return "Please confirm your password.";
-    if (value !== password) return "Passwords do not match.";
-    return "";
-  }
-
   const isValid =
     validateLogin(login) === "" &&
     validateNameRegistration(name) === "" &&
     validateEmailRegistration(email) === "" &&
     validatePassword(password) === "" &&
-    validateConfirm(confirm) === "";
+    validateConfirm(confirm, password) === "";
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -214,7 +209,8 @@ export default function RegistrationPage() {
                     }}
                     onBlur={() => {
                       setPasswordErr(validatePassword(password));
-                      if (confirm) setConfirmErr(validateConfirm(confirm));
+                      if (confirm)
+                        setConfirmErr(validateConfirm(confirm, password));
                     }}
                     onFocus={() => setPasswordErr("")}
                   />
@@ -264,7 +260,9 @@ export default function RegistrationPage() {
                       setConfirm(e.target.value);
                       setServerErr("");
                     }}
-                    onBlur={() => setConfirmErr(validateConfirm(confirm))}
+                    onBlur={() =>
+                      setConfirmErr(validateConfirm(confirm, password))
+                    }
                     onFocus={() => setConfirmErr("")}
                   />
                   <button

@@ -9,3 +9,4 @@ export * from "./getSavedCards";
 export * from "./validateCardNumber";
 export * from "./validateCVV";
 export * from "./validateExpiry";
+export * from "./validateConfirm";
