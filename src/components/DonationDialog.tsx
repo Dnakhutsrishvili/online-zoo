@@ -11,6 +11,7 @@ import {
   validateName,
   validateEmail,
 } from "../utils";
+import { useTranslation } from "react-i18next";
 
 const API_DONATE =
   "https://vsqsnqnxkh.execute-api.eu-central-1.amazonaws.com/prod/donation";
@@ -38,6 +39,7 @@ export default function DonationDialog({
 }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { user } = useUser();
+  const { t } = useTranslation();
 
   const [step, setStep] = useState(0);
   const [amount, setAmount] = useState("");
@@ -143,17 +145,17 @@ export default function DonationDialog({
   return (
     <dialog className={styles.auto} ref={dialogRef} onClick={handleBackdrop}>
       <header className={styles.dialog_header}>
-        <h2 className="montserrat-semi-bold">make your donation</h2>
+        <h2 className="montserrat-semi-bold">{t("donation.make")}</h2>
       </header>
       <div
         className={`${styles.step} ${styles.step_1} ${step === 0 ? styles.active : ""}`}
       >
         <p className={`montserrat-heavy ${styles.donation_info}`}>
-          Donation Information
+          {t("donation.information")}
         </p>
         <hr />
         <p className="montserrat-regular">
-          <span>*</span> choose your donation amount:
+          <span>*</span> {t("donation.choose")}
         </p>
 
         <div className={styles.donation_options}>
@@ -171,7 +173,7 @@ export default function DonationDialog({
             className={styles.donation_amount}
             onClick={() => setAmount("")}
           >
-            other
+            {t("donation.other")}
           </button>
           <div className={styles.custom_donation_form}>
             <input
@@ -184,14 +186,14 @@ export default function DonationDialog({
           </div>
         </div>
 
-        <button className={styles.special}>for special pet</button>
+        <button className={styles.special}>{t("donation.forSpecial")}</button>
 
         <select
           className={styles.pet_select}
           value={petId}
           onChange={(e) => setPetId(e.target.value)}
         >
-          <option value="">Select a pet...</option>
+          <option value="">{t("donation.option")}</option>
           {pets.map((p) => (
             <option key={p.id} value={p.id}>
               {p.name}
@@ -207,7 +209,7 @@ export default function DonationDialog({
             onChange={(e) => setRecurring(e.target.checked)}
           />
           <label htmlFor="recurring-donation" className="montserrat-regular">
-            Make this a monthly recurring gift
+            {t("donation.makeMonthly")}
           </label>
         </div>
 
@@ -216,7 +218,7 @@ export default function DonationDialog({
           disabled={!step1Valid}
           onClick={() => setStep(1)}
         >
-          Next <img src="/assets/icons/image.png" alt="Next" />
+          {t("donation.next")} <img src="/assets/icons/image.png" alt="Next" />
         </button>
 
         <div className={styles.buttons_step}>
@@ -230,39 +232,35 @@ export default function DonationDialog({
         className={`${styles.step} ${styles.step_2} ${step === 1 ? styles.active : ""}`}
       >
         <p className={`montserrat-heavy ${styles.donation_info}`}>
-          Payment Information
+          {t("donation.Information")}
         </p>
         <hr />
 
         <div className={styles.info_form}>
           <div className={styles.payment_details}>
             <label htmlFor="name-input" className="montserrat-regular">
-              *Your Name
+              {t("donation.name")}
             </label>
             <input
               type="text"
               id="name-input"
-              placeholder="First and last name"
+              placeholder={t("donation.enterName")}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
 
             <label htmlFor="email-input" className="montserrat-regular">
-              *Your Email
+              {t("donation.email")}
             </label>
             <input
               type="email"
               id="email-input"
-              placeholder="Enter your email"
+              placeholder={t("donation.enterEmail")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
-            <p className="montserrat-regular">
-              You will receive emails from the Online Zoo, including updates and
-              news on the latest discoveries and translations. You can
-              unsubscribe at any time.
-            </p>
+            <p className="montserrat-regular">{t("donation.youWill")}</p>
           </div>
         </div>
 
@@ -271,10 +269,10 @@ export default function DonationDialog({
           disabled={!step2Valid}
           onClick={() => setStep(2)}
         >
-          Next <img src="/assets/icons/image.png" alt="Next" />
+          {t("donation.next")} <img src="/assets/icons/image.png" alt="Next" />
         </button>
         <button className={styles.prev_btn} onClick={() => setStep(0)}>
-          Back
+          {t("donation.back")}
         </button>
       </div>
 
@@ -282,19 +280,21 @@ export default function DonationDialog({
         className={`${styles.step} ${styles.step_3} ${step === 2 ? styles.active : ""}`}
       >
         <p className={`montserrat-heavy ${styles.donation_info}`}>
-          Payment Information:
+          {t("donation.Information") + ":"}
         </p>
         <hr />
 
         {savedCards.length > 0 && (
           <div className={styles.saved_cards_container}>
-            <label className="montserrat-regular">Saved cards</label>
+            <label className="montserrat-regular">
+              {t("donation.savedCard")}
+            </label>
             <select
               className={styles.saved_cards_select}
               value={selectedSaved}
               onChange={(e) => handleSavedCardSelect(e.target.value)}
             >
-              <option value="">Select a saved card...</option>
+              <option value="">{t("donation.selectCard")}</option>
               {savedCards.map((card, i) => (
                 <option key={i} value={String(i)}>
                   {card.label}
@@ -306,7 +306,7 @@ export default function DonationDialog({
 
         <div className={styles.payment_details}>
           <label htmlFor="card-number" className="montserrat-regular">
-            *Card Number
+            {t("donation.cardNumber")}
           </label>
           <input
             type="text"
@@ -319,7 +319,7 @@ export default function DonationDialog({
           />
 
           <label htmlFor="expiry-date" className="montserrat-regular">
-            *Expiry Date
+            {t("donation.exDate")}
           </label>
           <input
             type="text"
@@ -330,7 +330,7 @@ export default function DonationDialog({
           />
 
           <label htmlFor="cvv" className="montserrat-regular">
-            *CVV
+            {t("donation.cvv")}
           </label>
           <input
             type="text"
@@ -353,14 +353,14 @@ export default function DonationDialog({
                 onChange={(e) => setSaveCard(e.target.checked)}
               />
               <label htmlFor="save-card" className="montserrat-regular">
-                Save card info for future donations
+                {t("donation.saveCard")}
               </label>
             </div>
           </div>
         )}
 
         <button className={styles.prev_btn} onClick={() => setStep(1)}>
-          Back
+          {t("donation.back")}
         </button>
 
         <div className={styles.complate_donation}>
@@ -370,7 +370,9 @@ export default function DonationDialog({
             disabled={!step3Valid || loading}
             onClick={handleComplete}
           >
-            {loading ? "Processing..." : "COMPLETE DONATION"}
+            {loading
+              ? t("donation.processing")
+              : t("donation.complateDonation")}
             <img src="/assets/icons/image.png" alt="Go to destination" />
           </button>
         </div>

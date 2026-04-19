@@ -4,6 +4,7 @@ import { useUser } from "../context/UserContext";
 import SigninModal from "./SigninModal";
 import styles from "./navbar.module.css";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 export default function Navbar() {
   const { user, logout } = useUser();
@@ -11,6 +12,7 @@ export default function Navbar() {
   const [signinOpen, setSigninOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   function isActive(path: string) {
     return location.pathname === path ? { color: "#00A092" } : undefined;
@@ -38,22 +40,22 @@ export default function Navbar() {
         <ul className={`${styles.navLinks} montserrat-semi-bold`}>
           <li>
             <Link style={isActive("/")} to="/">
-              ABOUT
+              {t("header.about")}
             </Link>
           </li>
           <li>
             <Link style={isActive("/map")} to="/map">
-              MAP
+              {t("header.map")}
             </Link>
           </li>
           <li>
             <Link style={isActive("/animal")} to="/animal">
-              ZOOS
+              {t("header.zoos")}
             </Link>
           </li>
           <li>
             <Link style={isActive("/contact")} to="/contact">
-              CONTACT US
+              {t("header.contact")}
             </Link>
           </li>
         </ul>
@@ -141,7 +143,7 @@ export default function Navbar() {
                       <polyline points="10 17 15 12 10 7" />
                       <line x1="15" y1="12" x2="3" y2="12" />
                     </svg>
-                    Sign In
+                    {t("header.sign")}
                   </button>
                   <div className={styles.popupDivider} />
                   <Link
@@ -160,7 +162,7 @@ export default function Navbar() {
                       <line x1="19" y1="8" x2="19" y2="14" />
                       <line x1="22" y1="11" x2="16" y2="11" />
                     </svg>
-                    Registration
+                    {t("header.register")}
                   </Link>
                 </div>
               ) : (
@@ -191,7 +193,6 @@ export default function Navbar() {
                       setPopupOpen(false);
                     }}
                   >
-                    {" "}
                     <svg
                       viewBox="0 0 24 24"
                       fill="none"
@@ -202,7 +203,7 @@ export default function Navbar() {
                       <polyline points="16 17 21 12 16 7" />
                       <line x1="21" y1="12" x2="9" y2="12" />
                     </svg>
-                    Sign Out
+                    {t("header.signOut")}
                   </button>
                 </div>
               )}
