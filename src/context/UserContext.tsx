@@ -1,16 +1,23 @@
 import {
- createContext, useContext, useState, useCallback, ReactNode
-} from 'react';
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  ReactNode,
+} from "react";
 
 export interface StoredUser {
   name: string;
   email: string;
 }
 
+type LoginFn = (_user: StoredUser) => void;
+type LogoutFn = () => void;
+
 interface UserContextType {
   user: StoredUser | null;
-  login: (user: StoredUser) => void;
-  logout: () => void;
+  login: LoginFn;
+  logout: LogoutFn;
 }
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -18,20 +25,20 @@ const UserContext = createContext<UserContextType | null>(null);
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<StoredUser | null>(() => {
     try {
-      const raw = localStorage.getItem('zoo_user');
+      const raw = localStorage.getItem("zoo_user");
       return raw ? JSON.parse(raw) : null;
     } catch {
       return null;
     }
   });
 
-  const login = useCallback((userData: StoredUser) => {
-    localStorage.setItem('zoo_user', JSON.stringify(userData));
-    setUser(userData);
+  const login = useCallback<LoginFn>((user) => {
+    localStorage.setItem("zoo_user", JSON.stringify(user));
+    setUser(user);
   }, []);
 
-  const logout = useCallback(() => {
-    localStorage.removeItem('zoo_user');
+  const logout = useCallback<LogoutFn>(() => {
+    localStorage.removeItem("zoo_user");
     setUser(null);
   }, []);
 
@@ -40,10 +47,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </UserContext.Provider>
   );
-}
+};
 
 export function useUser() {
   const ctx = useContext(UserContext);
-  if (!ctx) throw new Error('useUser must be used within UserProvider');
+  if (!ctx) throw new Error("useUser must be used within UserProvider");
   return ctx;
 }

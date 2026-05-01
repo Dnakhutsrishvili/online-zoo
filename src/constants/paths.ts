@@ -1,3 +1,7 @@
+interface Pet {
+  id: string;
+  name: string;
+}
 export const LOCAL_IMAGES: Record<number, string> = {
   1: "/assets/animal/animals/1_Giant_Panda.jpg",
   2: "/assets/animal/animals/2_Ring-Tailed_Lemur.jpg",
@@ -29,17 +33,35 @@ export const LOCAL_IMAGES: Record<number, string> = {
   28: "/assets/animal/animals/28_Cheetah.jpg",
 };
 export const ANIMAL_ICONS = [
-  '/assets/map/icons/animal-icon-1.png',
-  '/assets/map/icons/animal-icon-2.png',
-  '/assets/map/icons/animal-icon-3.png',
-  '/assets/map/icons/animal-icon-4.png',
-  '/assets/map/icons/animal-icon-5.png',
-  '/assets/map/icons/animal-icon-6.png',
-  '/assets/map/icons/animal-icon-7.png',
-  '/assets/map/icons/animal-icon-8.png',
-]
+  "/assets/map/icons/animal-icon-1.png",
+  "/assets/map/icons/animal-icon-2.png",
+  "/assets/map/icons/animal-icon-3.png",
+  "/assets/map/icons/animal-icon-4.png",
+  "/assets/map/icons/animal-icon-5.png",
+  "/assets/map/icons/animal-icon-6.png",
+  "/assets/map/icons/animal-icon-7.png",
+  "/assets/map/icons/animal-icon-8.png",
+];
+export const SLIDES = [
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "slidesText",
+  },
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "slidesText",
+  },
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "slidesText",
+  },
+  {
+    img: "/assets/landing/panda-slide-mobile.png",
+    text: "slidesText",
+  },
+];
 
- export const LOCAL_ICONS: Record<string, string> = {
+export const LOCAL_ICONS: Record<string, string> = {
   1: "/assets/animal/animals/icons/1_Giant_Panda.svg",
   2: "/assets/animal/animals/icons/2_Ring-Tailed_Lemur.svg",
   3: "/assets/animal/animals/icons/3_Gorilla.svg",
@@ -69,3 +91,10 @@ export const ANIMAL_ICONS = [
   27: "/assets/animal/animals/icons/27_Sloth.svg",
   28: "/assets/animal/animals/icons/28_Cheetah.svg",
 };
+
+export const PETS: Pet[] = [
+  { id: "1", name: "Leo the Lion" },
+  { id: "2", name: "Ella the Elephant" },
+  { id: "3", name: "Gigi the Giraffe" },
+  { id: "4", name: "Zara the Zebra" },
+];

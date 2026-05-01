@@ -5,9 +5,26 @@ export type Pet = {
   description?: string;
   image?: string;
 };
+export interface Notification {
+  message: string;
+  success: boolean;
+}
+export interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 export interface IconPosition {
-  top: number
-  left: number
+  top: number;
+  left: number;
+}
+export interface Feedback {
+  name: string;
+  city: string;
+  month: string;
+  year: string;
+  text: string;
 }
 
 export type PetDetail = {
